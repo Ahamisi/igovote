@@ -1,0 +1,52 @@
+type States @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+}
+
+type Wards @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ward_id: Int
+  abbreviation: String
+  lga_id: Int
+  stateid: Int
+  name: String
+}
+
+type Lgas @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  lga_id: Int
+  lga: String
+  abbreviation: String
+  state_id: String
+}
+
+type UserProfile @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  gender: String
+  state: States
+  lga: String
+  ward: String
+  polling_unit: String
+}
+
+type PresidentialCandidate @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  candidate_name: String
+  Parties: Parties @hasOne
+  pwd: String
+  age: String
+  gender: String
+  qualifications: String
+  image: AWSURL
+  remarks: String
+}
+
+type Parties @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  abbreviation: String
+  logo: AWSURL
+  slug: String
+  url: AWSURL
+}
+ 

@@ -1,0 +1,62 @@
+export const REPSCANDIDATE = [
+    {
+        id: '1',
+        candidate_type: 'House of Reps',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Presidential',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    },
+    {
+        id: '1',
+        candidate_type: 'House of Reps',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Presidential',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    },
+    {
+        id: '1',
+        candidate_type: 'House of Reps',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Presidential',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    },
+    {
+        id: '1',
+        candidate_type: 'House of Reps',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Presidential',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    }
+]

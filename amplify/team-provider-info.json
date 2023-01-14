@@ -1,0 +1,104 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-igovoteapp-dev-204849-authRole",
+      "UnauthRoleArn": "arn:aws:iam::452708671101:role/amplify-igovoteapp-dev-204849-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::452708671101:role/amplify-igovoteapp-dev-204849-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-igovoteapp-dev-204849-deployment",
+      "UnauthRoleName": "amplify-igovoteapp-dev-204849-unauthRole",
+      "StackName": "amplify-igovoteapp-dev-204849",
+      "StackId": "arn:aws:cloudformation:us-east-1:452708671101:stack/amplify-igovoteapp-dev-204849/514194a0-8ec4-11ed-ae4b-0ad6dd7a425d",
+      "AmplifyAppId": "d3ap819elp8p68"
+    },
+    "categories": {
+      "auth": {
+        "igovoteappcf5a4cff": {}
+      },
+      "storage": {
+        "s3igovoteappstorage9f97588c": {},
+        "igvlgas": {
+          "tableName": "igv_lgas",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_lgas",
+          "partitionKeyName": "id",
+          "partitionKeyType": "N"
+        },
+        "igvstates": {
+          "tableName": "igv_states",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_states",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S"
+        },
+        "igvwards": {
+          "tableName": "igv_wards",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_wards",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S"
+        },
+        "igvpresidential": {
+          "tableName": "igv_presidential",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_presidential",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S"
+        },
+        "igvgovernorship": {
+          "tableName": "igv_governorship",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_governorship",
+          "partitionKeyName": "id",
+          "partitionKeyType": "N"
+        },
+        "igvsenatorial": {
+          "tableName": "igv_senatorial",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_senatorial",
+          "partitionKeyName": "id",
+          "partitionKeyType": "N"
+        },
+        "igvhor": {
+          "tableName": "igv_hor",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_hor",
+          "partitionKeyName": "id",
+          "partitionKeyType": "N"
+        },
+        "igvhoa": {
+          "tableName": "igv_hoa",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_hoa",
+          "partitionKeyName": "id",
+          "partitionKeyType": "N"
+        },
+        "igvpu": {
+          "tableName": "igv_pu",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:452708671101:table/igv_pu",
+          "partitionKeyName": "polling_id",
+          "partitionKeyType": "N"
+        }
+      },
+      "function": {
+        "igovoteapp41d7d22f": {
+          "deploymentBucketName": "amplify-igovoteapp-dev-204849-deployment",
+          "s3Key": "amplify-builds/igovoteapp41d7d22f-44737652597273396642-build.zip"
+        },
+        "igovoteapp1df3f994": {
+          "deploymentBucketName": "amplify-igovoteapp-dev-204849-deployment",
+          "s3Key": "amplify-builds/igovoteapp1df3f994-73305878437637754755-build.zip"
+        },
+        "igovoteappad466e2d": {
+          "deploymentBucketName": "amplify-igovoteapp-dev-204849-deployment",
+          "s3Key": "amplify-builds/igovoteappad466e2d-37735550673334366e53-build.zip"
+        }
+      },
+      "api": {
+        "IgovoteApp": {},
+        "igvdata": {}
+      }
+    }
+  }
+}

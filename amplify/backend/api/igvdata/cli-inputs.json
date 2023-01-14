@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "paths": {
+    "/states": {
+      "name": "/states",
+      "lambdaFunction": "igovoteapp41d7d22f",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/lgas/{stateId}": {
+      "name": "/lgas/{stateId}",
+      "lambdaFunction": "igovoteapp1df3f994",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/wards/{stateId}/{lgaId}": {
+      "name": "/wards/{stateId}/{lgaId}",
+      "lambdaFunction": "igovoteappad466e2d",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+export const SENCANDIDATE = [
+    {
+        id: '1',
+        candidate_type: 'senate',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Senate',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    },
+    {
+        id: '1',
+        candidate_type: 'senate',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Senate',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    },
+    {
+        id: '1',
+        candidate_type: 'senate',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Senate',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    },
+    {
+        id: '1',
+        candidate_type: 'senate',
+        state: 'LAGOS',
+        constituency: 'Lagos West',
+        candidate_name: 'Ahamisi Godsfavour',
+        party: 'Fresh',
+        position: 'Senate',
+        pwd: '',
+        age: '60',
+        gender: 'M',
+        qualifications: 'BSC, MSC, PhD',
+        image: '',
+        remarks:''
+    }
+]

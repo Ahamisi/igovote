@@ -1,0 +1,11 @@
+{
+  "resourceName": "s3igovoteappstorage9f97588c",
+  "bucketName": "igovoteapp-storage-9f97588c",
+  "policyUUID": "0e8ab683",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}
