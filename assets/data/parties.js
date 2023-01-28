@@ -6,6 +6,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/a.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/a.png')
+
     },
     {
         id: 'actionalliance',
@@ -14,6 +16,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/aa.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/aa.png')
+
     },
     {
         id: 'africanCongress',
@@ -22,6 +26,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/aac.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/aac.png')
+
     },
     {
         id: 'adc',
@@ -30,6 +36,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/adc.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/adc.png')
+
     },
     {
         id: 'adp',
@@ -38,6 +46,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/adp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/adp.png')
+
     },
     {
         id: 'apc',
@@ -46,14 +56,18 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/apc.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/apc.png')
+
     },
     {
         id: 'apga',
         name: 'All Progressives Grand Alliance',
-        abbreviation: 'AA',
+        abbreviation: 'APGA',
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/apga.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/apga.png')
+
     },
     {
         id: 'apm',
@@ -62,6 +76,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/apm.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/apm.png')
+
     },
     {
         id: 'app',
@@ -70,6 +86,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/app.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/app.png')
+
     },
     {
         id: 'bp',
@@ -78,6 +96,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/bp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/bp.png')
+
     },
     {
         id: 'lp',
@@ -86,6 +106,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/lp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/lp.png')
+
     },
     {
         id: 'accord',
@@ -94,6 +116,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/nnpp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/nnpp.png')
+
     },
     {
         id: 'nrm',
@@ -102,6 +126,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/nrm.png',
         slug: '',
         url: 'https://inecnigeria.org/party/nrm/',
+        imageLink: require('../party/nrm.png')
+
     },
     {
         id: 'pdp',
@@ -110,6 +136,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/pdp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/pdp.png')
+
     },
     {
         id: 'prp',
@@ -118,6 +146,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/prp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/prp.png')
+
     },
     {
         id: 'sdp',
@@ -126,6 +156,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/sdp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/sdp.png')
+
     },
     {
         id: 'ypp',
@@ -134,6 +166,8 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/ypp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/ypp.png')
+
     },
     {
         id: 'zlp',
@@ -142,5 +176,7 @@ export const PARTIES = [
         logo: 'https://igovoteapp.s3.eu-west-2.amazonaws.com/parties/zlp.png',
         slug: '',
         url: 'https://inecnigeria.org/party/accord/',
+        imageLink: require('../party/zlp.png')
+
     },
 ]

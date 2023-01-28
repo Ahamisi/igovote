@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import React from 'react'
-// import {firebase} from '../../firebase'
+
 
 const handleSignOut = async () => {
     // try{
@@ -11,17 +11,27 @@ const handleSignOut = async () => {
     // }
 }
 
-const Header = ({}) => {
+
+
+const Header = ({selected}) => {
+    const messages = ['Odogwu', 'Agba', 'Chairman', 'Chief']
+
+
+
+
 
   return (
-    <View style={styles.superContainer}>
+    <View style={styles.superContainer} className="rounded-bl-[10px]">
 
         <View className="py-[20px] flex relative ">
             <View className="absolute right-0 top-0">
                 <Image source={require('../../assets/app/ellipse.svg')}/>
             </View>
             <View className="mt-[20px]">
-                <Text className="text-[24px] font-bold text-white">👋 Alex</Text>
+                <Text className="text-[24px] font-bold text-white">👋 {messages[Math.floor((Math.random()*messages.length))]}</Text>
+            </View>
+            <View className="w-[100%] mr-auto bg-white py-[10] px-[8px] rounded-[25px] items-left justify-center mt-[15px]">
+                <Text className="text-[15px] font-bold text-gray-600" >Currently Viewing for: {selected}</Text>
             </View>
             <View>
 
@@ -86,8 +96,6 @@ const styles= StyleSheet.create({
 
     },
     superContainer:{
-        borderBottomRightRadius: '10px',
-        borderBottomLeftRadius: '10px',
         paddingHorizontal: 10
         
     },

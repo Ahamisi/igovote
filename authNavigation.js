@@ -4,7 +4,7 @@ import { SignedInStack, SignedOutStack } from './navigation';
 
 import { Auth } from 'aws-amplify';
 
-const AuthNavigation = () => {
+const AuthNavigation = ({LoggedIn}) => {
 
     const [currentUser, setcurrentUser] = useState(null)
     const userHandler = user => user ? setcurrentUser(user) : setcurrentUser(null)
@@ -15,7 +15,12 @@ const AuthNavigation = () => {
       })
         .then((user) => userHandler(user))
         .catch((err) => console.log(err));
+        
+
  }
+
+
+
  
 , [])
     
@@ -24,7 +29,11 @@ const AuthNavigation = () => {
     return(
 
        <>
-            { currentUser ? <SignedInStack/> : <SignedOutStack/> }
+            {/* { currentUser ? <SignedInStack/> : <SignedOutStack/> } */}
+             <SignedInStack LoggedIn={LoggedIn} currentUser={currentUser}/> 
+
+             {console.log('whats the issue')}
+
 
        </>
         

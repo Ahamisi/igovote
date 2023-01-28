@@ -9,21 +9,26 @@ export const bottomTabIcons = [
         active: 'https://img.icons8.com/fluency-systems-filled/144/009244/home.png',
         inactive:
           'https://img.icons8.com/fluency-systems-regular/48/000000/home.png',
+          goTo: 'HomeScreen'
       },
       {
-        name: 'Todos',
-        active: 'https://img.icons8.com/ios-filled/500/009244/todo-list--v1.png',
-        inactive: 'https://img.icons8.com/ios/500/000000/todo-list--v1.png',
+        name: 'ElectionMonitor',
+        active: 'https://img.icons8.com/ios-filled/50/009244/binoculars.png',
+        inactive: 'https://img.icons8.com/ios-filled/50/000000/binoculars.png',
+        goTo: 'ElectionMonitor'
       },
       {
-        name: 'Monitor',
-        active: 'https://img.icons8.com/ios-filled/50/009244/elections.png',
-        inactive: 'https://img.icons8.com/ios-filled/50/000000/elections.png',
+        
+        name: 'LiveUpdates',
+        active: 'https://img.icons8.com/ios-filled/50/009244/documentary.png',
+        inactive: 'https://img.icons8.com/ios-filled/50/000000/documentary.png',
+        goTo: 'LiveUpdates'
       },
       {
         name: 'Profile',
         active: 'https://img.icons8.com/ios-filled/50/009244/settings--v1.png',
         inactive: 'https://img.icons8.com/ios/500/000000/settings--v1.png',
+        goTo : 'Profile'
       },
 ]
 
@@ -33,11 +38,14 @@ export const bottomTabIcons = [
 
 
 
-const BottomTab = ({icons}) => {
-    const [activeTab, setactiveTab] = useState('Home')
+const BottomTab = ({icons, navigation, tabName}) => {
+    const [activeTab, setactiveTab] = useState(tabName)
 
     const Icon = ({icon}) =>(
-        <TouchableOpacity onPress={() => setactiveTab(icon.name)}>
+        <TouchableOpacity onPress={() =>{
+            setactiveTab(icon.name)
+            navigation.push(icon.goTo)
+        }}>
             <Image source={{uri: activeTab == icon.name ? icon.active : icon.inactive}} style={[
                 styles.icon,
             ]}/>
@@ -45,7 +53,7 @@ const BottomTab = ({icons}) => {
     )
 
   return (
-    <View style={styles.wrapper} className="rounded-lg p-[10px]">
+    <View style={styles.wrapper} className="rounded-lg p-[10px] absolute bottom-0">
         <View style={styles.container}>
             {icons.map((icon,index) => (
                 <Icon key={index} icon={icon}/>
@@ -62,7 +70,8 @@ const styles = StyleSheet.create({
         width: '100%',
         bottom: '0%',
         zIndex: 999,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        // marginTop: '100%'
     },
     container:{
         flexDirection:'row',

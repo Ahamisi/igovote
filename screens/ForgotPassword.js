@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet } from 'react-native'
+import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import React, {useState} from 'react';
 import GoBack from '../components/General/GoBack';
 
@@ -14,6 +14,8 @@ import { Auth } from 'aws-amplify';
 
 
 const ForgotPasswordScreen = ({navigation}) => {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
 
     const [codeSent, setcodeSent] = useState(false)
 
@@ -29,6 +31,8 @@ const ForgotPasswordScreen = ({navigation}) => {
 
 
     const onLogin = async (email,code,password) =>{
+        setIsSubmitting(true)
+
         if(codeSent){
             const username = email
             // Collect confirmation code and new password, then
@@ -64,7 +68,10 @@ const ForgotPasswordScreen = ({navigation}) => {
                 
         }catch(error){
             console.log(error)
+        }finally{
+            setIsSubmitting(false)
         }
+
     }
 
 
@@ -72,11 +79,9 @@ const ForgotPasswordScreen = ({navigation}) => {
 
 
   return (
-        <SafeAreaView>
+        <SafeAreaView className="bg-[#009244]">
 
-
-
-            
+            <KeyboardAvoidingView>
             <View className="bg-[#eeeeee] pt-[20%] h-full relative">
                 <GoBack navigation={navigation}/>
                
@@ -181,7 +186,11 @@ const ForgotPasswordScreen = ({navigation}) => {
                         <View className="w-[100%] mb-[15px] flex justify-end">
                             <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid} >
                                 <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
-                                    <Text className="text-white text-center text-[18px] font-bold">Send</Text>
+                                    <Text className="text-white text-center text-[18px] font-bold">
+                                    {
+                                            isSubmitting ? 'Sending ...' : 'Send'
+                                        }
+                                    </Text>
                                 </View>
                             </Pressable>
                         </View>
@@ -214,6 +223,7 @@ const ForgotPasswordScreen = ({navigation}) => {
 
                 </View>
             </View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
   )
 }

@@ -4,13 +4,11 @@ import { schema } from './schema';
 
 
 
-const { States, Wards, Lgas, UserProfile, PresidentialCandidate, Parties } = initSchema(schema);
+const { LiveReports, ElectionMonitor, UserProfile, Parties } = initSchema(schema);
 
 export {
-  States,
-  Wards,
-  Lgas,
+  LiveReports,
+  ElectionMonitor,
   UserProfile,
-  PresidentialCandidate,
   Parties
 };

@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet } from 'react-native'
+import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import React from 'react';
 import GoBack from '../components/General/GoBack';
 
@@ -26,7 +26,7 @@ const OTPVerification = ({route,navigation}) => {
             await Auth.resendSignUp(username);
             // console.log('code resent successfully');
         } catch (err) {
-            alert('error resending code: ', `${err}`);
+            Alert.alert('error resending code: ', `${err}`);
         }
     }
 
@@ -69,12 +69,14 @@ const OTPVerification = ({route,navigation}) => {
 
 
   return (
-        <SafeAreaView>
+        <SafeAreaView className="bg-[#009244]">
+
+                <KeyboardAvoidingView>
 
 
 
-            
-            <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+
+                <View className="bg-[#eeeeee] pt-[20%] h-full relative">
                 <GoBack navigation={navigation}/>
                
                 <View className="mx-auto">
@@ -159,6 +161,11 @@ const OTPVerification = ({route,navigation}) => {
 
                 </View>
             </View>
+
+
+
+
+                </KeyboardAvoidingView>
         </SafeAreaView>
   )
 }

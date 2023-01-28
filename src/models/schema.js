@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "States": {
-            "name": "States",
+        "LiveReports": {
+            "name": "LiveReports",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,8 +10,106 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
+                "user": {
+                    "name": "user",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "polling_unit": {
+                    "name": "polling_unit",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pu_current_state": {
+                    "name": "pu_current_state",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pu_scenery": {
+                    "name": "pu_scenery",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "no_on_queue": {
+                    "name": "no_on_queue",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "materials_functional": {
+                    "name": "materials_functional",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "average_time_to_vote": {
+                    "name": "average_time_to_vote",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "staff_present": {
+                    "name": "staff_present",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "time_create": {
+                    "name": "time_create",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "time_create_clone": {
+                    "name": "time_create_clone",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "attachment": {
+                    "name": "attachment",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "comment": {
+                    "name": "comment",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "endorsements": {
+                    "name": "endorsements",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "is_false": {
+                    "name": "is_false",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "report_status": {
+                    "name": "report_status",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -35,7 +133,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "States",
+            "pluralName": "LiveReports",
             "attributes": [
                 {
                     "type": "model",
@@ -59,8 +157,8 @@ export const schema = {
                 }
             ]
         },
-        "Wards": {
-            "name": "Wards",
+        "ElectionMonitor": {
+            "name": "ElectionMonitor",
             "fields": {
                 "id": {
                     "name": "id",
@@ -69,36 +167,155 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "ward_id": {
-                    "name": "ward_id",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "abbreviation": {
-                    "name": "abbreviation",
+                "user": {
+                    "name": "user",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "lga_id": {
-                    "name": "lga_id",
+                "polling_unit": {
+                    "name": "polling_unit",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "stateid": {
-                    "name": "stateid",
+                "election_type": {
+                    "name": "election_type",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
+                "votes_a": {
+                    "name": "votes_a",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_aa": {
+                    "name": "votes_aa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_aac": {
+                    "name": "votes_aac",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_adc": {
+                    "name": "votes_adc",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_adp": {
+                    "name": "votes_adp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_apc": {
+                    "name": "votes_apc",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_apga": {
+                    "name": "votes_apga",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_apm": {
+                    "name": "votes_apm",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_app": {
+                    "name": "votes_app",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_bp": {
+                    "name": "votes_bp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_lp": {
+                    "name": "votes_lp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_nnpp": {
+                    "name": "votes_nnpp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_nrm": {
+                    "name": "votes_nrm",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_pdp": {
+                    "name": "votes_pdp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_prp": {
+                    "name": "votes_prp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_sdp": {
+                    "name": "votes_sdp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_ypp": {
+                    "name": "votes_ypp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "votes_zlp": {
+                    "name": "votes_zlp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "copy_of_results": {
+                    "name": "copy_of_results",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -122,87 +339,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Wards",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Lgas": {
-            "name": "Lgas",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "lga_id": {
-                    "name": "lga_id",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "lga": {
-                    "name": "lga",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "abbreviation": {
-                    "name": "abbreviation",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "state_id": {
-                    "name": "state_id",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Lgases",
+            "pluralName": "ElectionMonitors",
             "attributes": [
                 {
                     "type": "model",
@@ -236,8 +373,15 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "gender": {
-                    "name": "gender",
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "state_id": {
+                    "name": "state_id",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -257,8 +401,64 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "polling_unit": {
-                    "name": "polling_unit",
+                "ward_id": {
+                    "name": "ward_id",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ward_abbreviation": {
+                    "name": "ward_abbreviation",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "state": {
+                    "name": "state",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pu": {
+                    "name": "pu",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pu_id": {
+                    "name": "pu_id",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lga_abbreviation": {
+                    "name": "lga_abbreviation",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lga_id": {
+                    "name": "lga_id",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "sub": {
+                    "name": "sub",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "gender": {
+                    "name": "gender",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -283,132 +483,6 @@ export const schema = {
             },
             "syncable": true,
             "pluralName": "UserProfiles",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "PresidentialCandidate": {
-            "name": "PresidentialCandidate",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "candidate_name": {
-                    "name": "candidate_name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "Parties": {
-                    "name": "Parties",
-                    "isArray": false,
-                    "type": {
-                        "model": "Parties"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "HAS_ONE",
-                        "associatedWith": [
-                            "id"
-                        ],
-                        "targetNames": [
-                            "presidentialCandidatePartiesId"
-                        ]
-                    }
-                },
-                "pwd": {
-                    "name": "pwd",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "age": {
-                    "name": "age",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "gender": {
-                    "name": "gender",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "qualifications": {
-                    "name": "qualifications",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "image": {
-                    "name": "image",
-                    "isArray": false,
-                    "type": "AWSURL",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "remarks": {
-                    "name": "remarks",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "presidentialCandidatePartiesId": {
-                    "name": "presidentialCandidatePartiesId",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": false,
-                    "attributes": []
-                }
-            },
-            "syncable": true,
-            "pluralName": "PresidentialCandidates",
             "attributes": [
                 {
                     "type": "model",
@@ -523,5 +597,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.4",
-    "version": "7b6d0db2dc89acd5d3790123d4eda896"
+    "version": "8851e494ff09f068ed99be0688a5a4bc"
 };

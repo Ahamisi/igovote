@@ -12,7 +12,7 @@ const Achievements = () => {
             </View>
             <View style={{}}>
               <TouchableOpacity>
-                <Icon name="angle-right" size='20' color="#009244" />
+                <Icon name="angle-right" size={20} color="#009244" />
               </TouchableOpacity>
             </View>
         </View>

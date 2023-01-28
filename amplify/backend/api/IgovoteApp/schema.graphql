@@ -1,44 +1,63 @@
-type States @model @auth(rules: [{allow: public}]) {
+type LiveReports @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String
+  user: String
+  polling_unit: String
+  pu_current_state: String
+  pu_scenery: String
+  no_on_queue: String
+  materials_functional: String
+  average_time_to_vote: String
+  staff_present: String
+  time_create: String
+  time_create_clone: AWSDateTime
+  attachment: String
+  comment: String
+  endorsements: Int
+  is_false: Int
+  report_status: String
 }
 
-type Wards @model @auth(rules: [{allow: public}]) {
+type ElectionMonitor @model @auth(rules: [{allow: public}]) {
   id: ID!
-  ward_id: Int
-  abbreviation: String
-  lga_id: Int
-  stateid: Int
-  name: String
-}
-
-type Lgas @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  lga_id: Int
-  lga: String
-  abbreviation: String
-  state_id: String
+  user: String
+  polling_unit: String
+  election_type: String
+  votes_a: String
+  votes_aa: String
+  votes_aac: String
+  votes_adc: String
+  votes_adp: String
+  votes_apc: String
+  votes_apga: String
+  votes_apm: String
+  votes_app: String
+  votes_bp: String
+  votes_lp: String
+  votes_nnpp: String
+  votes_nrm: String
+  votes_pdp: String
+  votes_prp: String
+  votes_sdp: String
+  votes_ypp: String
+  votes_zlp: String
+  copy_of_results: String
 }
 
 type UserProfile @model @auth(rules: [{allow: public}]) {
   id: ID!
-  gender: String
-  state: States
+  name: String
+  state_id: String
   lga: String
   ward: String
-  polling_unit: String
-}
-
-type PresidentialCandidate @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  candidate_name: String
-  Parties: Parties @hasOne
-  pwd: String
-  age: String
+  ward_id: String
+  ward_abbreviation: String
+  state: String
+  pu: String
+  pu_id: String
+  lga_abbreviation: String
+  lga_id: String
+  sub: String
   gender: String
-  qualifications: String
-  image: AWSURL
-  remarks: String
 }
 
 type Parties @model @auth(rules: [{allow: public}]) {

@@ -1,107 +1,135 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncItem } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
 
 
-type EagerStates = {
+type EagerLiveReports = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<States, 'id'>;
+    identifier: ManagedIdentifier<LiveReports, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name?: string | null;
+  readonly user?: string | null;
+  readonly polling_unit?: string | null;
+  readonly pu_current_state?: string | null;
+  readonly pu_scenery?: string | null;
+  readonly no_on_queue?: string | null;
+  readonly materials_functional?: string | null;
+  readonly average_time_to_vote?: string | null;
+  readonly staff_present?: string | null;
+  readonly time_create?: string | null;
+  readonly time_create_clone?: string | null;
+  readonly attachment?: string | null;
+  readonly comment?: string | null;
+  readonly endorsements?: number | null;
+  readonly is_false?: number | null;
+  readonly report_status?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyStates = {
+type LazyLiveReports = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<States, 'id'>;
+    identifier: ManagedIdentifier<LiveReports, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name?: string | null;
+  readonly user?: string | null;
+  readonly polling_unit?: string | null;
+  readonly pu_current_state?: string | null;
+  readonly pu_scenery?: string | null;
+  readonly no_on_queue?: string | null;
+  readonly materials_functional?: string | null;
+  readonly average_time_to_vote?: string | null;
+  readonly staff_present?: string | null;
+  readonly time_create?: string | null;
+  readonly time_create_clone?: string | null;
+  readonly attachment?: string | null;
+  readonly comment?: string | null;
+  readonly endorsements?: number | null;
+  readonly is_false?: number | null;
+  readonly report_status?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type States = LazyLoading extends LazyLoadingDisabled ? EagerStates : LazyStates
+export declare type LiveReports = LazyLoading extends LazyLoadingDisabled ? EagerLiveReports : LazyLiveReports
 
-export declare const States: (new (init: ModelInit<States>) => States) & {
-  copyOf(source: States, mutator: (draft: MutableModel<States>) => MutableModel<States> | void): States;
+export declare const LiveReports: (new (init: ModelInit<LiveReports>) => LiveReports) & {
+  copyOf(source: LiveReports, mutator: (draft: MutableModel<LiveReports>) => MutableModel<LiveReports> | void): LiveReports;
 }
 
-type EagerWards = {
+type EagerElectionMonitor = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Wards, 'id'>;
+    identifier: ManagedIdentifier<ElectionMonitor, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly ward_id?: number | null;
-  readonly abbreviation?: string | null;
-  readonly lga_id?: number | null;
-  readonly stateid?: number | null;
-  readonly name?: string | null;
+  readonly user?: string | null;
+  readonly polling_unit?: string | null;
+  readonly election_type?: string | null;
+  readonly votes_a?: string | null;
+  readonly votes_aa?: string | null;
+  readonly votes_aac?: string | null;
+  readonly votes_adc?: string | null;
+  readonly votes_adp?: string | null;
+  readonly votes_apc?: string | null;
+  readonly votes_apga?: string | null;
+  readonly votes_apm?: string | null;
+  readonly votes_app?: string | null;
+  readonly votes_bp?: string | null;
+  readonly votes_lp?: string | null;
+  readonly votes_nnpp?: string | null;
+  readonly votes_nrm?: string | null;
+  readonly votes_pdp?: string | null;
+  readonly votes_prp?: string | null;
+  readonly votes_sdp?: string | null;
+  readonly votes_ypp?: string | null;
+  readonly votes_zlp?: string | null;
+  readonly copy_of_results?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyWards = {
+type LazyElectionMonitor = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Wards, 'id'>;
+    identifier: ManagedIdentifier<ElectionMonitor, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly ward_id?: number | null;
-  readonly abbreviation?: string | null;
-  readonly lga_id?: number | null;
-  readonly stateid?: number | null;
-  readonly name?: string | null;
+  readonly user?: string | null;
+  readonly polling_unit?: string | null;
+  readonly election_type?: string | null;
+  readonly votes_a?: string | null;
+  readonly votes_aa?: string | null;
+  readonly votes_aac?: string | null;
+  readonly votes_adc?: string | null;
+  readonly votes_adp?: string | null;
+  readonly votes_apc?: string | null;
+  readonly votes_apga?: string | null;
+  readonly votes_apm?: string | null;
+  readonly votes_app?: string | null;
+  readonly votes_bp?: string | null;
+  readonly votes_lp?: string | null;
+  readonly votes_nnpp?: string | null;
+  readonly votes_nrm?: string | null;
+  readonly votes_pdp?: string | null;
+  readonly votes_prp?: string | null;
+  readonly votes_sdp?: string | null;
+  readonly votes_ypp?: string | null;
+  readonly votes_zlp?: string | null;
+  readonly copy_of_results?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type Wards = LazyLoading extends LazyLoadingDisabled ? EagerWards : LazyWards
+export declare type ElectionMonitor = LazyLoading extends LazyLoadingDisabled ? EagerElectionMonitor : LazyElectionMonitor
 
-export declare const Wards: (new (init: ModelInit<Wards>) => Wards) & {
-  copyOf(source: Wards, mutator: (draft: MutableModel<Wards>) => MutableModel<Wards> | void): Wards;
-}
-
-type EagerLgas = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Lgas, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly lga_id?: number | null;
-  readonly lga?: string | null;
-  readonly abbreviation?: string | null;
-  readonly state_id?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyLgas = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Lgas, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly lga_id?: number | null;
-  readonly lga?: string | null;
-  readonly abbreviation?: string | null;
-  readonly state_id?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Lgas = LazyLoading extends LazyLoadingDisabled ? EagerLgas : LazyLgas
-
-export declare const Lgas: (new (init: ModelInit<Lgas>) => Lgas) & {
-  copyOf(source: Lgas, mutator: (draft: MutableModel<Lgas>) => MutableModel<Lgas> | void): Lgas;
+export declare const ElectionMonitor: (new (init: ModelInit<ElectionMonitor>) => ElectionMonitor) & {
+  copyOf(source: ElectionMonitor, mutator: (draft: MutableModel<ElectionMonitor>) => MutableModel<ElectionMonitor> | void): ElectionMonitor;
 }
 
 type EagerUserProfile = {
@@ -110,10 +138,19 @@ type EagerUserProfile = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly gender?: string | null;
+  readonly name?: string | null;
+  readonly state_id?: string | null;
   readonly lga?: string | null;
   readonly ward?: string | null;
-  readonly polling_unit?: string | null;
+  readonly ward_id?: string | null;
+  readonly ward_abbreviation?: string | null;
+  readonly state?: string | null;
+  readonly pu?: string | null;
+  readonly pu_id?: string | null;
+  readonly lga_abbreviation?: string | null;
+  readonly lga_id?: string | null;
+  readonly sub?: string | null;
+  readonly gender?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -124,10 +161,19 @@ type LazyUserProfile = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly gender?: string | null;
+  readonly name?: string | null;
+  readonly state_id?: string | null;
   readonly lga?: string | null;
   readonly ward?: string | null;
-  readonly polling_unit?: string | null;
+  readonly ward_id?: string | null;
+  readonly ward_abbreviation?: string | null;
+  readonly state?: string | null;
+  readonly pu?: string | null;
+  readonly pu_id?: string | null;
+  readonly lga_abbreviation?: string | null;
+  readonly lga_id?: string | null;
+  readonly sub?: string | null;
+  readonly gender?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -136,50 +182,6 @@ export declare type UserProfile = LazyLoading extends LazyLoadingDisabled ? Eage
 
 export declare const UserProfile: (new (init: ModelInit<UserProfile>) => UserProfile) & {
   copyOf(source: UserProfile, mutator: (draft: MutableModel<UserProfile>) => MutableModel<UserProfile> | void): UserProfile;
-}
-
-type EagerPresidentialCandidate = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<PresidentialCandidate, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly candidate_name?: string | null;
-  readonly Parties?: Parties | null;
-  readonly pwd?: string | null;
-  readonly age?: string | null;
-  readonly gender?: string | null;
-  readonly qualifications?: string | null;
-  readonly image?: string | null;
-  readonly remarks?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly presidentialCandidatePartiesId?: string | null;
-}
-
-type LazyPresidentialCandidate = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<PresidentialCandidate, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly candidate_name?: string | null;
-  readonly Parties: AsyncItem<Parties | undefined>;
-  readonly pwd?: string | null;
-  readonly age?: string | null;
-  readonly gender?: string | null;
-  readonly qualifications?: string | null;
-  readonly image?: string | null;
-  readonly remarks?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly presidentialCandidatePartiesId?: string | null;
-}
-
-export declare type PresidentialCandidate = LazyLoading extends LazyLoadingDisabled ? EagerPresidentialCandidate : LazyPresidentialCandidate
-
-export declare const PresidentialCandidate: (new (init: ModelInit<PresidentialCandidate>) => PresidentialCandidate) & {
-  copyOf(source: PresidentialCandidate, mutator: (draft: MutableModel<PresidentialCandidate>) => MutableModel<PresidentialCandidate> | void): PresidentialCandidate;
 }
 
 type EagerParties = {
