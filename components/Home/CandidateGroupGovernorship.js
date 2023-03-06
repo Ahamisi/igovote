@@ -58,7 +58,7 @@ useEffect(() => {
       
         <View style={styles.container}>
             <View>
-              <Text style={styles.groupHeading} className="font-[700]">{groupHeading}</Text>
+              <Text style={styles.groupHeading}  className="font-[700]">{groupHeading}</Text>
             </View>
             <View>
               <TouchableOpacity>
@@ -67,11 +67,12 @@ useEffect(() => {
             </View>
         </View>
         <View>
+
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {
                   DataSource ?
                       DataSource.length < 1 ? <Text className="text-blue">No Data Available !!!</Text>
-                      :  DataSource.map((candidate, index) => (
+                      :  DataSource.sort((a, b) => parseInt(b?.id?.N) < parseInt(a?.id?.N) ).map((candidate, index) => (
                         <Candidate candidate={candidate } type="governor" key={index} navigation={navigation}/>
                     ))              
                   : <ActivityIndicator/>
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     groupHeading: {
         textTransform: 'uppercase',
         color: '#000',
+        fontFamily: 'Sora-Bold',
     },
     container: {
       justifyContent: 'space-between',

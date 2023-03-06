@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native'
 import React, {useState} from 'react';
 import GoBack from '../components/General/GoBack';
 
@@ -82,7 +82,8 @@ const ForgotPasswordScreen = ({navigation}) => {
         <SafeAreaView className="bg-[#009244]">
 
             <KeyboardAvoidingView>
-            <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+                <ScrollView keyboardShouldPersistTaps="handled">
+                <View className="bg-[#eeeeee] pt-[20%] h-full relative">
                 <GoBack navigation={navigation}/>
                
                 <View className="mx-auto">
@@ -212,7 +213,7 @@ const ForgotPasswordScreen = ({navigation}) => {
 
 
 
-                <View className=" bg-[#eeeeee]">
+                <View className=" bg-[#eeeeee] mt-[10px]">
 
                     <TouchableOpacity onPress={() => navigation.push('Signup') }>
                         <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
@@ -223,6 +224,8 @@ const ForgotPasswordScreen = ({navigation}) => {
 
                 </View>
             </View>
+                </ScrollView>
+            
             </KeyboardAvoidingView>
         </SafeAreaView>
   )

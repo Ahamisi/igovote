@@ -1,5 +1,5 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView } from 'react-native'
-import React from 'react';
+import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView,ScrollView } from 'react-native'
+import React, {useEffect, useState} from 'react';
 import GoBack from '../components/General/GoBack';
 
 
@@ -14,9 +14,15 @@ import { Auth } from 'aws-amplify';
 
 
 const OTPVerification = ({route,navigation}) => {
-    const { usermail } = route.params;
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
-    console.log(usermail)
+    const { usermail } = route.params;
+    const { password } = route.params;
+    const { fromLogin } = route.params;
+
+
+
+    console.log(usermail, password,'sijjj', fromLogin)
 
 
 
@@ -28,6 +34,10 @@ const OTPVerification = ({route,navigation}) => {
         } catch (err) {
             Alert.alert('error resending code: ', `${err}`);
         }
+    }
+
+    if(fromLogin == true){
+        resendConfirmationCode(usermail)
     }
 
 
@@ -46,9 +56,18 @@ const OTPVerification = ({route,navigation}) => {
 
 
     const onVerify = async (code) =>{
+        setIsSubmitting(true)
         try{
-            await Auth.confirmSignUp(usermail, code);
-            navigation.push('Login')
+           const confirmation =  await Auth.confirmSignUp(usermail, code);
+            if(confirmation){
+                const user = await Auth.signIn(usermail,password);
+                if(user){
+                    navigation.push('HomeScreen',{userDetail: 'user'})
+                }
+
+            }
+            
+
         }catch(error){
             Alert.alert('Omo e don choke !!!', 'Error confirming sign up',[
                 {
@@ -61,6 +80,8 @@ const OTPVerification = ({route,navigation}) => {
                     onPress: () => navigation.push('Signup'),
                 }
             ])
+        }finally{
+            setIsSubmitting(false)
         }
     }
 
@@ -75,92 +96,97 @@ const OTPVerification = ({route,navigation}) => {
 
 
 
-
-                <View className="bg-[#eeeeee] pt-[20%] h-full relative">
-                <GoBack navigation={navigation}/>
-               
-                <View className="mx-auto">
-                    <Image className="h-auto w-auto" source={require('../assets/app/login.png')} />
-
-                </View>
-
-
-
-
-            <Formik 
-                initialValues={{code:''}}
-                onSubmit={(values) => {
-                    onVerify(values.code)
-                }}
-                validationSchema={VerifyFormSchema}
-                validateOnMount={true}
-            >
-
-                {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
-
-                    <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-center">
-
-                        <View className="w-[100%] mb-[15px]" >
-                            <TextInput 
-                                placeholder='Enter code ####'
-                                autoCapitalize='none'
-                                keyboardType='text'
-                                textContentType='text'
-                                autoFocus={true}
-                                onChangeText={handleChange('code')}
-                                onBlur={handleBlur('code')}
-                                value={values.code}
-                                className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
-                        </View>
-                        
-                        <View className="text-center mb-[15px] shadow-[#ff0000] shadow-2xl">
-
-                            <TouchableOpacity onPress={() => resendConfirmationCode() } className="flex flex-row gap-[3px]">
-                                <Text className="font-bold">I didn't receive code. </Text>
-                                <Text className="font-bold text-[#009244]">Resend Code</Text>
-
-                            </TouchableOpacity>
-                            
-                        </View>
-
-
-                        <View className="w-[100%] mb-[15px] flex justify-end">
-                            <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid} >
-                                <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
-                                    <Text className="text-white text-center text-[18px] font-bold">Verify</Text>
-                                </View>
-                            </Pressable>
-                        </View>
-                        
-
-                       
-
+                <ScrollView keyboardShouldPersistTaps="handled">
+                    <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+                    <GoBack navigation={navigation}/>
+                
+                    <View className="mx-auto">
+                        <Image className="h-auto w-auto" source={require('../assets/app/login.png')} />
 
                     </View>
-                )}
-
-
-
-            </Formik>
 
 
 
 
-                
+                <Formik 
+                    initialValues={{code:''}}
+                    onSubmit={(values) => {
+                        onVerify(values.code)
+                    }}
+                    validationSchema={VerifyFormSchema}
+                    validateOnMount={true}
+                >
+
+                    {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
+
+                        <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-center">
+
+                            <View className="w-[100%] mb-[15px]" >
+                                <TextInput 
+                                    placeholder='Enter code ####'
+                                    autoCapitalize='none'
+                                    keyboardType='text'
+                                    textContentType='text'
+                                    autoFocus={true}
+                                    onChangeText={handleChange('code')}
+                                    onBlur={handleBlur('code')}
+                                    value={values.code}
+                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
+                            </View>
+                            
+                            <View className="text-center mb-[15px] shadow-[#ff0000] shadow-2xl">
+
+                                <TouchableOpacity onPress={() => resendConfirmationCode() } className="flex flex-row gap-[3px]">
+                                    <Text className="font-bold">I didn't receive code. </Text>
+                                    <Text className="font-bold text-[#009244]">Resend Code</Text>
+
+                                </TouchableOpacity>
+                                
+                            </View>
 
 
+                            <View className="w-[100%] mb-[15px] flex justify-end">
+                                <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid} >
+                                    <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
+                                        <Text className="text-white text-center text-[18px] font-bold">
+                                        {
+                                            isSubmitting ? 'Verifying...' : 'Verify'
+                                        }
+                                        </Text>
+                                    </View>
+                                </Pressable>
+                            </View>
+                            
 
-                <View className=" bg-[#eeeeee]">
+                        
 
-                    <TouchableOpacity onPress={() => navigation.push('Signup') }>
-                        <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
-                            <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
-                            <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
+
                         </View>
-                    </TouchableOpacity>
+                    )}
 
-                </View>
-            </View>
+
+
+                </Formik>
+
+
+
+
+                    
+
+
+
+                    <View className=" bg-[#eeeeee]">
+
+                        <TouchableOpacity onPress={() => navigation.push('Signup') }>
+                            <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
+                                <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
+                                <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                    </View>
+                    </View>
+                </ScrollView>
 
 
 

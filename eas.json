@@ -5,14 +5,27 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "development"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview"
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "ahamisivickzyjr@gmail.com",
+        "ascAppId": "1668480288",
+        "appleTeamId": "SWW46J8SC5"
+      },
+      "android": {
+        "serviceAccountKeyPath": "pc-api-7838150989999758966-442-3e9c845ebdd4.json"
+      }
+    }
   }
 }

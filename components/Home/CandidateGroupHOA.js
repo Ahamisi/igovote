@@ -72,11 +72,13 @@ useEffect(() => {
             {
               DataSource ?
                   DataSource.length < 1 ? <Text className="text-blue mb-[200px]">No Data Available !!!</Text>
-                  :  DataSource.map((candidate, index) => (
+                  :  DataSource.sort((a, b) => parseInt(b?.id?.N) < parseInt(a?.id?.N) ).map((candidate, index) => (
                     <Candidate candidate={candidate} type="hoa" key={index} navigation={navigation}/>
                 ))              
               : <ActivityIndicator/>
             }
+            <View className="bg-white h-[900px]">
+            </View>
             
         </ScrollView>
 

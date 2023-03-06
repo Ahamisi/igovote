@@ -20,7 +20,8 @@ Auth.currentAuthenticatedUser({
   })
     .then((user) => {
         userHandler(user)
-        user ? navigation.push('HomeScreen') : ''
+        user ?  navigation.push('HomeScreen',{userDetail: user})
+        : ''
 
     })
     .catch((err) => console.log(err));
@@ -36,7 +37,7 @@ Auth.currentAuthenticatedUser({
     <SafeAreaView className="bg-[#009244]">
             <View className="bg-[#eeeeee] pt-[10%] h-full relative">
                 <View className=" bg-white rounded-[20px] mx-auto h-[40%] w-[80%] items-center">
-                    <View className="items-center">
+                    <View className="items-center justify-center my-auto">
                         <Image className="h-[310px] w-[310px]" source={require('../assets/app/i-go-vote-circle.png')} />
                     </View>
                 </View>

@@ -52,6 +52,8 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
   const Logout = async () => {
     try {
+        await AsyncStorage.removeItem('@userProfile');
+        await AsyncStorage.removeItem('@userData');
         await Auth.signOut();
         navigation.push('BeforeAuth')
     } catch (error) {
@@ -376,7 +378,10 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
                             
                             <View className="mx-auto mb-[30px]">
                                     <Image className="h-[200px] w-[300px]" source={require('../../assets/app/pvc.png')} />
-                                    <Text className="text-red-800 font-bold">For polling unit Code? see sample above on your pvc</Text>
+                                    <Text className="text-red-800 font-bold pt-[4px]">1. For polling unit Code? see sample above on your pvc</Text>
+                                    <Text className="text-red-800 font-bold pt-[4px]">2. STATE, LGA and WARD must be where you registered to vote</Text>
+
+
 
                             </View>
 
@@ -503,6 +508,8 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
                                   setPuDelimitation(values.pu)
                                  }}
                                 className=" text-[] px-[20px] py-[18px] rounded-[5px]"/>
+                                <Text className="text-red-800 font-bold pt-[4px] text-[10px]">Polling unit delimeter is not compulsory, but required to get full app experience</Text>
+
                                
                             </View>
 

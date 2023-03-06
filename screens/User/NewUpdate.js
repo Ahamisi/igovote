@@ -70,8 +70,9 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
     const getPu = async (pu) => {
       try {
-        setPuDelimitation(await AsyncStorage.getItem('pu'))
-        if(!puDelimitation){
+        const values = await AsyncStorage.getItem('@userProfile');
+        const parsedValue = values ? JSON.parse(values) : {}
+        if(!parsedValue){
             // get user  from cognito
             const userInfo = await Auth.currentAuthenticatedUser();
             if (!userInfo) {
@@ -80,9 +81,13 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
             const userId = userInfo.attributes.sub;
             const user = (await DataStore.query(UserProfile)).find(userProfile => userProfile.sub === userId);
             setPuDelimitation(user.pu);
+        }else{
+            setPuDelimitation(parsedValue.pu_id)
         }
       } catch (error) {
         // Error saving data
+      } finally{
+
       }
     }
 
@@ -275,7 +280,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     iconStyle={styles.iconStyle}
-                                    data={[{"current_state": 'No officials yet'}, { "current_state": 'Officials are setting up'},
+                                    data={[{"current_state": 'No officials yet'}, { "current_state": 'Officials are setting up'}, { "current_state": 'Voters Accreditation'},
                                     { "current_state": 'Voting Commenced'}, { "current_state": 'Voting on Hold'},
                                     { "current_state": 'Voting ended'}, { "current_state": 'Collation in progress'},
                                     { "current_state": 'Voting and Collation Ended'}

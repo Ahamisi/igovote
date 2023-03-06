@@ -13,9 +13,13 @@ import Profile from './Profile';
 import { Modalize } from 'react-native-modalize';
 
 import { A } from '@expo/html-elements';
+import * as Linking from 'expo-linking';
+
+import {BASE_URL} from '@env'
+import axios from 'axios';
 
 
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -25,6 +29,9 @@ const EditProfile = ({navigation}) => {
 
     const [Editting, setEditting] = useState(false)
     const [puDelimitation, setPuDelimitation] = useState(null);
+    const [requestToken, setRequestToken] = useState('');
+
+
 
 
     const handleSignOut = async (toDelete = false) => {
@@ -38,6 +45,9 @@ const EditProfile = ({navigation}) => {
                 {
                     text : 'No, I get Coconut Head ',
                     onPress: async() => {
+
+                        await AsyncStorage.removeItem('@userProfile');
+                        await AsyncStorage.removeItem('@userData');
                         await Auth.signOut();
                         navigation.push('BeforeAuth')
                     },
@@ -50,6 +60,45 @@ const EditProfile = ({navigation}) => {
         }
 
     }
+
+
+
+    const fetchToken =  async (email,name, id) => {
+        const url = `${BASE_URL}/get-token/${email}/${name}/${id}`
+        var config = {
+            method: 'get',
+            url: url,
+          };
+            axios(config)
+              .then((response) => {
+                if(response){
+                    setRequestToken(response.data?.jtoken);
+                    return;
+                } 
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+    };
+
+
+
+
+
+
+    const handleToken = async (GlobalUser) => {
+        try{
+            await fetchToken(GlobalUser.name,GlobalUser.name,GlobalUser.sub)
+            if(requestToken){
+                Linking.openURL(`https://webview.canny.io?boardToken=2a783bc6-279a-615b-8f20-428177d0c441&ssoToken=${requestToken}`);
+            }
+        }catch{
+
+        }
+    }
+
+
+
 
 
 
@@ -104,10 +153,7 @@ const EditProfile = ({navigation}) => {
 
 useEffect(() =>{
     !GlobalUser ? checkIfNewUser() : ''
-
-    getPu()
-
-      
+    getPu()   
 },[])
 
 
@@ -124,13 +170,23 @@ const goToEdit = () => {
   return (
     <SafeAreaView className="bg-[#009244]">
 
-        <ScrollView className="bg-[#eeeeee] pt-[10%] h-full relative">
+        <ScrollView className="bg-[#eeeeee] h-full relative">
 
 
 
         <View className="bg-[#eeeeee] h-full relative">
+            <View className="bg-[#009244]">
+                <Text className="text-white font-bold text-[20px] pt-[15px] pb-[15px] mx-auto  w-[94%]">Your Profile</Text>
+            </View>
+
+
+
+
+
+
+
             {/* <GoBack bg="bg-[#edefee]"/> */}
-            <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}} className="rounded-2xl">
+            <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}} className="rounded-2xl ">
                 <View style={styles.container} className="px-[20px]">
                     <View className="pt-[20px]">
                     <Text style={styles.groupHeading}>Your Achievements</Text>
@@ -155,10 +211,21 @@ const goToEdit = () => {
                                 <Image  className="h-[80px] w-[55px]" source={require('../../assets/badges/got-pvc.png')} />
                             </View>
                         }
+
+                        
                         
 
                     </ScrollView>
+
+                    {/* {
+                        GlobalUser?.pu &&  <TouchableOpacity className="bg-[#009244] flex text-white flex-row items-center justify-center px-[20px] py-[9px] mt-[10px]" onPress={onOpen}>
+                        <Text className="text-white font-bold text-lg">Redeem</Text>
+                    </TouchableOpacity>
+                    } */}
+                   
                 </View>
+
+               
             </View>
 
 
@@ -257,19 +324,31 @@ const goToEdit = () => {
                 </View>
                 <View className="bg-[#edefee] m-0 py-[20px] rounded-2xl px-[20px]">
 
-
+{/* 
                 <View className="flex flex-row justify-between mb-[20px]">
                         <Text className="text-left font-bold">
                             Love the Project ?
                         </Text>
                         <Text className="text-right font-bold">
                             <TouchableOpacity className="bg-[#009244] px-[14px] py-[10px] rounded-lg">
-                                <Text className="text-white font-bold"><A href="https://igovote.org/donate">Donate</A></Text>
+                                <Text className="text-white font-bold"><A href="https://linktr.ee/igovote">Donate</A></Text>
+                            </TouchableOpacity>
+                            
+                        </Text>
+                </View> */}
+
+
+                <View className="flex flex-row justify-between mb-[20px]">
+                        <Text className="text-left font-bold">
+                            Request a feature ?
+                        </Text>
+                        <Text className="text-right font-bold">
+                            <TouchableOpacity className="bg-[#009244] px-[14px] py-[10px] rounded-lg" onPress={() => handleToken(GlobalUser)}>
+                                <Text className="text-white font-bold">Give feedback</Text>
                             </TouchableOpacity>
                             
                         </Text>
                 </View>
-
 
 
 

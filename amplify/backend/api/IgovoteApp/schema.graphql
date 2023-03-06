@@ -1,20 +1,164 @@
-type LiveReports @model @auth(rules: [{allow: public}]) {
+type EMHoa @model @auth(rules: [{allow: public}]) {
   id: ID!
   user: String
   polling_unit: String
-  pu_current_state: String
-  pu_scenery: String
-  no_on_queue: String
-  materials_functional: String
-  average_time_to_vote: String
-  staff_present: String
-  time_create: String
-  time_create_clone: AWSDateTime
-  attachment: String
-  comment: String
-  endorsements: Int
-  is_false: Int
-  report_status: String
+  election_type: String
+  votes_a: String
+  votes_aa: String
+  votes_aac: String
+  votes_adc: String
+  votes_adp: String
+  votes_apc: String
+  votes_apga: String
+  votes_apm: String
+  votes_app: String
+  votes_bp: String
+  votes_lp: String
+  votes_nnpp: String
+  votes_nrm: String
+  votes_pdp: String
+  votes_prp: String
+  votes_sdp: String
+  votes_ypp: String
+  votes_zlp: String
+  copy_of_results: String
+  state_id: String
+  lga_id: String
+  ward_id: String
+  lga_unique: String
+}
+
+type EMHor @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  polling_unit: String
+  election_type: String
+  votes_a: String
+  votes_aa: String
+  votes_aac: String
+  votes_adc: String
+  votes_adp: String
+  votes_apc: String
+  votes_apga: String
+  votes_apm: String
+  votes_app: String
+  votes_bp: String
+  votes_lp: String
+  votes_nnpp: String
+  votes_nrm: String
+  votes_pdp: String
+  votes_prp: String
+  votes_sdp: String
+  votes_ypp: String
+  votes_zlp: String
+  copy_of_results: String
+  state_id: String
+  lga_id: String
+  ward_id: String
+  lga_unique: String
+}
+
+type EMSenatorial @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  polling_unit: String
+  election_type: String
+  votes_a: String
+  votes_aa: String
+  votes_aac: String
+  votes_adc: String
+  votes_adp: String
+  votes_apc: String
+  votes_apga: String
+  votes_apm: String
+  votes_app: String
+  votes_bp: String
+  votes_lp: String
+  votes_nnpp: String
+  votes_nrm: String
+  votes_pdp: String
+  votes_prp: String
+  votes_sdp: String
+  votes_ypp: String
+  votes_zlp: String
+  copy_of_results: String
+  state_id: String
+  lga_id: String
+  ward_id: String
+  lga_unique: String
+}
+
+type EMGovernorship @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  polling_unit: String
+  election_type: String
+  votes_a: String
+  votes_aa: String
+  votes_aac: String
+  votes_adc: String
+  votes_adp: String
+  votes_apc: String
+  votes_apga: String
+  votes_apm: String
+  votes_app: String
+  votes_bp: String
+  votes_lp: String
+  votes_nnpp: String
+  votes_nrm: String
+  votes_pdp: String
+  votes_prp: String
+  votes_sdp: String
+  votes_ypp: String
+  votes_zlp: String
+  copy_of_results: String
+  state_id: String
+  lga_id: String
+  ward_id: String
+  lga_unique: String
+}
+
+type EMPresidential @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  polling_unit: String
+  election_type: String
+  votes_a: String
+  votes_aa: String
+  votes_aac: String
+  votes_adc: String
+  votes_apc: String
+  votes_apga: String
+  votes_apm: String
+  votes_app: String
+  votes_bp: String
+  votes_lp: String
+  votes_nnpp: String
+  votes_nrm: String
+  votes_pdp: String
+  votes_prp: String
+  votes_sdp: String
+  votes_ypp: String
+  votes_zlp: String
+  copy_of_results: String
+  state_id: String
+  lga_id: String
+  ward_id: String
+  lga_unique: String
+  votes_adp: String
+}
+
+type ElectionPosts @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  polling_unit: String
+  lga: String
+  type: String
+  resource_url: String
+  flagged: Int
+  endorsed: Int
+  status: String
+  date_created: String
 }
 
 type ElectionMonitor @model @auth(rules: [{allow: public}]) {
@@ -41,6 +185,36 @@ type ElectionMonitor @model @auth(rules: [{allow: public}]) {
   votes_ypp: String
   votes_zlp: String
   copy_of_results: String
+  state_id: String
+  lga_id: String
+  ward_id: String
+  lga_unique: String
+}
+
+type LiveReports @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: String
+  polling_unit: String
+  pu_current_state: String
+  pu_scenery: String
+  no_on_queue: String
+  materials_functional: String
+  average_time_to_vote: String
+  staff_present: String
+  time_create: String
+  time_create_clone: AWSDateTime
+  attachment: String
+  comment: String
+  endorsements: Int
+  is_false: Int
+  report_status: String
+}
+
+type ReportToUser @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  report_id: String
+  user_id: String
+  report_type: String
 }
 
 type UserProfile @model @auth(rules: [{allow: public}]) {

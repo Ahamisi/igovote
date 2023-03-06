@@ -19,7 +19,7 @@ import BottomTab, {bottomTabIcons} from '../../components/Home/BottomTab';
 import {Dropdown} from 'react-native-element-dropdown';
 
 import { DataStore } from '@aws-amplify/datastore';
-import { ElectionMonitor } from '../../src/models';
+import { ElectionMonitor, EMPresidential, EMGovernorship, EMSenatorial, EMHor, EMHoa } from '../../src/models';
 
 
 import uuid from 'react-native-uuid';
@@ -35,6 +35,12 @@ const ElectionMonitors = ({navigation}) => {
     const [ElectionType, setElectionType] = useState(null);
     const [UserId, setUserId] = useState('');
     const [PuDelimitation, setPuDelimitation] = useState('');
+    const [StateId, setStateId] = useState('');
+    const [LgaId, setLgaId] = useState('');
+    const [WardId, setWardId] = useState('');
+    const [LgaUnique, setLgaUnique] = useState('');
+
+
 
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -63,8 +69,9 @@ const ElectionMonitors = ({navigation}) => {
       const getPu = async (pu) => {
 
         try {
-            setPuDelimitation(await AsyncStorage.getItem('pu'))
-            if(!PuDelimitation){
+            const values = await AsyncStorage.getItem('@userProfile');
+            const parsedValue = values ? JSON.parse(values) : {}
+            if(!parsedValue){
                 // get user  from cognito
                 const userInfo = await Auth.currentAuthenticatedUser();
                 if (!userInfo) {
@@ -73,10 +80,22 @@ const ElectionMonitors = ({navigation}) => {
                 const userId = userInfo.attributes.sub;
                 const user = (await DataStore.query(UserProfile)).find(userProfile => userProfile.sub === userId);
                 setPuDelimitation(user.pu);
+                setStateId(user.state_id)
+                setLgaId(user.lga_abbreviation)
+                setWardId(user.ward_abbreviation)
+                setLgaUnique(user.lga_id)
+
+            }else{
+                setStateId(parsedValue.state_id)
+                setLgaId(parsedValue.lga_abbreviation)
+                setWardId(parsedValue.ward_abbreviation)
+                setPuDelimitation(parsedValue.pu_id)
+                setLgaUnique(parsedValue.lga_id)
             }
           } catch (error) {
-            console.log('didn te')
             // Error saving data
+          } finally{
+
           }
       }
 
@@ -125,10 +144,10 @@ const ElectionMonitors = ({navigation}) => {
             quality: 1,
         });
     
-            console.log(result);
+            console.log(result,'ssusuuu');
     
-            if (!result.canceled) {
-                setUploadedImage(result.assets[0].uri);
+            if (!result.cancelled) {
+                setUploadedImage(result.uri);
             }
        
       };
@@ -153,33 +172,208 @@ const ElectionMonitors = ({navigation}) => {
                     const imageurl = uploadedImage ?  await ImageUpload(uploadedImage,fname) : ''
 
                 }
+                
+
+                if(ElectionType == 'Presidential'){
+                    await DataStore.save(
+                        new EMPresidential({
+                            "user": await getUser(),
+                            "polling_unit": PuDelimitation ? PuDelimitation : pu,
+                            "election_type": ElectionType,
+                            "votes_a": a ? a : '0',
+                            "votes_aa": aa ? aa : '0',
+                            "votes_aac": aac ? aac : '0',
+                            "votes_adc": adc ? adc : '0',
+                            "votes_adp": adp ? adp : '0',
+                            "votes_apc": apc ? apc : '0',
+                            "votes_apga": apga ? apga : '0',
+                            "votes_apm": apm ? apm : '0',
+                            "votes_app": app ? app : '0',
+                            "votes_bp": bp ? bp : '0',
+                            "votes_lp": lp ? lp : '0',
+                            "votes_nnpp": nnpp ? nnpp : '0',
+                            "votes_nrm": nrm ? nrm : '0',
+                            "votes_pdp": pdp ? pdp : '0',
+                            "votes_prp": prp ? prp : '0',
+                            "votes_sdp": sdp ? sdp : '0',
+                            "votes_ypp": ypp? ypp : '0',
+                            "votes_zlp": zlp ? zlp : '0',
+                            "copy_of_results": fname ? fname : '',
+                            "state_id": StateId,
+                            "lga_id": LgaId,
+                            "ward_id": WardId,
+                            "lga_unique": LgaUnique,
+
+                        })
+                    );
+                }
+
+                else if(ElectionType == 'Governorship'){
+                    await DataStore.save(
+                        new EMGovernorship({
+                            "user": await getUser(),
+                            "polling_unit": PuDelimitation ? PuDelimitation : pu,
+                            "election_type": ElectionType,
+                            "votes_a": a ? a : '0',
+                            "votes_aa": aa ? aa : '0',
+                            "votes_aac": aac ? aac : '0',
+                            "votes_adc": adc ? adc : '0',
+                            "votes_adp": adp ? adp : '0',
+                            "votes_apc": apc ? apc : '0',
+                            "votes_apga": apga ? apga : '0',
+                            "votes_apm": apm ? apm : '0',
+                            "votes_app": app ? app : '0',
+                            "votes_bp": bp ? bp : '0',
+                            "votes_lp": lp ? lp : '0',
+                            "votes_nnpp": nnpp ? nnpp : '0',
+                            "votes_nrm": nrm ? nrm : '0',
+                            "votes_pdp": pdp ? pdp : '0',
+                            "votes_prp": prp ? prp : '0',
+                            "votes_sdp": sdp ? sdp : '0',
+                            "votes_ypp": ypp? ypp : '0',
+                            "votes_zlp": zlp ? zlp : '0',
+                            "copy_of_results": fname ? fname : '',
+                            "state_id": StateId,
+                            "lga_id": LgaId,
+                            "ward_id": WardId,
+                            "lga_unique": LgaUnique,
+
+                        })
+                    );
+                }
+                else if(ElectionType == 'Senatorial'){
+                    await DataStore.save(
+                        new EMSenatorial({
+                            "user": await getUser(),
+                            "polling_unit": PuDelimitation ? PuDelimitation : pu,
+                            "election_type": ElectionType,
+                            "votes_a": a ? a : '0',
+                            "votes_aa": aa ? aa : '0',
+                            "votes_aac": aac ? aac : '0',
+                            "votes_adc": adc ? adc : '0',
+                            "votes_adp": adp ? adp : '0',
+                            "votes_apc": apc ? apc : '0',
+                            "votes_apga": apga ? apga : '0',
+                            "votes_apm": apm ? apm : '0',
+                            "votes_app": app ? app : '0',
+                            "votes_bp": bp ? bp : '0',
+                            "votes_lp": lp ? lp : '0',
+                            "votes_nnpp": nnpp ? nnpp : '0',
+                            "votes_nrm": nrm ? nrm : '0',
+                            "votes_pdp": pdp ? pdp : '0',
+                            "votes_prp": prp ? prp : '0',
+                            "votes_sdp": sdp ? sdp : '0',
+                            "votes_ypp": ypp? ypp : '0',
+                            "votes_zlp": zlp ? zlp : '0',
+                            "copy_of_results": fname ? fname : '',
+                            "state_id": StateId,
+                            "lga_id": LgaId,
+                            "ward_id": WardId,
+                            "lga_unique": LgaUnique,
+
+                        })
+                    );
+                }
+                else if(ElectionType == 'House of Representatives'){
+                    await DataStore.save(
+                        new EMHor({
+                            "user": await getUser(),
+                            "polling_unit": PuDelimitation ? PuDelimitation : pu,
+                            "election_type": ElectionType,
+                            "votes_a": a ? a : '0',
+                            "votes_aa": aa ? aa : '0',
+                            "votes_aac": aac ? aac : '0',
+                            "votes_adc": adc ? adc : '0',
+                            "votes_adp": adp ? adp : '0',
+                            "votes_apc": apc ? apc : '0',
+                            "votes_apga": apga ? apga : '0',
+                            "votes_apm": apm ? apm : '0',
+                            "votes_app": app ? app : '0',
+                            "votes_bp": bp ? bp : '0',
+                            "votes_lp": lp ? lp : '0',
+                            "votes_nnpp": nnpp ? nnpp : '0',
+                            "votes_nrm": nrm ? nrm : '0',
+                            "votes_pdp": pdp ? pdp : '0',
+                            "votes_prp": prp ? prp : '0',
+                            "votes_sdp": sdp ? sdp : '0',
+                            "votes_ypp": ypp? ypp : '0',
+                            "votes_zlp": zlp ? zlp : '0',
+                            "copy_of_results": fname ? fname : '',
+                            "state_id": StateId,
+                            "lga_id": LgaId,
+                            "ward_id": WardId,
+                            "lga_unique": LgaUnique,
+
+                        })
+                    );
+                }
+                else if(ElectionType == 'House of Assembly'){
+                    await DataStore.save(
+                        new EMHoa({
+                            "user": await getUser(),
+                            "polling_unit": PuDelimitation ? PuDelimitation : pu,
+                            "election_type": ElectionType,
+                            "votes_a": a ? a : '0',
+                            "votes_aa": aa ? aa : '0',
+                            "votes_aac": aac ? aac : '0',
+                            "votes_adc": adc ? adc : '0',
+                            "votes_adp": adp ? adp : '0',
+                            "votes_apc": apc ? apc : '0',
+                            "votes_apga": apga ? apga : '0',
+                            "votes_apm": apm ? apm : '0',
+                            "votes_app": app ? app : '0',
+                            "votes_bp": bp ? bp : '0',
+                            "votes_lp": lp ? lp : '0',
+                            "votes_nnpp": nnpp ? nnpp : '0',
+                            "votes_nrm": nrm ? nrm : '0',
+                            "votes_pdp": pdp ? pdp : '0',
+                            "votes_prp": prp ? prp : '0',
+                            "votes_sdp": sdp ? sdp : '0',
+                            "votes_ypp": ypp? ypp : '0',
+                            "votes_zlp": zlp ? zlp : '0',
+                            "copy_of_results": fname ? fname : '',
+                            "state_id": StateId,
+                            "lga_id": LgaId,
+                            "ward_id": WardId,
+                            "lga_unique": LgaUnique,
+
+                        })
+                    );
+                }
+                else{
+                    await DataStore.save(
+                        new ElectionMonitor({
+                            "user": await getUser(),
+                            "polling_unit": PuDelimitation ? PuDelimitation : pu,
+                            "election_type": ElectionType,
+                            "votes_a": a ? a : '0',
+                            "votes_aa": aa ? aa : '0',
+                            "votes_aac": aac ? aac : '0',
+                            "votes_adc": adc ? adc : '0',
+                            "votes_adp": adp ? adp : '0',
+                            "votes_apc": apc ? apc : '0',
+                            "votes_apga": apga ? apga : '0',
+                            "votes_apm": apm ? apm : '0',
+                            "votes_app": app ? app : '0',
+                            "votes_bp": bp ? bp : '0',
+                            "votes_lp": lp ? lp : '0',
+                            "votes_nnpp": nnpp ? nnpp : '0',
+                            "votes_nrm": nrm ? nrm : '0',
+                            "votes_pdp": pdp ? pdp : '0',
+                            "votes_prp": prp ? prp : '0',
+                            "votes_sdp": sdp ? sdp : '0',
+                            "votes_ypp": ypp? ypp : '0',
+                            "votes_zlp": zlp ? zlp : '0',
+                            "copy_of_results": fname ? fname : '',
+                            "state_id": StateId,
+                            "lga_id": LgaId,
+                            "ward_id": WardId,
+                            "lga_unique": LgaUnique,
+                        })
+                    );
+                }
     
-                await DataStore.save(
-                    new ElectionMonitor({
-                        "user": await getUser(),
-                        "polling_unit": PuDelimitation ? PuDelimitation : pu,
-                        "election_type": ElectionType,
-                        "votes_a": a ? a : '0',
-                        "votes_aa": aa ? aa : '0',
-                        "votes_aac": aac ? aac : '0',
-                        "votes_adc": adc ? adc : '0',
-                        "votes_adp": adp ? adp : '0',
-                        "votes_apc": apc ? apc : '0',
-                        "votes_apga": apga ? apga : '0',
-                        "votes_apm": apm ? apm : '0',
-                        "votes_app": app ? app : '0',
-                        "votes_bp": bp ? bp : '0',
-                        "votes_lp": lp ? lp : '0',
-                        "votes_nnpp": nnpp ? nnpp : '0',
-                        "votes_nrm": nrm ? nrm : '0',
-                        "votes_pdp": pdp ? pdp : '0',
-                        "votes_prp": prp ? prp : '0',
-                        "votes_sdp": sdp ? sdp : '0',
-                        "votes_ypp": ypp? ypp : '0',
-                        "votes_zlp": zlp ? zlp : '0',
-                        "copy_of_results": fname ? fname : ''
-                    })
-                );
+                
     
                 navigation.navigate({
                     name: 'Success',
@@ -207,12 +401,15 @@ const ElectionMonitors = ({navigation}) => {
 
 
   return (
-        <SafeAreaView className="bg-[#009244]">
+        <SafeAreaView className="bg-[#009244] text-white">
 
 
 
             
-            <View className="bg-[#eeeeee] pt-[10%] h-full relative">
+            <View className="bg-[#eeeeee]  h-full relative">
+                <View className="bg-[#009244]">
+                    <Text className="text-white font-bold text-[20px]  pt-[15px] pb-[15px] mx-auto  w-[90%]">Election Monitor</Text>
+                </View>
               
 
 
@@ -247,7 +444,7 @@ const ElectionMonitors = ({navigation}) => {
 
 
 
-                        <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-left">
+                        <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-left mt-[5%]">
                              
                                 <View className="mx-auto mb-[30px]">
                                     <Image className="h-[200px] w-[300px]" source={require('../../assets/app/pvc.png')} />
@@ -276,6 +473,7 @@ const ElectionMonitors = ({navigation}) => {
                                     inputSearchStyle={styles.inputSearchStyle}
                                     iconStyle={styles.iconStyle}
                                     autoFocus={true}
+                                
 
                                     data={[{"electionType": 'Presidential'}, { "electionType": 'Governorship'}, { "electionType": 'Senatorial'}, { "electionType": 'House of Representatives'}, { "electionType": 'House of Assembly'}]}
                                     maxHeight={300}
@@ -294,7 +492,10 @@ const ElectionMonitors = ({navigation}) => {
                                 />
                             </View>
 
-                            <View className="flex flex-row gap-5 mb-[15px]">
+                           <>
+                           
+                           
+                           <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
                                 <View>
                                     <Image source={require('../../assets/party/a.png')} className='h-[60px] w-[60px]'/>
@@ -611,6 +812,14 @@ const ElectionMonitors = ({navigation}) => {
                                 </View>
                             </View>
                         </View>
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           </>
 
                         <View className="w-[100%] mb-[15px]" style={styles.inputField}>
                             <Text className="text-[18px] font-semi-bold mb-[10px]">Have a copy of the result ?</Text>
@@ -639,7 +848,7 @@ const ElectionMonitors = ({navigation}) => {
 
 
                         <View className="w-[100%] mb-[20px] pb-[20px] flex justify-end">
-                            <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid} >
+                            <Pressable style={isSubmitting == 'Uploading' ? styles.button(false) : styles.button(isValid)} onPress={handleSubmit} disabled={(isSubmitting == 'Uploading' ? true : (PuDelimitation.length == 0 ? true : !isValid ))} >
                                 <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
                                     <Text className="text-white text-center text-[18px] font-bold">
                                     {

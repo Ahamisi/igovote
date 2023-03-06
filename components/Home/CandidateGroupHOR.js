@@ -75,7 +75,7 @@ useEffect(() => {
             {
               DataSource ?
                   DataSource.length < 1 ? <Text className="text-blue mb-[200px">No Data Available !!!</Text>
-                  :  DataSource.map((candidate, index) => {
+                  :  DataSource.sort((a, b) => parseInt(b?.id?.N) < parseInt(a?.id?.N) ).map((candidate, index) => {
                     // console.log(LGA,candidate?.constituency?.S,'puff puff',candidate?.constituency?.S.includes(LGA.toLowerCase()))
 
                     // if(candidate?.constituency?.S.match(/mushin/g).length > 0 ){

@@ -17,6 +17,12 @@ import EditProfile from "./screens/User/EditProfile";
 import ElectionMonitors from "./screens/User/ElectionMonitor";
 import LiveUpdates from "./screens/User/LiveUpdates";
 import OfflineNotice from './components/General/OfflineNotice';
+import CameraScreen from './screens/User/Camera';
+import CreateVideo from './screens/User/RecordVideoScreen/CreateVideo';
+import VoiceRecord from './screens/User/VoiceRecord.js';
+import CreateRecording from './screens/User/RecordVideoScreen/CreateRecording';
+import PresidentialResults from './screens/PresidentialResults';
+
 
 const Stack = createNativeStackNavigator();
 const screenOptions = {
@@ -24,12 +30,16 @@ const screenOptions = {
 }
 
 
+
 export const SignedInStack = ({LoggedIn, currentUser}) =>{
     return(
         <>
             <OfflineNotice/>
             <NavigationContainer>
-                {console.log(currentUser,LoggedIn,'sidii')}
+                {/* {console.log(currentUser,LoggedIn,'sidii')} */}
+                {/* {
+                    setUserSub(currentUser.attributes.sub)
+                } */}
                     <Stack.Navigator initialRouteName={currentUser ? 'HomeScreen' : 'BeforeAuth' }  screenOptions={screenOptions}>
                         <Stack.Screen name='HomeScreen' component={HomeScreen}/>
                         <Stack.Screen name='Success' component={Success}/>
@@ -42,6 +52,15 @@ export const SignedInStack = ({LoggedIn, currentUser}) =>{
                         <Stack.Screen name='Signup' component={Signup}/>
                         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen}/>
                         <Stack.Screen name="OnboardVerify" component={OTPVerification}/>
+                        <Stack.Screen name="Camera" component={CameraScreen}/>
+                        <Stack.Screen name="CreateVideo" component={CreateVideo}/>
+                        <Stack.Screen name="VoiceRecord" component={VoiceRecord}/>
+                        <Stack.Screen name="CreateRecording" component={CreateRecording}/>
+                        <Stack.Screen name="PresidentialResults" component={PresidentialResults}/>
+
+
+
+
 
                     </Stack.Navigator>
             </NavigationContainer>

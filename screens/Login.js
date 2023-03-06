@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, SafeAreaView, ScrollView, TextInput, Alert, Pressable, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import React, {useState} from 'react';
 import GoBack from '../components/General/GoBack';
 
@@ -30,23 +30,29 @@ const Login = ({navigation}) => {
     const onLogin = async (email, password) =>{
         setIsSubmitting(true)
         try{
-            const user = await Auth.signIn(email,password);
+            const user = await Auth.signIn(email.toLowerCase(),password);
+            console.log(user,'just to check')
             setHasLoggedIn(true)
             console.log(hasLoggedIn)
-            navigation.push('HomeScreen')
+            navigation.push('HomeScreen',{userDetail: user})
         }catch(error){
-            console.log(error)
-            Alert.alert('Omo e don choke !!!', `The password is invalid for this user`,[
-                {
-                    text: 'OK',
-                    onPress : () => {console.log('ok')},
-                    style: 'cancel'
-                },
-                {
-                    text : 'Sign up',
-                    onPress: () => navigation.push('Signup'),
-                }
-            ])
+            // console.log(Object.keys(error))
+            if(error.name == "UserNotConfirmedException"){
+                navigation.push('OnboardVerify',{usermail: email, password: password, fromLogin: true})
+            }else{
+                Alert.alert('Omo e don choke !!!', `The password is invalid for this user`,[
+                    {
+                        text: 'OK',
+                        onPress : () => {console.log('ok')},
+                        style: 'cancel'
+                    },
+                    {
+                        text : 'Sign up',
+                        onPress: () => navigation.push('Signup'),
+                    }
+                ])
+            }
+            
         }finally{
             setIsSubmitting(false)
 
@@ -65,115 +71,119 @@ const Login = ({navigation}) => {
         <SafeAreaView className="bg-[#009244]">
             <KeyboardAvoidingView>
 
-            <View className="bg-[#eeeeee] pt-[20%] h-full relative">
-                <GoBack navigation={navigation}/>
-               
-                <View className="mx-auto">
-                    <Image className="h-auto w-auto" source={require('../assets/app/login.png')} />
+            <ScrollView keyboardShouldPersistTaps="handled">
+                <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+                    <GoBack navigation={navigation} goTo="BeforeAuth"/>
+                
+                    <View className="mx-auto">
+                        <Image className="h-auto w-auto" source={require('../assets/app/login.png')} />
 
-                </View>
+                    </View>
 
+                        <DismissKeyboard>
+                        <Formik 
+                            initialValues={{email:'', password: ''}}
+                            onSubmit={(values) => {
+                                onLogin(values.email, values.password)
+                            }}
+                            validationSchema={LoginFormSchema}
+                            validateOnMount={true}
+                        >
 
-
-
-                    <DismissKeyboard>
-                    <Formik 
-                        initialValues={{email:'', password: ''}}
-                        onSubmit={(values) => {
-                            onLogin(values.email, values.password)
-                        }}
-                        validationSchema={LoginFormSchema}
-                        validateOnMount={true}
-                    >
-
-                        {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
-
-                            <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-center">
-
-                                <View className="w-[100%] mb-[15px]" style={[styles.inputField, 
-                                        {
-                                            borderColor: values.email.length < 1 || Validator.validate(values.email) ? '#ccc' : 'red'
-                                        }
-                                    ]}
-                                >
-                                    <TextInput 
-                                        placeholder='Email Address'
-                                        autoCapitalize='none'
-                                        keyboardType='email-address'
-                                        textContentType='email-address'
-                                        onChangeText={handleChange('email')}
-                                        onBlur={handleBlur('email')}
-                                        value={values.email}
-                                        className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
-                                </View>
-
-                                <View className="w-[100%] mb-[15px]" style={[styles.inputField, 
-                                        {
-                                            borderColor: 1 > values.password.length || values.password.length >= 6 ? '#ccc' : 'red'
-                                        }
-                                    ]}
-                                >
-                                    <TextInput
-                                        placeholder='Password'
-                                        autoCapitalize='none'
-                                        textContentType='password'
-                                        secureTextEntry={true}
-                                        onChangeText={handleChange('password')}
-                                        onBlur={handleBlur('password')}
-                                        value={values.password}
-                                        
-                                        className="bg-[#eeeeee] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"
-                                    />
-                                </View>
+                            {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
 
 
-                                <View className="w-[100%] mb-[15px] flex justify-end">
-                                    <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid || isSubmitting} >
-                                        <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
-                                            <Text className="text-white text-center text-[18px] font-bold">
-                                                {
-                                                    isSubmitting ? 'Logging In ....' : 'Login'
-                                                }
-                                            </Text>
-                                        </View>
-                                    </Pressable>
-                                </View>
-                                
 
-                                    <TouchableOpacity  onPress={() => navigation.push('ForgotPassword') } >
-                                        <View className="w-[100%] my-[15px] flex flex-end">
-                                            <Text className="font-bold text-[#009244] text-right">Forgot Password</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                            
+                            <View className=" bg-white rounded-[20px] mx-auto my-[10px]  w-[90%] px-[20px] py-[40px] items-center">
+
+                            <View className="w-[100%] mb-[15px]" style={[styles.inputField
+                                ]}
+                            >
+                                <TextInput 
+                                    placeholder='Email Address'
+                                    autoCapitalize='none'
+                                    keyboardType='email-address'
+                                    textContentType='email-address'
+                                    onChangeText={handleChange('email')}
+                                    onBlur={handleBlur('email')}
+                                    value={values.email}
+                                    className="bg-[#eeeeee] px-[20px] py-[18px] rounded-[25px]"/>
+                                    {
+                                        values.email.length < 1 || Validator.validate(values.email) ? '' : <Text className="text-red-800 font-medium">Enter a valid email address</Text>
+                                    }
+                            </View>
+
+                            <View className="w-[100%] mb-[15px]" style={[styles.inputField, 
+                                    {
+                                        borderColor: 1 > values.password.length || values.password.length >= 6 ? '#ccc' : 'red'
+                                    }
+                                ]}
+                            >
+                                <TextInput
+                                    placeholder='Password'
+                                    autoCapitalize='none'
+                                    textContentType='password'
+                                    secureTextEntry={true}
+                                    onChangeText={handleChange('password')}
+                                    onBlur={handleBlur('password')}
+                                    value={values.password}
+                                    
+                                    className="bg-[#eeeeee] px-[20px] py-[18px] rounded-[25px]"
+                                />
+                            </View>
+
+
+                            <View className="w-[100%] mb-[15px] flex justify-end">
+                                <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid || isSubmitting} >
+                                    <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
+                                        <Text className="text-white text-center text-[18px] font-bold">
+                                            {
+                                                isSubmitting ? 'Logging In ....' : 'Login'
+                                            }
+                                        </Text>
+                                    </View>
+                                </Pressable>
+                            </View>
+
+
+                                <TouchableOpacity  onPress={() => navigation.push('ForgotPassword') } >
+                                    <View className="w-[100%] my-[15px] flex flex-end">
+                                        <Text className="font-bold text-[#009244] text-right">Forgot Password</Text>
+                                    </View>
+                                </TouchableOpacity>
+
 
 
                             </View>
-                        )}
+                                    
+
+                                
+                            )}
 
 
 
-                    </Formik>
+                        </Formik>
 
-                    </DismissKeyboard>
-
-
-
-                
+                        </DismissKeyboard>
 
 
 
-                <View className=" bg-[#eeeeee]">
+                    
 
-                    <TouchableOpacity onPress={() => navigation.push('Signup') }>
-                        <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
-                            <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
-                            <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
-                        </View>
-                    </TouchableOpacity>
 
+
+                    <View className=" bg-[#eeeeee]">
+
+                        <TouchableOpacity onPress={() => navigation.push('Signup') }>
+                            <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
+                                <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
+                                <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                    </View>
                 </View>
-            </View>
+            </ScrollView>    
 
             </KeyboardAvoidingView>
 

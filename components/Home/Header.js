@@ -1,5 +1,8 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { AsyncStorage } from '@aws-amplify/core';
+
+
 
 
 const handleSignOut = async () => {
@@ -11,28 +14,47 @@ const handleSignOut = async () => {
     // }
 }
 
+const getGreeting = () => {
+    const hour = new Date().getHours();
+    const welcomeTypes = ["Good morning", "Good afternoon", "Good evening"];
+    let welcomeText = "";
+
+    if (hour < 12) welcomeText = welcomeTypes[0];
+    else if (hour < 18) welcomeText = welcomeTypes[1];
+    else welcomeText = welcomeTypes[2];
+    return welcomeText
+}
 
 
-const Header = ({selected}) => {
-    const messages = ['Odogwu', 'Agba', 'Chairman', 'Chief']
 
-
-
-
-
+const Header = ({selected, navigation, filterType,selectedPos}) => {
+    // const messages = ['Odogwu', 'Agba', 'Chairman', 'Chief']
+    
   return (
-    <View style={styles.superContainer} className="rounded-bl-[10px]">
+    <View >
 
-        <View className="py-[20px] flex relative ">
-            <View className="absolute right-0 top-0">
-                <Image source={require('../../assets/app/ellipse.svg')}/>
+        <View className="flex relative">
+           
+            <View className="flex flex-row space-between justify-between bg-[#009244] px-[20px] pb-[10px]" style={styles.containerShadow}>
+                <Text className="text-[20px] font-bold text-white" style={{fontFamily: 'Sora-Bold'}}>Home</Text>
+                <TouchableOpacity onPress={() => navigation.push('Profile')}>
+                    <Image source={{uri: 'https://img.icons8.com/ios-filled/50/ffffff/user-male-circle.png'}} style={[
+                        styles.icon,
+                    ]} className="text-center justify-center"/>
+                </TouchableOpacity>
             </View>
-            <View className="mt-[20px]">
-                <Text className="text-[24px] font-bold text-white">👋 {messages[Math.floor((Math.random()*messages.length))]}</Text>
+            <View className="shadow-3xl shadow-[#00000040] py-[20px] px-[15px]">
+                <Text className="text-[24px] font-bold text-[#303437]" style={{fontFamily: 'Sora-Bold'}}>👋 {getGreeting()}</Text>
+                <Text className="text-[16px] text-[#404446]" style={{fontFamily: 'Sora-Light'}}>Who would you like to read about today?</Text>
+
             </View>
-            <View className="w-[100%] mr-auto bg-white py-[10] px-[8px] rounded-[25px] items-left justify-center mt-[15px]">
-                <Text className="text-[15px] font-bold text-gray-600" >Currently Viewing for: {selected}</Text>
-            </View>
+
+            {/* <View className="w-[100%] mr-auto bg-white py-[8] px-[8px] rounded-[25px] items-left justify-center mt-[10px]">
+                
+                <Text className="text-[15px] font-bold text-gray-600" >Currently Viewing for: {
+                    filterType == 'party' ? selected : selectedPos
+                }</Text>
+            </View> */}
             <View>
 
             </View>
@@ -42,41 +64,7 @@ const Header = ({selected}) => {
 
 
 
-
-
-
-{/* 
-        <View style={styles.container}>
-            <TouchableOpacity>
-                <Image style={styles.logo} source={require('../../assets/igv-logo.png')}/>
-                <Text className="text-white font-bold text-[30px]">Hi, Kelvin !</Text>
-            </TouchableOpacity>
-            <View style={styles.iconContainer}>
-                <TouchableOpacity>
-                    <Image style={styles.icon} source={{uri:'https://img.icons8.com/fluency-systems-regular/60/ffffff/appointment-reminders--v1.png'}} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image style={styles.icon} source={{uri:'https://img.icons8.com/fluency-systems-regular/60/ffffff/circled-menu.png'}} />
-                </TouchableOpacity>
-
-            </View>
-        </View> */}
-
-
-        <View>
-            {/* badges */}
-           {/* search component */}
-    
-
-
-
-
-
-
-
-
-
-        </View>
+                
 
 
 
@@ -90,15 +78,12 @@ const styles= StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginVertical: 10,
         backgroundColor: '#009244',
 
 
     },
-    superContainer:{
-        paddingHorizontal: 10
-        
-    },
+   
+
     iconContainer:{
         flexDirection: 'row',
     },
@@ -111,7 +96,6 @@ const styles= StyleSheet.create({
     icon: {
         width: 30,
         height: 30,
-        marginLeft: 10,
         resizeMode: 'contain'
     },
     unreadBadge: {
@@ -141,6 +125,16 @@ const styles= StyleSheet.create({
         borderRadius: 10
 
       },
+      containerShadow:{
+        // boxShadow: '9px 10px 10px #',
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 10},
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        elevation: 3,
+        backgroundColor: '#009244'
+
+    },
 
 });
 

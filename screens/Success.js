@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput } from 'react-native'
 import React, {useEffect, useState} from 'react';
 
-const messages = ['Odogwu 🫶', 'Agba 🙌', 'Chairman 👊', 'Chop 👊 Agba !!!']
+const messages = ['Odogwu 🫶', 'Chairman 👊']
 const Success = ({navigation,route}) => {
 
     const [Source, setSource] = useState('')
@@ -37,7 +37,7 @@ const Success = ({navigation,route}) => {
                         <>
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
-                            <TouchableOpacity  onPress={() => navigation.push('HomeScreen') } >
+                        <TouchableOpacity  onPress={() => navigation.push('HomeScreen',{userDetail: 'user'}) } >
                                 <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
                                     <Text className="text-white text-center text-[18px] font-bold">Go back home</Text>
                                 </View>
@@ -59,7 +59,7 @@ const Success = ({navigation,route}) => {
                         <>
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
-                            <TouchableOpacity  onPress={() => navigation.push('HomeScreen') } >
+                        <TouchableOpacity  onPress={() => navigation.push('HomeScreen',{userDetail: 'user'}) } >
                                 <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
                                     <Text className="text-white text-center text-[18px] font-bold">Go back home</Text>
                                 </View>
@@ -89,7 +89,7 @@ const Success = ({navigation,route}) => {
                 {       
                     Source == '' &&
                     <View className="w-[100%] mb-[15px] flex justify-end">
-                        <TouchableOpacity  onPress={() => navigation.push('HomeScreen') } >
+                        <TouchableOpacity  onPress={() => navigation.push('HomeScreen',{userDetail: 'user'}) } >
                             <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
                                 <Text className="text-white text-center text-[18px] font-bold">Start using Igovote</Text>
                             </View>

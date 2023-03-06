@@ -4,11 +4,18 @@ import { schema } from './schema';
 
 
 
-const { LiveReports, ElectionMonitor, UserProfile, Parties } = initSchema(schema);
+const { EMHoa, EMHor, EMSenatorial, EMGovernorship, EMPresidential, ElectionPosts, ElectionMonitor, LiveReports, ReportToUser, UserProfile, Parties } = initSchema(schema);
 
 export {
-  LiveReports,
+  EMHoa,
+  EMHor,
+  EMSenatorial,
+  EMGovernorship,
+  EMPresidential,
+  ElectionPosts,
   ElectionMonitor,
+  LiveReports,
+  ReportToUser,
   UserProfile,
   Parties
 };

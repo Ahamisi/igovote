@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, StyleSheet, Alert, KeyboardAvoidingView} from 'react-native'
+import { View, Text, Image, TouchableOpacity, SafeAreaView, TextInput, StyleSheet, Alert, KeyboardAvoidingView, ScrollView} from 'react-native'
 import { CheckBox } from '@rneui/base';
 import React, {useState} from 'react';
 
@@ -38,16 +38,16 @@ const Signup = ({navigation}) => {
     const onSignup = async (email, password, firstname) =>{
         if(isChecked){
             setIsSubmitting(true)
-            const username = email
+            const username = email.toLowerCase()
             try{
-                        const { user } = await Auth.signUp({
-                            username,
-                            password,
-                            autoSignIn: { // optional - enables auto sign in after user is confirmed
-                                enabled: true,
-                            }
-                        });
-                        navigation.push('OnboardVerify',{usermail: username})
+                    const { user } = await Auth.signUp({
+                        username,
+                        password,
+                        autoSignIn: { // optional - enables auto sign in after user is confirmed
+                            enabled: true,
+                        }
+                    });
+                    navigation.push('OnboardVerify',{usermail: username, password: password})
                 }catch(error){
                     Alert.alert('Omo water don pass garri !!!',`${error}`)
                 }finally{
@@ -80,12 +80,10 @@ const Signup = ({navigation}) => {
 
                 <KeyboardAvoidingView>
 
-
-
-
+                <ScrollView keyboardShouldPersistTaps="handled">
 
                 <View className="bg-[#eeeeee] pt-[20%] h-full">
-                <GoBack navigation={navigation}/>
+                <GoBack navigation={navigation} goTo="BeforeAuth"/>
                 <View className="mx-auto">
                     <Image className="h-auto w-auto" source={require('../assets/app/signup.png')} />
 
@@ -104,12 +102,9 @@ const Signup = ({navigation}) => {
                     {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
 
 
-                        <View className=" bg-white rounded-[20px] mx-auto my-auto  w-[90%] px-[20px] py-[40px] items-center">
+                        <View className=" bg-white rounded-[20px] mx-auto my-[10px]  w-[90%] px-[20px] py-[40px] items-center">
                             
-                            <View className="w-[100%] mb-[15px]" style={[styles.inputField, 
-                                {
-                                    borderColor: values.email.length < 1 || Validator.validate(values.email) ? '#ccc' : 'red'
-                                }
+                            <View className="w-[100%] mb-[15px]" style={[styles.inputField
                             ]}>
                                 <TextInput placeholder='Email' 
                                 autoCapitalize='none'
@@ -120,19 +115,11 @@ const Signup = ({navigation}) => {
                                 onBlur={handleBlur('email')}
                                 value={values.email}
                                 className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px]"/>
+                                 {
+                                    values.email.length < 1 || Validator.validate(values.email) ? '' : <Text className="text-red-800 font-medium">Enter a valid email address</Text>
+                                }
                             </View>
 
-                            {/* <View className="w-[100%] mb-[15px]">
-                                <TextInput placeholder='Phone Number'
-                                 autoCapitalize='none'
-                                 keyboardType='text'
-                                 textContentType='text'
-                                 autoFocus={false}
-                                 onChangeText={handleChange('phone')}
-                                 onBlur={handleBlur('phone')}
-                                 value={values.phone}
-                                className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px]"/>
-                            </View> */}
                             <View className="w-[100%] mb-[15px]"
                             style={[styles.inputField, 
                                 {
@@ -149,9 +136,11 @@ const Signup = ({navigation}) => {
                                  onBlur={handleBlur('password')}
                                  value={values.password}
                                 className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px]"/>
+
                                 {
-                                    values.password.length < 6 && <Text className="text-red-700 font-bold">!!! Password must be 6 characters long</Text>
+                                    values.password.length < 1 || values.password.length < 6 ? <Text className="text-red-800 font-medium">Password must be atleast 6 characters</Text> : ''
                                 }
+                                
                                 
                             </View>
 
@@ -204,13 +193,7 @@ const Signup = ({navigation}) => {
 
 
 
-
-
-
-
-
-
-
+                </ScrollView>   
 
 
                 </KeyboardAvoidingView>

@@ -4,12 +4,13 @@ import React from 'react';
 // import Education from '../../../assets/icons/knowledge.png';
 
 // import Gender from '../../../assets/icons/gender.png';
+import ImagePlaceholder from 'react-native-image-with-placeholder'
 
 import Education from '../../../assets/icons/knowledge.png'
 import Gender from '../../../assets/icons/gender.png'
 
 
-const Candidate = ({candidate,navigation,type}) => {
+const Candidate = ({candidate,navigation,type, filterBy = 'party'}) => {
 
 
 
@@ -35,19 +36,35 @@ const Candidate = ({candidate,navigation,type}) => {
                     <View className="relative">
                         <View className="block shadow-xl rounded-2xl w-[100%]">
                             {
-                                type == 'president' ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[340px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/president-m.png')} /> : <Image className="h-[340px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/president-f.png')} />  ): ''
+
+                                candidate?.image?.S &&
+                                //  <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={{uri: }} placeholderImg="https://via.placeholder.com/400x200.png?text=This+Will+Be+Shown+Before+Load" /> 
+                                <ImagePlaceholder 
+                                    style={{ flex: 1, height: 200, borderRadius: 40}}
+                                    duration={1000}
+                                    activityIndicatorProps={{
+                                        size: 'large',
+                                        color: 'green',
+                                    }}
+                                    useNativeDriver={true}
+                                    src={candidate?.image?.S}
+                                    placeholder={candidate?.image?.S}
+                                    />
                             }
                             {
-                                type == 'governor' ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[340px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/governor-m.png')} /> : <Image className="h-[340px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/governor-f.png')} />  ): ''
+                                type == 'president' && !candidate?.image?.S  ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/president-m.png')} /> : <Image className="h-[200px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/president-f.png')} />  ): ''
                             }
                             {
-                                type == 'senator' ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[340px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/senator-m.png')} /> : <Image className="h-[340px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/senator-f.png')} />  ): ''
+                                type == 'governor' && !candidate?.image?.S  ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/governor-m.png')} /> : <Image className="h-[200px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/governor-f.png')} />  ): ''
                             }
                             {
-                                type == 'hor' ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[340px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/hor-m.png')} /> : <Image className="h-[340px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/hor-f.png')} />  ): ''
+                                type == 'senator' && !candidate?.image?.S ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/senator-m.png')} /> : <Image className="h-[200px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/senator-f.png')} />  ): ''
                             }
                             {
-                                type == 'hoa' ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[340px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/hoa-m.png')} /> : <Image className="h-[340px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/hoa-f.png')} />  ): ''
+                                type == 'hor' && !candidate?.image?.S ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/hor-m.png')} /> : <Image className="h-[200px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/hor-f.png')} />  ): ''
+                            }
+                            {
+                                type == 'hoa' && !candidate?.image?.S ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={require('../../../assets/candidates/hoa-m.png')} /> : <Image className="h-[200px] shadow-soft-2xl rounded-2xl w-[100%]" source={require('../../../assets/candidates/hoa-f.png')} />  ): ''
                             }
                             
                         </View>
@@ -58,18 +75,25 @@ const Candidate = ({candidate,navigation,type}) => {
                             <View className="flex flex-row justify-between items-center gap-4">
                                 {
                                     candidate && candidate?.candidate_name && candidate?.candidate_name?.S &&
-                                        <Text className="font-bold text-slate-800 text-[16px]">{candidate.candidate_name.S.substring(0,30)} {candidate.candidate_name.S > 30 ? '...' : ''}</Text>
+                                        <Text className="font-bold text-slate-800 text-[16px]" style={{fontFamily: 'Sora-Bold'}}>{candidate.candidate_name.S.substring(0,20)} {candidate.candidate_name.S > 20 ? '...' : ''}</Text>
 
                                 }
                                 {
                                         candidate && candidate?.cadidate_name  && candidate?.cadidate_name?.S &&
-                                             <Text className="font-bold text-slate-800 text-[16px]">{candidate.cadidate_name.S.substring(0,30)} {candidate.cadidate_name.S > 30 ? '...' : ''}</Text>
+                                             <Text className="font-bold text-slate-800 text-[16px]" style={{fontFamily: 'Sora-Bold'}}>{candidate.cadidate_name.S.substring(0,20)} {candidate.cadidate_name.S > 20 ? '...' : ''}</Text>
 
                                 }
                                     <View className=" flex flex-row items-center justify-center gap-[3px] ">
                                         <View className="bg-[#d1fae5] shadow-2xl rounded-md flex items-center justify-center">
-                                            <Text className="text-xs text-[#009244] font-normal text-[12px] px-[10px] py-[5px]">{candidate?.gender?.S}</Text>
+                                            <Text className="text-xs text-[#009244] font-normal text-[12px] px-[10px] py-[5px]" style={{fontFamily: 'Sora-Bold'}}>{candidate?.gender?.S}</Text>
                                         </View>
+                                        {
+                                            filterBy == 'position' && 
+                                            <View className="bg-[#009244] rounded-lg p-[4px]">
+                                                <Text className="text-white font-bold">{candidate?.party?.S}</Text>
+                                            </View>
+                                        }
+                                        
                                         {/* <Image className="ml-[5px] h-[30px] w-[30px]" source={require('../../assets/party/pdp.png')}/> */}
 
                                     </View>
@@ -95,7 +119,7 @@ const Candidate = ({candidate,navigation,type}) => {
                                     <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center">
 
                                         {candidate && candidate?.position ?
-                                                    <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">{candidate?.position?.S }&nbsp;</Text>  
+                                                    <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]" style={{fontFamily: 'Sora-Bold'}}>{candidate?.position?.S }&nbsp;</Text>  
                                         : '' } 
                                         </View>
 
@@ -108,7 +132,7 @@ const Candidate = ({candidate,navigation,type}) => {
                                             <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center ml-[5px]">
                                                 {candidate && candidate?.constituency ?
 
-                                                    <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">{candidate?.constituency?.S }</Text>  
+                                                    <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]" style={{fontFamily: 'Sora-Bold'}}>{candidate?.constituency?.S }</Text>  
                                                     : '' } 
                                            
                                             </View>
