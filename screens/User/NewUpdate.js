@@ -189,16 +189,16 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
 
   return (
-        <SafeAreaView classNameclassName="bg-[#009244]">
+        <SafeAreaView classNameclassName="bg-[#008F43]">
 
-            <View className="bg-[#009244] pt-[20%] h-full pb-[10%]">
+            <View className="bg-[#008F43] pt-[20%] h-full pb-[10%]">
                 {canGoBack &&
                      <GoBack navigation={navigation} goTo="LiveUpdates" mt="20px"/> 
                 }
                 
-                <View className="mx-auto my-[20px]">
+                <View className="mx-auto my-[10px]">
 
-                    <Text className="text-[18px] text-center font-bold text-white">Sabi guy 😁, Oya fill am !!!</Text>
+                    <Text className="text-[18px] text-center font-bold text-white" style={{fontFamily: 'Sora-Bold'}}>Sabi guy 😁, Oya fill am !!!</Text>
                 </View>
 
 
@@ -220,7 +220,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
                             <View className="w-[100%] mb-[15px]">
                                 
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     iconStyle={styles.iconStyle}
@@ -243,7 +243,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
                                 <TextInput placeholder='How many people are currently on Queue ?'
                                 placeholderTextColor="#000" 
 
-                                style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     autoCapitalize='none'
                                     keyboardType='numeric'
                                     textContentType='numeric'
@@ -258,7 +258,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
                             <View className="w-[100%] mb-[15px]">
                                 <TextInput placeholder='Average time to cast vote in mins ? '
-                                style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     autoCapitalize='none'
                                     keyboardType='numeric'
                                     placeholderTextColor="#000" 
@@ -276,7 +276,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
                             <View className="w-[100%] mb-[15px]">
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     iconStyle={styles.iconStyle}
@@ -305,7 +305,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
                             <View className="w-[100%] mb-[15px]">
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     iconStyle={styles.iconStyle}
@@ -328,7 +328,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
                             <View className="w-[100%] mb-[15px]">
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     iconStyle={styles.iconStyle}
@@ -354,7 +354,7 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
                             <View className="w-[100%] mb-[15px]">
                               <TextInput placeholder='Any extra comment?'
-                               style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                               style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                  autoCapitalize='none'
                                  keyboardType='text'
                                  textContentType='text'
@@ -369,11 +369,16 @@ const NewUpdate = ({navigation, canGoBack = true, type='', editing=false}) => {
 
 
 
+
+                
+
+
+
                             <View className="w-[100%] mb-[15px] flex justify-end">
                               <TouchableOpacity className="" style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid}>
                                 {/* <TouchableOpacity className="" style={styles.button(true)} onPress={handleSubmit}  > */}
                                     <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" >
-                                        <Text className="text-white text-center text-[18px] font-bold">
+                                        <Text className="text-white text-center text-[12px] font-bold" style={{fontFamily: 'Sora-Medium'}}>
                                         {
                                             isSubmitting ? 'Updating...' : 'Add update'
                                         }
@@ -423,11 +428,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,
-        borderRadius: 4
+        borderRadius: 20
     }),
     buttonText:{
         fontWeight: '600',

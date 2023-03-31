@@ -57,21 +57,17 @@ useEffect(() => {
 
 
   return (
-    <View className="my-[2px] bg-white rounded-lg shadow-2xl shadow-[#0000001a] py-[20px] px-[26px] mb-[20px]">
+    <View className="my-[2px] bg-white rounded-lg py-[20px] px-[26px] mb-[20px]">
       
-        <View style={styles.container}>
+      <View style={styles.container}>
             <View>
-              <Text style={styles.groupHeading}>{groupHeading}</Text>
+              <Text style={styles.groupHeading} className="text-[#008F43]">{groupHeading} Aspirants in your Constituency</Text>
             </View>
-            <View style={{}}>
-              <TouchableOpacity>
-                <Icon name="angle-right" size={20} color="#009244" />
-              </TouchableOpacity>
-            </View>
+            
         </View>
         <View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+        <ScrollView vertical showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
             {
               DataSource ?
                   DataSource.length < 1 ? <Text className="text-blue mb-[200px">No Data Available !!!</Text>
@@ -103,7 +99,7 @@ const styles = StyleSheet.create({
     groupHeading: {
         textTransform: 'uppercase',
         fontWeight: '700',
-        color: '#000',
+        color: '#008F43',
     },
     container: {
       justifyContent: 'space-between',

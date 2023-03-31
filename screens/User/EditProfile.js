@@ -168,36 +168,41 @@ const goToEdit = () => {
 
 
   return (
-    <SafeAreaView className="bg-[#009244]">
+    <SafeAreaView className="bg-[#008F43]">
 
-        <ScrollView className="bg-[#eeeeee] h-full relative">
-
-
-
-        <View className="bg-[#eeeeee] h-full relative">
-            <View className="bg-[#009244]">
-                <Text className="text-white font-bold text-[20px] pt-[15px] pb-[15px] mx-auto  w-[94%]">Your Profile</Text>
-            </View>
+        <ScrollView className="bg-[#fff] h-full relative">
 
 
 
+        <View className="bg-[#ffffff] h-full relative">
+        <View className="bg-[#008F43] flex flex-row gap-[14px] items-center pl-[12px]">
+                        <TouchableOpacity onPress={() => navigation.push('MainMenu',{userDetail: ''})}>
+                                <Image source={require('../../assets/app/back-icon.png')}/>
+                            </TouchableOpacity>
+                        <Text className="text-white font-bold text-[20px]  pt-[15px] pb-[15px] mx-auto  w-[90%]">Your Profile</Text>
+         </View>
 
 
 
 
-            {/* <GoBack bg="bg-[#edefee]"/> */}
-            <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}} className="rounded-2xl ">
+
+
+
+           <View className="p-[20px]">
+
+                 {/* <GoBack bg="bg-[#F2F4F5]"/> */}
+            <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}} className="bg-[#F2F4F5] rounded-xl shadow-xl">
                 <View style={styles.container} className="px-[20px]">
                     <View className="pt-[20px]">
                     <Text style={styles.groupHeading}>Your Achievements</Text>
                     </View>
                     <View style={{}}>
-                    <TouchableOpacity>
-                        <Icon name="angle-right" size={20} color="#009244" />
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity>
+                        <Icon name="angle-right" size={20} color="#008F43" />
+                    </TouchableOpacity> */}
                     </View>
                 </View>
-                <View className="bg-[#edefee] m-0 py-[20px] rounded-2xl px-[20px]">
+                <View className="bg-[#fff] m-0 py-[20px] rounded-b-2xl px-[20px] shadow-xl">
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <View className="mr-[10px]">
                             <Image  className="h-[80px] w-[55px]" source={require('../../assets/badges/news-user.png')} />
@@ -218,7 +223,7 @@ const goToEdit = () => {
                     </ScrollView>
 
                     {/* {
-                        GlobalUser?.pu &&  <TouchableOpacity className="bg-[#009244] flex text-white flex-row items-center justify-center px-[20px] py-[9px] mt-[10px]" onPress={onOpen}>
+                        GlobalUser?.pu &&  <TouchableOpacity className="bg-[#008F43] flex text-white flex-row items-center justify-center px-[20px] py-[9px] mt-[10px]" onPress={onOpen}>
                         <Text className="text-white font-bold text-lg">Redeem</Text>
                     </TouchableOpacity>
                     } */}
@@ -230,77 +235,73 @@ const goToEdit = () => {
 
 
             {/* edit profile button */}
-            <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}} className="">
-                <View style={styles.container} className="px-[20px] mt-[20px]">
-                    <View>
+            <View style={{flexDirection: 'column',backgroundColor: '#F2F4F5'}} className="mt-[20px] bg-[#F2F4F5] rounded-xl shadow-xl">
+                <View style={styles.container} className="px-[20px]">
+                    <View className="pt-[20px]">
                     <Text style={styles.groupHeading}>Edit your profile</Text>
                     </View>
-                    <View style={{}}>
-                    <TouchableOpacity>
-                        <Icon name="angle-right" size={20} color="#009244" />
-                    </TouchableOpacity>
-                    </View>
+                    
                 </View>
-                <View className="bg-[#edefee] m-0 py-[20px] rounded-2xl px-[20px]">
+                <View className="bg-[#ffffff] m-0 py-[20px]  rounded-b-xl shadow-xl px-[20px]">
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             Email:
                         </Text>
-                        <Text className="text-right font-bold">
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             {GlobalUser?.name}
                         </Text>
                     </View>
 
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             Gender:
                         </Text>
-                        <Text className="text-right font-bold">
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             {GlobalUser?.gender}
 
                         </Text>
                     </View>
 
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             State:
                         </Text>
-                        <Text className="text-right font-bold">
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
                         {GlobalUser?.state}
 
                         </Text>
                     </View>
 
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             LGA:
                         </Text>
-                        <Text className="text-right font-bold">
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
                         {GlobalUser?.lga}
 
                         </Text>
                     </View>
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             Ward:
                         </Text>
-                        <Text className="text-right font-bold">
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
                         {GlobalUser?.ward}
 
                         </Text>
                     </View>
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Medium'}}>
                             Polling Code:
                         </Text>
-                        <Text className="text-right font-bold">
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
                         {GlobalUser?.pu}
 
 
                         </Text>
                     </View>
-                    <TouchableOpacity className="bg-[#009244] flex text-white flex-row items-center justify-center px-[20px] py-[12px]" onPress={onOpen}>
-                        <Text className="text-white font-bold text-lg">Edit Profile &nbsp;</Text>
+                    <TouchableOpacity className="bg-[#008F43] rounded-[30px] flex text-white flex-row items-center justify-center px-[20px] py-[12px]" onPress={onOpen}>
+                        <Text className="text-white font-bold text-lg" style={{fontFamily: 'Sora-Medium'}}>Edit Profile &nbsp;</Text>
                         <Icon name="pencil-alt" size={20} color="#fff" />
                     </TouchableOpacity>
                 </View>
@@ -311,18 +312,18 @@ const goToEdit = () => {
 
 
                {/* edit profile button */}
-            <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}} className="block pb-[100px]">
+            <View style={{flexDirection: 'column'}} className="block mt-[20px] bg-[#F2F4F5] rounded-t-xl shadow-xl">
                 <View style={styles.container} className="px-[20px] mt-[20px]">
                     <View>
                     <Text style={styles.groupHeading}>App Actions</Text>
                     </View>
                     <View style={{}}>
-                    <TouchableOpacity>
-                        <Icon name="angle-right" size={20} color="#009244" />
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity>
+                        <Icon name="angle-right" size={20} color="#008F43" />
+                    </TouchableOpacity> */}
                     </View>
                 </View>
-                <View className="bg-[#edefee] m-0 py-[20px] rounded-2xl px-[20px]">
+                <View className="bg-[#fff] m-0 py-[20px] rounded-b-xl shadow-xl px-[20px]">
 
 {/* 
                 <View className="flex flex-row justify-between mb-[20px]">
@@ -330,7 +331,7 @@ const goToEdit = () => {
                             Love the Project ?
                         </Text>
                         <Text className="text-right font-bold">
-                            <TouchableOpacity className="bg-[#009244] px-[14px] py-[10px] rounded-lg">
+                            <TouchableOpacity className="bg-[#008F43] px-[14px] py-[10px] rounded-lg">
                                 <Text className="text-white font-bold"><A href="https://linktr.ee/igovote">Donate</A></Text>
                             </TouchableOpacity>
                             
@@ -339,12 +340,12 @@ const goToEdit = () => {
 
 
                 <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Bold'}}>
                             Request a feature ?
                         </Text>
-                        <Text className="text-right font-bold">
-                            <TouchableOpacity className="bg-[#009244] px-[14px] py-[10px] rounded-lg" onPress={() => handleToken(GlobalUser)}>
-                                <Text className="text-white font-bold">Give feedback</Text>
+                        <Text className="text-right font-bold" style={{fontFamily: 'Sora-Medium'}}>
+                            <TouchableOpacity className="bg-[#008F43] px-[14px] py-[10px] rounded-lg" onPress={() => handleToken(GlobalUser)}>
+                                <Text className="text-white font-bold" style={{fontFamily: 'Sora-Medium'}}>Give feedback</Text>
                             </TouchableOpacity>
                             
                         </Text>
@@ -357,12 +358,12 @@ const goToEdit = () => {
 
 
                     <View className="flex flex-row justify-between mb-[20px]">
-                        <Text className="text-left font-bold">
+                        <Text className="text-left font-bold" style={{fontFamily: 'Sora-Bold'}}>
                             Delete Account ?
                         </Text>
                         <Text className="text-right font-bold">
                             <TouchableOpacity onPress={() => handleSignOut(true)}>
-                                <Text className="text-red-600">Delete</Text>
+                                <Text className="text-red-600" style={{fontFamily: 'Sora-Medium'}}>Delete</Text>
                             </TouchableOpacity>
                             
                         </Text>
@@ -372,8 +373,8 @@ const goToEdit = () => {
 
                    
                     <View className="">
-                        <TouchableOpacity className="bg-[#009244] flex text-white flex-row items-center justify-center px-[20px] py-[12px]" onPress={handleSignOut}>
-                            <Text className="text-white font-bold text-lg">Logout</Text>
+                        <TouchableOpacity className="bg-[#008F43] rounded-[30px] flex text-white flex-row items-center justify-center px-[20px] py-[12px]" onPress={handleSignOut}>
+                            <Text className="text-white font-bold text-lg" style={{fontFamily: 'Sora-Medium'}}>Logout</Text>
                             {/* <Icon name="right-" size={20} color="#fff" /> */}
                         </TouchableOpacity>
                     </View>
@@ -381,6 +382,17 @@ const goToEdit = () => {
                 </View>
             </View>
 
+
+
+
+
+
+
+
+
+
+
+           </View>
 
 
         </View>
@@ -417,6 +429,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontWeight: '700',
         color: '#000',
+        fontFamily: 'Sora-Bold'
     },
     container: {
       justifyContent: 'space-between',

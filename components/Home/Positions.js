@@ -22,7 +22,7 @@ const Positions = ({name, logo, selected,navigation}) => {
 
 
     <View className=" py-[10px] rounded-t-[15px] shadow-2xl shadow-[#0000001a] mt-[-33px] pt-[10px]">
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    <View className="flex flex-row">
         {
             // PARTIES.map((party, index) => (
                 <>
@@ -38,7 +38,7 @@ const Positions = ({name, logo, selected,navigation}) => {
                                 }
                             </View>
                             
-                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'presidential' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
+                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'presidential' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
                                 <Image source={require('../../assets/party/president.png')} className={`p-[5px] w-[70px] h-[70px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
                             </View> */}
                             <View className="w-[75%]">
@@ -57,7 +57,7 @@ const Positions = ({name, logo, selected,navigation}) => {
                                     selected == 'governorship' ? <Image source={require('../../assets/app/checked.png')} className={` w-[20px] h-[20px] rounded-[9999px]  shadow-2xl`}/> : <Image source={require('../../assets/app/unchecked.png')} className={` w-[20px] h-[20px] rounded-[9999px] shadow-2xl`}/>
                                 }
                             </View>
-                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'governorship' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
+                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'governorship' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
                                 <Image source={require('../../assets/party/hoa.png')} className={`p-[5px] w-[70px] h-[70px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
                             </View> */}
                             <View className="w-[75%]">
@@ -78,7 +78,7 @@ const Positions = ({name, logo, selected,navigation}) => {
                                     selected == 'senatorial' ? <Image source={require('../../assets/app/checked.png')} className={` w-[20px] h-[20px] rounded-[9999px]  shadow-2xl`}/> : <Image source={require('../../assets/app/unchecked.png')} className={` w-[20px] h-[20px] rounded-[9999px] shadow-2xl`}/>
                                 }
                             </View>
-                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'senatorial' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
+                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'senatorial' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
                                 <Image source={require('../../assets/party/senate.png')} className={`p-[5px] w-[70px] h-[70px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
                             </View> */}
                             <View className="w-[75%]">
@@ -100,7 +100,7 @@ const Positions = ({name, logo, selected,navigation}) => {
                                     selected == 'hor' ? <Image source={require('../../assets/app/checked.png')} className={` w-[20px] h-[20px] rounded-[9999px]  shadow-2xl`}/> : <Image source={require('../../assets/app/unchecked.png')} className={` w-[20px] h-[20px] rounded-[9999px] shadow-2xl`}/>
                                 }
                             </View>
-                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'hor' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
+                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'hor' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
                                 <Image source={require('../../assets/party/hor.png')} className={`p-[5px] w-[70px] h-[70px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
                             </View> */}
                             <View className="w-[75%] items-center">
@@ -123,7 +123,7 @@ const Positions = ({name, logo, selected,navigation}) => {
                                     selected == 'hoa' ? <Image source={require('../../assets/app/checked.png')} className={` w-[20px] h-[20px] rounded-[9999px]  shadow-2xl`}/> : <Image source={require('../../assets/app/unchecked.png')} className={` w-[20px] h-[20px] rounded-[9999px] shadow-2xl`}/>
                                 }
                             </View>
-                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'hoa' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
+                            {/* <View className={`p-[2px] pl-[0px] ${selected == 'hoa' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
                                 <Image source={require('../../assets/party/hoa.png')} className={`p-[5px] w-[70px] h-[70px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
                             </View> */}
                             <View className="w-[75%]">
@@ -151,7 +151,7 @@ const Positions = ({name, logo, selected,navigation}) => {
                 
             // ))
         }
-    </ScrollView>
+    </View>
 </View>
 
   )
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginLeft: 6,
         borderWidth: 3,
-        borderColor: '#009244',
+        borderColor: '#008F43',
         boxShadow: '17px 13px 8px #000000'
          
 

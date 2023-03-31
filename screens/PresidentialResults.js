@@ -36,12 +36,12 @@ const PresidentialResults = ({navigation}) => {
 
              <View className="flex flex-row justify-between">
                  <View className="mt-5 px-[15px]">
-                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen',{userDetail: 'user'})} className="bg-[#009244] px-[14px] py-[10px] rounded-lg">
+                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen',{userDetail: 'user'})} className="bg-[#008F43] px-[14px] py-[10px] rounded-lg">
                         <Text className="font-bold text-white">Go Back</Text>
                     </TouchableOpacity>
                </View>
                <View className="mt-5 px-[15px]">
-                <TouchableOpacity onPress={() => navigation.navigate('ElectionMonitor')} className="bg-[#009244] px-[14px] py-[10px] rounded-lg">
+                <TouchableOpacity onPress={() => navigation.navigate('ElectionMonitor')} className="bg-[#008F43] px-[14px] py-[10px] rounded-lg">
                         <Text className="font-bold text-white">Add Result</Text>
                     </TouchableOpacity>
                </View>

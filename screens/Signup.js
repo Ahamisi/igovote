@@ -25,6 +25,7 @@ import Validator from 'email-validator';
 const Signup = ({navigation}) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isChecked, setChecked] = useState(false);
+    const [passwordType, setPasswordType] = useState(true)
 
 
     const SignupFormSchema = Yup.object().shape({
@@ -76,16 +77,16 @@ const Signup = ({navigation}) => {
 
 
   return (
-        <SafeAreaView className="bg-[#009244]">
+        <SafeAreaView className="bg-[#008F43]">
 
                 <KeyboardAvoidingView>
 
                 <ScrollView keyboardShouldPersistTaps="handled">
 
-                <View className="bg-[#eeeeee] pt-[20%] h-full">
+                <View className="bg-[#ffffff] flex flex-1 h-100 pb-[100%]">
                 <GoBack navigation={navigation} goTo="BeforeAuth"/>
-                <View className="mx-auto">
-                    <Image className="h-auto w-auto" source={require('../assets/app/signup.png')} />
+                <View className="mx-auto pt-[20%]">
+                        <Image className="h-[200px] w-[200px]" source={require('../assets/app/igv-power.png')} />
 
                 </View>
 
@@ -102,10 +103,13 @@ const Signup = ({navigation}) => {
                     {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
 
 
-                        <View className=" bg-white rounded-[20px] mx-auto my-[10px]  w-[90%] px-[20px] py-[40px] items-center">
+                        <View className=" bg-white rounded-[20px] mx-auto my-[10px]  w-[90%] px-[20px] py-[10px] items-center">
                             
                             <View className="w-[100%] mb-[15px]" style={[styles.inputField
                             ]}>
+                                 <View className="py-[8px]">
+                                    <Text style={{fontFamily: 'Sora-Medium', fontWeight: '700', color: '#404446', textAlign: 'center'}}>Email Address</Text>
+                                </View>
                                 <TextInput placeholder='Email' 
                                 autoCapitalize='none'
                                 keyboardType='email-address'
@@ -114,7 +118,7 @@ const Signup = ({navigation}) => {
                                 onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
                                 value={values.email}
-                                className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px]"/>
+                                className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
                                  {
                                     values.email.length < 1 || Validator.validate(values.email) ? '' : <Text className="text-red-800 font-medium">Enter a valid email address</Text>
                                 }
@@ -127,15 +131,25 @@ const Signup = ({navigation}) => {
                                 }
                             ]}
                             >
-                                <TextInput placeholder='Password'
-                                 autoCapitalize='none'
-                                 textContentType='password'
-                                 secureTextEntry={true}
-                                 autoFocus={false}
-                                 onChangeText={handleChange('password')}
-                                 onBlur={handleBlur('password')}
-                                 value={values.password}
-                                className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px]"/>
+                                 <View className="pb-[8px]">
+                                    <Text style={{fontFamily: 'Sora-Medium', fontWeight: '700', color: '#404446', textAlign: 'center'}}>Password</Text>
+                                </View>
+                                <View className="relative">
+                                    <TextInput placeholder='Password'
+                                    autoCapitalize='none'
+                                    textContentType={passwordType ? 'password' : 'text'}
+                                    secureTextEntry={passwordType}
+                                    autoFocus={false}
+                                    onChangeText={handleChange('password')}
+                                    onBlur={handleBlur('password')}
+                                    value={values.password}
+                                    className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
+                                    <View className="absolute right-[14px] top-[18px]">
+                                        <TouchableOpacity onPress={() => {  setPasswordType((prevState) => !prevState ) }}>
+                                            <Image className="h-[13px] w-[13px]" source={require('../assets/app/passkeeper.png')} />
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
 
                                 {
                                     values.password.length < 1 || values.password.length < 6 ? <Text className="text-red-800 font-medium">Password must be atleast 6 characters</Text> : ''
@@ -147,9 +161,9 @@ const Signup = ({navigation}) => {
 
 
                         <View className="mb-[15px]  flex flex-row items-center justify-center w-[100%]">
-                        <Checkbox style={styles.checkbox} value={isChecked} onValueChange={setChecked} color={isChecked ? '#009244' : undefined} />
+                        <Checkbox style={styles.checkbox} value={isChecked} onValueChange={setChecked} color={isChecked ? '#008F43' : undefined} />
 
-                            <Text className="text-[#3c3b3b] text-center">I accept the <Text className="text-[#009244]"><A href='https://igovote.org/terms-of-service/'>Terms of Service</A></Text> & <Text className="text-[#009244]"><A href='https://igovote.org/privacy-policy'>Privacy Policy</A></Text></Text>
+                            <Text className="text-[#3c3b3b] text-center">I accept the <Text className="text-[#008F43]"><A href='https://igovote.org/terms-of-service/'>Terms of Service</A></Text> & <Text className="text-[#008F43]"><A href='https://igovote.org/privacy-policy'>Privacy Policy</A></Text></Text>
                         </View>
 
 
@@ -157,7 +171,7 @@ const Signup = ({navigation}) => {
 
                             <View className="w-[100%] mb-[15px] flex justify-end">
                                 <TouchableOpacity className="" style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid || isSubmitting}>
-                                    <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)}>
+                                    <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[35px] text-[#fff] shadow-2xl" style={styles.button(isValid)}>
                                         <Text className="text-white text-center text-[18px] font-bold">
                                         {
                                             isSubmitting ? 'Submitting...' : 'Register'
@@ -170,8 +184,8 @@ const Signup = ({navigation}) => {
 
                             <TouchableOpacity onPress={() => navigation.push('Login') } >
                                 <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
-                                    <Text className="text-[#000000] font-bold text-center">Already have an account ?&nbsp;</Text>
-                                    <Text className="font-bold text-[#009244] text-center">Sign In</Text>
+                                    <Text className="text-[#000000] font-bold text-center" style={{fontFamily: 'Sora-Medium'}}>Already have an account ?&nbsp;</Text>
+                                    <Text className="font-bold text-[#008F43] text-center" style={{fontFamily: 'Sora-Medium'}}>Sign In</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -199,8 +213,6 @@ const Signup = ({navigation}) => {
                 </KeyboardAvoidingView>
 
 
-
-
         </SafeAreaView>
   )
 }
@@ -221,15 +233,14 @@ const styles = StyleSheet.create({
         marginTop: 80,
     },
     inputField:{
-        backgroundColor: '#fafafa',
         marginBottom: 10,
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,
-        borderRadius: 4
+        borderRadius: 30
     }),
     buttonText:{
         fontWeight: '600',

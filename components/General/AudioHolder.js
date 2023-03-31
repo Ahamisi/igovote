@@ -155,7 +155,7 @@ const sharePlayer = async () =>{
 
           
         <TouchableOpacity onPress={() => setUpPlayer(true)} disabled={true} className="mr-[5px]">
-          <View className="h-[40px] w-[40px] bg-[#009244] rounded-full justify-center flex items-center">
+          <View className="h-[40px] w-[40px] bg-[#008F43] rounded-full justify-center flex items-center">
           <FontAwesome name={`play`} size={15} color={"white"} className="font-bold"/>
 
             {/* <FontAwesome name={`${playBackState === State.Playing ? 'pause' : 'play'}`} size={15} color={"white"} className="font-bold"/> */}
@@ -166,7 +166,7 @@ const sharePlayer = async () =>{
         </View>
 
         <TouchableOpacity onPress={() => openShareDialogAsync(audioUrl)}>
-          <View className="h-[40px] w-[40px] bg-[#009244] rounded-full justify-center flex items-center">
+          <View className="h-[40px] w-[40px] bg-[#008F43] rounded-full justify-center flex items-center">
             <FontAwesome name='download' size={15} color={"white"} className="font-bold"/>
           </View>
         </TouchableOpacity>

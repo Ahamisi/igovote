@@ -22,6 +22,8 @@ import CreateVideo from './screens/User/RecordVideoScreen/CreateVideo';
 import VoiceRecord from './screens/User/VoiceRecord.js';
 import CreateRecording from './screens/User/RecordVideoScreen/CreateRecording';
 import PresidentialResults from './screens/PresidentialResults';
+import PuLocator from './screens/User/PuLocator';
+import MainMenu from './screens/MainMenu';
 
 
 const Stack = createNativeStackNavigator();
@@ -40,7 +42,8 @@ export const SignedInStack = ({LoggedIn, currentUser}) =>{
                 {/* {
                     setUserSub(currentUser.attributes.sub)
                 } */}
-                    <Stack.Navigator initialRouteName={currentUser ? 'HomeScreen' : 'BeforeAuth' }  screenOptions={screenOptions}>
+                    <Stack.Navigator initialRouteName={currentUser ? 'MainMenu' : 'BeforeAuth' }  screenOptions={screenOptions}>
+                        <Stack.Screen name='MainMenu' component={MainMenu}/>
                         <Stack.Screen name='HomeScreen' component={HomeScreen}/>
                         <Stack.Screen name='Success' component={Success}/>
                         <Stack.Screen name='CandidateDetail' component={CandidateDetail}/>
@@ -57,6 +60,8 @@ export const SignedInStack = ({LoggedIn, currentUser}) =>{
                         <Stack.Screen name="VoiceRecord" component={VoiceRecord}/>
                         <Stack.Screen name="CreateRecording" component={CreateRecording}/>
                         <Stack.Screen name="PresidentialResults" component={PresidentialResults}/>
+                        <Stack.Screen name="PuLocator" component={PuLocator}/>
+
 
 
 

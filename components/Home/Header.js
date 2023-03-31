@@ -27,7 +27,7 @@ const getGreeting = () => {
 
 
 
-const Header = ({selected, navigation, filterType,selectedPos}) => {
+const Header = ({selected, navigation, filterType,selectedPos,forItem}) => {
     // const messages = ['Odogwu', 'Agba', 'Chairman', 'Chief']
     
   return (
@@ -35,17 +35,36 @@ const Header = ({selected, navigation, filterType,selectedPos}) => {
 
         <View className="flex relative">
            
-            <View className="flex flex-row space-between justify-between bg-[#009244] px-[20px] pb-[10px]" style={styles.containerShadow}>
-                <Text className="text-[20px] font-bold text-white" style={{fontFamily: 'Sora-Bold'}}>Home</Text>
+            <View className="flex flex-row space-between justify-between bg-[#008F43] px-[20px] pb-[10px]" style={styles.containerShadow}>
+                <View className="flex flex-row gap-[14px] items-center">
+                    {
+                        forItem !== 'menu' ? 
+                        <TouchableOpacity onPress={() => navigation.navigate('MainMenu',{userDetail: ''})}>
+                            <Image source={require('../../assets/app/back-icon.png')}/>
+                        </TouchableOpacity> : ''
+                    }
+                    <Text className="text-[20px] font-bold text-white" style={{fontFamily: 'Sora-Bold'}}>{
+                        forItem == 'menu' ? 'Home' : 'Aspirants Info'
+                    }</Text>
+
+                </View>
                 <TouchableOpacity onPress={() => navigation.push('Profile')}>
-                    <Image source={{uri: 'https://img.icons8.com/ios-filled/50/ffffff/user-male-circle.png'}} style={[
+                    <Image source={{uri: 'https://img.icons8.com/50/ffffff/user-male-circle.png'}} style={[
                         styles.icon,
                     ]} className="text-center justify-center"/>
                 </TouchableOpacity>
             </View>
             <View className="shadow-3xl shadow-[#00000040] py-[20px] px-[15px]">
-                <Text className="text-[24px] font-bold text-[#303437]" style={{fontFamily: 'Sora-Bold'}}>👋 {getGreeting()}</Text>
-                <Text className="text-[16px] text-[#404446]" style={{fontFamily: 'Sora-Light'}}>Who would you like to read about today?</Text>
+                <View className="flex flex-row items-center">
+                    <Image source={require('../../assets/app/bye.png')}/>
+                    <Text className="text-[24px] font-bold text-[#303437]" style={{fontFamily: 'Sora-Bold'}}> {getGreeting()}</Text>
+                </View>
+                    <Text className="text-[16px] text-[#404446]" style={{fontFamily: 'Sora-Light'}}>
+                    {
+                        forItem == 'menu' ? 'What would you like to do today?'  : 'Who would you like to read about today?'
+                    }
+                    
+                </Text>
 
             </View>
 
@@ -78,7 +97,7 @@ const styles= StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#009244',
+        backgroundColor: '#008F43',
 
 
     },
@@ -119,7 +138,7 @@ const styles= StyleSheet.create({
         marginVertical: 12,
         padding: 10,
         borderWidth: 1,
-        color: '#009244',
+        color: '#008F43',
         backgroundColor: '#ffffff',
         borderColor: '#fff',
         borderRadius: 10
@@ -132,7 +151,7 @@ const styles= StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 5,
         elevation: 3,
-        backgroundColor: '#009244'
+        backgroundColor: '#008F43'
 
     },
 

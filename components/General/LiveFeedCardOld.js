@@ -292,18 +292,18 @@ const flagComment = async (id, alter= false, alter_id='') => {
     //         }
     //     </View>
     //     <View className="absolute bottom-3 left-3 flex flex-row gap-1">
-    //         <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#009244] bg-[#6cdca0] ${updates?.report_type == 'flagged' ? 'border-2' : ''}`}>
+    //         <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#008F43] bg-[#6cdca0] ${updates?.report_type == 'flagged' ? 'border-2' : ''}`}>
     //             <TouchableOpacity onPress={() => {flagComment(update.id, updates?.report_type == 'flagged' ? true : false, updates?.id)}}>
-    //                 <Text className="text-[#009244] px-[8px] font-bold"> 🚩 {update.is_false}  </Text>
+    //                 <Text className="text-[#008F43] px-[8px] font-bold"> 🚩 {update.is_false}  </Text>
     //             </TouchableOpacity>
     //         </View>
-    //         <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#009244] bg-[#6cdca0] ${updates?.report_type == 'endorsed' ? 'border-2' : ''}`}>
+    //         <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#008F43] bg-[#6cdca0] ${updates?.report_type == 'endorsed' ? 'border-2' : ''}`}>
     //             <TouchableOpacity onPress={() => {endorseComment(update.id, updates?.report_type == 'endorsed'? true : false, updates?.id)}}>
-    //                 <Text className="px-[8px] font-bold text-[#009244]"> 👍 { update.endorsements }</Text>
+    //                 <Text className="px-[8px] font-bold text-[#008F43]"> 👍 { update.endorsements }</Text>
     //             </TouchableOpacity>
     //         </View>
     //     </View>
-    //     <View className="absolute bottom-3 right-3 text-white bg-[#009244] p-[3px] mb-[5px] rounded-3xl">
+    //     <View className="absolute bottom-3 right-3 text-white bg-[#008F43] p-[3px] mb-[5px] rounded-3xl">
     //         <Text className="text-white px-[8px] font-bold">Updated {moment(update.createdAt).fromNow()}
     //         </Text>
     //     </View>

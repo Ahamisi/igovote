@@ -162,6 +162,7 @@ const ElectionMonitors = ({navigation}) => {
     const onSubmit = async (pu,a,aa,aac,adc,adp,apc,apga,apm,app,bp,lp,nnpp,nrm,pdp,prp,sdp,ypp,zlp,electionType) =>{
         if(PuDelimitation){
             try{
+                console.log('jagaban')
                 setIsSubmitting(true)
                 let fname = ''
 
@@ -401,15 +402,74 @@ const ElectionMonitors = ({navigation}) => {
 
 
   return (
-        <SafeAreaView className="bg-[#009244] text-white">
+        <SafeAreaView className="bg-[#008F43] text-white">
+
+
+
+
+
+
+
+
 
 
 
             
-            <View className="bg-[#eeeeee]  h-full relative">
-                <View className="bg-[#009244]">
-                    <Text className="text-white font-bold text-[20px]  pt-[15px] pb-[15px] mx-auto  w-[90%]">Election Monitor</Text>
+            <View className="bg-[#ffffff] h-full relative">
+
+
+
+            <View className="flex flex-row space-between justify-between bg-[#008F43] px-[20px] pb-[10px]" style={styles.containerShadow}>
+                <View className="flex flex-row gap-[14px] items-center">
+                
+                        <TouchableOpacity onPress={() => navigation.navigate('MainMenu',{userDetail: ''})}>
+                            <Image source={require('../../assets/app/back-icon.png')}/>
+                        </TouchableOpacity>
+                    
+                    <Text className="text-[20px] font-bold text-white" style={{fontFamily: 'Sora-Bold'}}>
+                    Polling unit results
+                    </Text>
+
                 </View>
+                <TouchableOpacity onPress={() => navigation.push('Profile')}>
+                    <Image source={{uri: 'https://img.icons8.com/50/ffffff/user-male-circle.png'}} style={[
+                        styles.icon,
+                    ]} className="text-center justify-center h-[20px] w-[20px]"/>
+                </TouchableOpacity>
+            </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {/* <View className="flex flex-row justify-between">
+                    <View className="bg-[#008F43] flex flex-row gap-[14px] items-center pl-[20px]">
+                        <TouchableOpacity onPress={() => navigation.push('MainMenu',{userDetail: ''})}>
+                                <Image source={require('../../assets/app/back-icon.png')}/>
+                            </TouchableOpacity>
+                        <Text className="text-white font-bold text-[20px]  pt-[15px] pb-[15px] mx-auto  w-[90%]">Polling unit results</Text>
+                    </View>
+                    <View className="bg-yellow-300 flex flex-row">
+                        <TouchableOpacity onPress={() => navigation.push('Profile')}>
+                            <Image source={{uri: 'https://img.icons8.com/50/ffffff/user-male-circle.png'}} style={[
+                                styles.icon,
+                            ]} className="text-center justify-center"/>
+                                <Text>Super</Text>
+
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+                 */}
               
 
 
@@ -444,15 +504,37 @@ const ElectionMonitors = ({navigation}) => {
 
 
 
-                        <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-left mt-[5%]">
+                        <View className=" bg-white rounded-[20px] pb-[5px] items-left">
                              
-                                <View className="mx-auto mb-[30px]">
-                                    <Image className="h-[200px] w-[300px]" source={require('../../assets/app/pvc.png')} />
+                                <View className="mx-auto w-[100%] mb-[10px] bg-[#EDF2F9] p-[20px]">
+                                    <View className="mb-[16px]">
+                                        <Text className="text-[#303437] font-bold text-[20px]">Upload your polling unit result</Text>
+                                    </View>
+                                    <View className="mb-[10px]">
+                                        <Text className="text-[14px] font-bold" style={{fontFamily: 'Sora-Bold'}}>Time left to upload result:</Text>
+                                        <Text className="text-[14px]" style={{fontFamily: 'Sora-Medium'}}>Next election date - 18th March, 2023</Text>
+                                    </View>
+                                    <View className="mb-[10px] flex flex-row flex-wrap">
+                                        <Text className="text-[14px] font-bold" style={{fontFamily: 'Sora-Bold'}}>Note:</Text>
+                                        <Text className="text-[14px]" style={{fontFamily: 'Sora-Medium'}}>
+                                        You are highly advised to attach a picture of the INEC result sheet for verification
+                                        </Text>
+                                    </View>
+                                    <View className="mb-[10px] flex flex-row flex-wrap">
+                                        <Text className="text-[14px] font-bold" style={{fontFamily: 'Sora-Bold'}}>Your polling unit:</Text>
+                                        <Text className="text-[14px]" style={{fontFamily: 'Sora-Medium'}}>&nbsp;
+                                        {PuDelimitation ? PuDelimitation : values.pu}
+                                        </Text>
+                                    </View>
+                                    {/* <Image className="h-[200px] w-[300px]" source={require('../../assets/app/pvc.png')} /> */}
 
                                 </View>
 
 
-                        <View className={`w-[100%] mb-[15px] `} style={styles.inputField}
+                            <View className="px-[20px] pb-[20px]">
+
+
+                            {/* <View className={`w-[100%] mb-[15px] p-[] `} style={styles.inputField}
                         >
                             <TextInput 
                                 placeholder='Enter Polling Unit Eg. 04-01-01-010'
@@ -463,8 +545,13 @@ const ElectionMonitors = ({navigation}) => {
                                 onChangeText={handleChange('pu')}
                                 onBlur={handleBlur('pu')}
                                 value={PuDelimitation ? PuDelimitation : values.pu}
-                                className="bg-[#eeeeee]  px-[20px] py-[18px] shadow-[0px_4px_4px_4px_#00000057]"/>
-                        </View>
+                                className="bg-[#eeeeee]  px-[20px] py-[18px] "/>
+                        </View> */}
+
+
+                                    <View className="mb-[16px] flex flex-row flex-wrap">
+                                        <Text className="text-[14px] font-bold" style={{fontFamily: 'Sora-Bold'}}>Input results</Text>
+                                    </View>
 
                         <View className="w-[100%] mb-[15px]">
                                 <Dropdown
@@ -482,7 +569,7 @@ const ElectionMonitors = ({navigation}) => {
                                     placeholder={!isFocus ? 'Select Election Type' : '...'}
                                     searchPlaceholder="Search..."
                                     value={ElectionType}
-                                    className="bg-[#eeeeee]  px-[20px] py-[18px] shadow-[0px_4px_4px_4px_#00000057]"
+                                    className="border border-[#CDCFD0] rounded-[24px] px-[20px] py-[10px] "
                                     onChange={item => {
                                         handleChange('electionType')
                                         setisFocus(false);
@@ -492,28 +579,28 @@ const ElectionMonitors = ({navigation}) => {
                                 />
                             </View>
 
-                           <>
+                           <View className="items-center">
                            
                            
                            <View className="flex flex-row gap-5 mb-[15px]">
-                            <View className="flex flex-row items-left justify-left">
-                                <View>
+                            <View className="flex flex-row items-center">
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/a.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">Accord</Text>
 
                                 </View>
-                                <View className="flex flex-row  items-center justify-center">
+                                <View className="flex flex-row items-center">
                                     <Text>&nbsp;:&nbsp;</Text>
                                     <TextInput keyboardType='numeric' placeholder='0'
                                     value={values.a}
                                     onChangeText={handleChange('a')}
                                     onBlur={handleBlur('a')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/aa.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">AA</Text>
                                 </View>
@@ -523,7 +610,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.aa}
                                     onChangeText={handleChange('aa')}
                                     onBlur={handleBlur('aa')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -531,7 +618,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/aac.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">AAC</Text>
 
@@ -542,12 +629,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.aac}
                                     onChangeText={handleChange('aac')}
                                     onBlur={handleBlur('aac')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/adc.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">ADC</Text>
 
@@ -558,7 +645,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.adc}
                                     onChangeText={handleChange('adc')}
                                     onBlur={handleBlur('adc')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -568,7 +655,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/adp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">ADP</Text>
 
@@ -579,12 +666,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.adp}
                                     onChangeText={handleChange('adp')}
                                     onBlur={handleBlur('adp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/apc.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">APC</Text>
 
@@ -595,7 +682,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.apc}
                                     onChangeText={handleChange('apc')}
                                     onBlur={handleBlur('apc')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -604,7 +691,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/apga.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">APGA</Text>
                                 </View>
@@ -614,12 +701,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.apga}
                                     onChangeText={handleChange('apga')}
                                     onBlur={handleBlur('apga')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/apm.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">APM</Text>
 
@@ -630,7 +717,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.apm}
                                     onChangeText={handleChange('apm')}
                                     onBlur={handleBlur('apm')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -639,7 +726,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/app.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">APP</Text>
 
@@ -650,12 +737,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.app}
                                     onChangeText={handleChange('app')}
                                     onBlur={handleBlur('app')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/bp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">Boot Party</Text>
 
@@ -666,7 +753,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.bp}
                                     onChangeText={handleChange('bp')}
                                     onBlur={handleBlur('bp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -674,7 +761,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/lp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">Labour</Text>
 
@@ -685,12 +772,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.lp}
                                     onChangeText={handleChange('lp')}
                                     onBlur={handleBlur('lp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/nnpp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">NNPP</Text>
 
@@ -701,7 +788,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.nnpp}
                                     onChangeText={handleChange('nnpp')}
                                     onBlur={handleBlur('nnpp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -709,7 +796,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/nrm.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">NRM</Text>
 
@@ -720,12 +807,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.nrm}
                                     onChangeText={handleChange('nrm')}
                                     onBlur={handleBlur('nrm')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/pdp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">PDP</Text>
 
@@ -736,7 +823,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.pdp}
                                     onChangeText={handleChange('pdp')}
                                     onBlur={handleBlur('pdp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -745,7 +832,7 @@ const ElectionMonitors = ({navigation}) => {
 
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/prp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">PRP</Text>
 
@@ -756,12 +843,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.prp}
                                     onChangeText={handleChange('prp')}
                                     onBlur={handleBlur('prp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/sdp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">SDP</Text>
 
@@ -772,15 +859,16 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.sdp}
                                     onChangeText={handleChange('sdp')}
                                     onBlur={handleBlur('sdp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                         </View>
 
+                        {/* shadow-[0px_4px_4px_4px_#00000057] */}
                         <View className="flex flex-row gap-5 mb-[15px]">
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/ypp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">YPP</Text>
 
@@ -791,12 +879,12 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.ypp}
                                     onChangeText={handleChange('ypp')}
                                     onBlur={handleBlur('ypp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff]  border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
                             <View className="flex flex-row items-left justify-left">
-                                <View>
+                                <View className="items-center mt-[15px]">
                                     <Image source={require('../../assets/party/zlp.png')} className='h-[60px] w-[60px]'/>
                                     <Text className="pt-[5px] text-center">ZLP</Text>
 
@@ -807,7 +895,7 @@ const ElectionMonitors = ({navigation}) => {
                                     value={values.zlp}
                                     onChangeText={handleChange('zlp')}
                                     onBlur={handleBlur('zlp')}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px]  shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#fff] border-[#CDCFD0] border px-[20px] py-[18px] rounded-[24px] "/>
 
                                 </View>
                             </View>
@@ -819,7 +907,7 @@ const ElectionMonitors = ({navigation}) => {
                            
                            
                            
-                           </>
+                           </View>
 
                         <View className="w-[100%] mb-[15px]" style={styles.inputField}>
                             <Text className="text-[18px] font-semi-bold mb-[10px]">Have a copy of the result ?</Text>
@@ -828,10 +916,10 @@ const ElectionMonitors = ({navigation}) => {
 
                                     !uploadedImage ? 
                                     <TouchableOpacity onPress={pickImage}>
-                                    <View>
-                                        <View className="w-[100%] mx-auto h-[80px] bg-[#009244] items-center justify-center flex">
-                                            <Icon name="upload" size={30} color="#fff" />
-                                            <Text className="text-white">Click to Upload</Text>
+                                    <View className="items-center">
+                                        <View className="w-[100%] mx-auto h-[80px] bg-[#ffffff] items-center justify-center flex shadow-2xl rounded-lg">
+                                            <Icon name="upload" size={30} color="#000" />
+                                            <Text className="text-[#008F43] text-[12px]" style={{fontFamily: 'Sora-Medium'}}>Click to Upload</Text>
                                         </View>
                                     </View>
                                 </TouchableOpacity> 
@@ -848,17 +936,34 @@ const ElectionMonitors = ({navigation}) => {
 
 
                         <View className="w-[100%] mb-[20px] pb-[20px] flex justify-end">
-                            <Pressable style={isSubmitting == 'Uploading' ? styles.button(false) : styles.button(isValid)} onPress={handleSubmit} disabled={(isSubmitting == 'Uploading' ? true : (PuDelimitation.length == 0 ? true : !isValid ))} >
-                                <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
-                                    <Text className="text-white text-center text-[18px] font-bold">
+                        {/* disabled={(isSubmitting ? true : (PuDelimitation?.length ? true : isValid ))} */}
+                            <TouchableOpacity style={isSubmitting ? styles.button(false) : styles.button(isValid)} onPress={handleSubmit} disabled={!isValid || isSubmitting || !PuDelimitation?.length || !ElectionType}>
+                                <View className="px-[32px] py-[15px] rounded-[40px] text-[#fff] shadow-2xl"  >
+                                    <Text className="text-white text-center text-[12px] font-bold" style={{fontFamily: 'Sora-Medium'}}>
                                     {
-                                        isSubmitting ? 'Uploading...' : 'Submit'
+                                        isSubmitting ? 'Uploading...' : 'Submit Polling Unit Result'
                                     }
                                     </Text>
                                 </View>
-                            </Pressable>
+                            </TouchableOpacity>
                         </View>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </View>
 
                         
 
@@ -904,18 +1009,18 @@ const styles = StyleSheet.create({
     },
     inputField:{
         marginBottom: 10,
-        boxShadow: '2px 0px 1px #0000008a',
-        shadowColor: '#0000008a',
-        shadowOffset: {width: -1, height: 3},
-        shadowOpacity: 0.2,
+        // boxShadow: '2px 0px 1px #0000008a',
+        // shadowColor: '#0000008a',
+        // shadowOffset: {width: -1, height: 3},
+        // shadowOpacity: 0.2,
         shadowRadius: 3,
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,
-        borderRadius: 4
+        borderRadius: 30
     }),
     buttonText:{
         fontWeight: 600,
@@ -930,14 +1035,16 @@ const styles = StyleSheet.create({
     },
     dropdown: {
         height: 50,
-        borderColor: 'gray',
+        borderColor: '#CDCFD0',
         borderWidth: 0.5,
-        borderRadius: 8,
+        borderRadius: 24,
         paddingHorizontal: 8,
         marginBottom: 10,
       },
       icon: {
-        marginRight: 5,
+        width: 30,
+        height: 30,
+        resizeMode: 'contain'
       },
       label: {
         position: 'absolute',

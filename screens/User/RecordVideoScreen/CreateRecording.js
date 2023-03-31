@@ -98,13 +98,13 @@ const CreateRecording = () => {
     } catch (e) {
       console.error(e);
     }finally{
-        navigation.navigate("LiveUpdates", { screen: "Home", hideModal: true });
+        navigation.navigate("LiveUpdates", { screen: "HomeScreen", hideModal: true });
     }
   };
 
   return (
     <SafeAreaView>
-        <ProgressDialog visible={true} label="Uploading" loaderColor="#009244"/>
+        <ProgressDialog visible={true} label="Uploading" loaderColor="#008F43"/>
     </SafeAreaView>
   );
 };

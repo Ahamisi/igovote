@@ -118,8 +118,7 @@ const LiveUpdates = ({navigation, route}) => {
                     c.flagged.lt(3),
                   ]), {
                     sort: s => s.flagged('ASCENDING').endorsed('DESCENDING').createdAt("DESCENDING"),
-                    limit: 10
-    
+                    limit: 30
                   });
                   setFeeds(currUpdates)
             } catch (e) {
@@ -182,15 +181,50 @@ const LiveUpdates = ({navigation, route}) => {
   return (
     <BottomSheetModalProvider>
 
-        <SafeAreaView className="bg-[#009244]">
-            <View className="bg-[#eeeeee] h-full relative" >
-                <View className="bg-[#009244]">
-                            <Text className="text-white font-bold text-[20px] pt-[15px]  pb-[30px] mx-auto  w-[95%]">Polling Unit Updates</Text>
+        <SafeAreaView className="bg-[#008F43]">
+            <View className="bg-[#ffffff] h-full relative" >
+
+            <View className="flex flex-row space-between justify-between bg-[#008F43] px-[20px] pb-[20px]" style={styles.containerShadow}>
+                <View className="flex flex-row gap-[14px] items-center">
+                
+                        <TouchableOpacity onPress={() => navigation.navigate('MainMenu',{userDetail: ''})}>
+                            <Image source={require('../../assets/app/back-icon.png')}/>
+                        </TouchableOpacity>
+                    
+                    <Text className="text-[20px] font-bold text-white" style={{fontFamily: 'Sora-Bold'}}>
+                    Polling Unit Updates
+                    </Text>
+
                 </View>
+                <TouchableOpacity onPress={() => navigation.push('Profile')}>
+                    <Image source={{uri: 'https://img.icons8.com/50/ffffff/user-male-circle.png'}} style={[
+                        styles.icon,
+                    ]} className="text-center justify-center h-[20px] w-[20px]"/>
+                </TouchableOpacity>
+            </View>
+
+
+
+
+
+
+
+
+
+
+
+
+             
+
+
+
+
+
+
                 <View className="flex flex-row items-center justify-between bg-white py-[8px] shadow-lg gap-3 px-[15px]">
                     <View className=" text-left">
                         
-                        <Text className="font-bold">
+                        <Text className="font-bold" style={{fontFamily: 'Sora-Bold'}}>
                             Polling Unit : {PuDelimitation}
                         </Text>
                     </View>
@@ -202,17 +236,17 @@ const LiveUpdates = ({navigation, route}) => {
                                 <>
                                 
                                     <TouchableOpacity onPress={onOpen}>
-                                        <View className="bg-[#009244] h-[30px] w-[30px] rounded-full shadow-2xl flex items-center justify-center">
+                                        <View className="bg-[#008F43] h-[30px] w-[30px] rounded-full shadow-2xl flex items-center justify-center">
                                             <Icon name="pen" size={15} color="#fff" />
                                         </View>
                                     </TouchableOpacity>
                                     <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
-                                        <View className="bg-[#009244] h-[30px] w-[30px] rounded-full shadow-2xl flex items-center justify-center">
+                                        <View className="bg-[#008F43] h-[30px] w-[30px] rounded-full shadow-2xl flex items-center justify-center">
                                             <Icon name="camera" size={15} color="#fff" />
                                         </View>
                                     </TouchableOpacity>
                                     {/* <TouchableOpacity onPress={handlePresentModal}>
-                                        <View className="bg-[#009244] h-[30px] w-[30px] rounded-full shadow-2xl flex items-center justify-center">
+                                        <View className="bg-[#008F43] h-[30px] w-[30px] rounded-full shadow-2xl flex items-center justify-center">
                                             <Icon name="microphone" size={15} color="#fff" />
                                         </View>
                                     </TouchableOpacity> */}
@@ -229,16 +263,16 @@ const LiveUpdates = ({navigation, route}) => {
                 <TouchableWithoutFeedback>
                 <>
                 
-                <Text className="text-center mt-3">No Updates? pull to refresh</Text>
+                <Text className="text-center mt-3" style={{fontFamily: 'Sora-Medium'}}>No Updates? pull to refresh</Text>
                 <View className="flex flex-row text-center justify-center my-[10px]">
                     <TouchableOpacity onPress={() => doToggle('updates')}>
-                        <View className={`px-[12px] py-[7px] border-[#009244] border-2 ${toggleAction == 'updates' ? 'bg-[#009244]' : 'bg-white'}`}>
-                            <Text className={`${toggleAction == 'updates' ? 'text-white' : 'text-[#009244]'} font-bold`}>Updates</Text>
+                        <View className={`px-[12px] py-[7px] border-[#008F43] border-2 ${toggleAction == 'updates' ? 'bg-[#008F43]' : 'bg-white'}`}>
+                            <Text className={`${toggleAction == 'updates' ? 'text-white' : 'text-[#008F43]'} font-bold`} style={{fontFamily: 'Sora-Bold'}}>Updates</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => doToggle('feed')}>
-                        <View className={`px-[12px] py-[7px] border-[#009244] border-2 ${toggleAction == 'feed' ? 'bg-[#009244]' : 'bg-white'}`}>
-                            <Text className={`${toggleAction == 'feed' ? 'text-white' : 'text-[#009244]'} font-bold`}>Feeds</Text>
+                        <View className={`px-[12px] py-[7px] border-[#008F43] border-2 ${toggleAction == 'feed' ? 'bg-[#008F43]' : 'bg-white'}`}>
+                            <Text className={`${toggleAction == 'feed' ? 'text-white' : 'text-[#008F43]'} font-bold`} style={{fontFamily: 'Sora-Bold'}}>Feeds</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -293,10 +327,10 @@ const LiveUpdates = ({navigation, route}) => {
                 ref={bottomSheetModalRef}
                 index={1}
                 snapPoints={snapPoints}
-                backgroundStyle={{ borderRadius: 50 }}
+                backgroundStyle={{ borderRadius: 50, }}
                 onDismiss={() => setIsOpen(false)}
                 >
-                <View style={styles.contentContainer}>
+                <View style={styles.contentContainer} className="shadow-3xl bg-white">
                     <View className="flex flex-row relative h-[50px] w-full justify-center items-center ">
                         <Text className="text-black font-bold text-[12px]">Hit Mic to start recording</Text>
                         <TouchableOpacity onPress={handleClosePress} className="h-[30px] w-[30px] bg-red-800 rounded-full justify-center flex items-center absolute right-0">
@@ -329,6 +363,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 15,
+      },
+      icon :{
+        width: 30,
+        height: 30,
+        resizeMode: 'contain'
       },
       row: {
         width: "100%",

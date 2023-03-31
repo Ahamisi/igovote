@@ -102,7 +102,7 @@ const CreateVideo = () => {
     );
     
 
-      navigation.navigate("LiveUpdates", { screen: "Home" });
+      navigation.navigate("LiveUpdates", { screen: "HomeScreen" });
     } catch (e) {
       console.error(e);
     }
@@ -110,7 +110,7 @@ const CreateVideo = () => {
 
   return (
     <SafeAreaView>
-        <ProgressDialog visible={true} label="Uploading" loaderColor="#009244"/>
+        <ProgressDialog visible={true} label="Uploading" loaderColor="#008F43"/>
     </SafeAreaView>
   );
 };

@@ -23,7 +23,7 @@ const Parties = ({name, logo, selected,navigation}) => {
 
 
     <View className=" py-[10px] rounded-t-[15px] shadow-2xl shadow-[#0000001a] mt-[-33px] pt-[10px]">
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    <View className="flex flex-row gap-[4px] items-center mt-[10px]">
         {
             // PARTIES.map((party, index) => (
                 <>
@@ -33,9 +33,9 @@ const Parties = ({name, logo, selected,navigation}) => {
                 
                 {/* a party */}
                 <Pressable key={1+'press'} onPress={()=> changeParty('A')}>
-                        <View key={1} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'A' ? 'rounded-[40px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/a.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                        <View key={1} style={{alignItems:'center'}} className="ml-[20px]">
+                            <View className={`p-[2px] items-center ${selected == 'A' ? 'rounded-[40px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/a.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center" >
                                Accord
@@ -46,8 +46,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                 {/* aa party */}
                 <Pressable key={2+'press'} onPress={()=> changeParty('AA')}>
                         <View key={2} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'AA' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/aa.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'AA' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/aa.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                AA
@@ -60,8 +60,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                 {/* aac party */}
                 <Pressable key={3+'press'} onPress={()=> changeParty('AAC')}>
                         <View key={3} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'AAC' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/aac.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'AAC' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/aac.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                AAC
@@ -75,8 +75,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                 {/* adc party */}
                 <Pressable key={4+'press'} onPress={()=> changeParty('ADC')}>
                         <View key={4} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'ADC' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/adc.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'ADC' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/adc.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                ADC
@@ -91,8 +91,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                 {/* adp party */}
                 <Pressable key={5+'press'} onPress={()=> changeParty('ADP')}>
                         <View key={5} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'ADP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/adp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'ADP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/adp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                ADP
@@ -107,8 +107,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                 {/* apc party */}
                 <Pressable key={6+'press'} onPress={()=> changeParty('APC')}>
                         <View key={6} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'APC' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/apc.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'APC' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/apc.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                APC
@@ -124,8 +124,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                  {/* apga party */}
                  <Pressable key={7+'press'} onPress={()=> changeParty('APGA')}>
                         <View key={7} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'APGA' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/apga.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'APGA' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/apga.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                APGA
@@ -138,8 +138,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* apm party */}
                   <Pressable key={8+'press'} onPress={()=> changeParty('APM')}>
                         <View key={8} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'APM' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/apm.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'APM' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/apm.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                APM
@@ -151,8 +151,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* app party */}
                   <Pressable key={9+'press'} onPress={()=> changeParty('APP')}>
                         <View key={9} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'APP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/app.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'APP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/app.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                APP
@@ -163,8 +163,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* bp party */}
                   <Pressable key={17+'press'} onPress={()=> changeParty('BP')}>
                         <View key={17} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'BP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/bp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'BP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/bp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                Boot Party
@@ -179,8 +179,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* lp party */}
                   <Pressable key={18+'press'} onPress={()=> changeParty('LP')}>
                         <View key={18} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'LP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/lp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'LP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/lp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                Labour
@@ -193,8 +193,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* apga party */}
                   <Pressable key={10+'press'} onPress={()=> changeParty('NNPP')}>
                         <View key={10} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'NNPP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/nnpp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'NNPP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/nnpp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                NNPP
@@ -209,8 +209,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* nrm party */}
                   <Pressable key={11+'press'} onPress={()=> changeParty('NRM')}>
                         <View key={11} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'NRM' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/nrm.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'NRM' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/nrm.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                NRM
@@ -224,8 +224,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* pdp party */}
                   <Pressable key={12+'press'} onPress={()=> changeParty('PDP')}>
                         <View key={12} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'PDP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/pdp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px]  shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'PDP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/pdp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px]  shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                PDP
@@ -238,8 +238,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* prp party */}
                   <Pressable key={13+'press'} onPress={()=> changeParty('PRP')}>
                         <View key={13} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'PRP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/prp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'PRP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/prp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                PRP
@@ -251,8 +251,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* sdp party */}
                   <Pressable key={14+'press'} onPress={()=> changeParty('SDP')}>
                         <View key={14} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'SDP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/sdp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'SDP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/sdp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                SDP
@@ -265,8 +265,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* ypp party */}
                   <Pressable key={15+'press'} onPress={()=> changeParty('YPP')}>
                         <View key={15} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'YPP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/ypp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'YPP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/ypp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                YPP
@@ -279,8 +279,8 @@ const Parties = ({name, logo, selected,navigation}) => {
                   {/* apga party */}
                   <Pressable key={16+'press'} onPress={()=> changeParty('ZLP')}>
                         <View key={16} style={{alignItems:'center'}}>
-                            <View className={`p-[2px] items-center ${selected == 'ZLP' ? 'rounded-[9999px] border-[3px] border-[#009244]' : ''}`}>
-                                <Image source={require('../../assets/party/zlp.png')} className={`p-[5px] w-[45px] h-[45px] rounded-[9999px] shadow-2xl`}/>
+                            <View className={`p-[2px] items-center ${selected == 'ZLP' ? 'rounded-[9999px] border-[3px] border-[#008F43]' : ''}`}>
+                                <Image source={require('../../assets/party/zlp.png')} className={`p-[5px] w-[35px] h-[35px] rounded-[9999px] shadow-2xl`}/>
                             </View>
                             <Text style={{fontFamily: 'Sora-Light'}} className="pt-[5px] text-[8px] text-[#000000] text-center">
                                ZLP
@@ -303,7 +303,7 @@ const Parties = ({name, logo, selected,navigation}) => {
                 
             // ))
         }
-    </ScrollView>
+    </View>
 </View>
 
   )
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginLeft: 6,
         borderWidth: 3,
-        borderColor: '#009244',
+        borderColor: '#008F43',
         boxShadow: '17px 13px 8px #000000'
          
 

@@ -20,7 +20,7 @@ Auth.currentAuthenticatedUser({
   })
     .then((user) => {
         userHandler(user)
-        user ?  navigation.push('HomeScreen',{userDetail: user})
+        user ?  navigation.push('MainMenu',{userDetail: user})
         : ''
 
     })
@@ -34,26 +34,31 @@ Auth.currentAuthenticatedUser({
 
 , [])
   return (
-    <SafeAreaView className="bg-[#009244]">
-            <View className="bg-[#eeeeee] pt-[10%] h-full relative">
+    <SafeAreaView className="bg-[#008F43]">
+        {/* <View className="bg-red-600 p-[10]">
+            <Text className="text-white text-left ">
+                Disclaimer, we're in no way affiliated with any government entity
+            </Text>
+        </View> */}
+            <View className="bg-[#ffffff] pt-[10%] h-full relative">
                 <View className=" bg-white rounded-[20px] mx-auto h-[40%] w-[80%] items-center">
                     <View className="items-center justify-center my-auto">
-                        <Image className="h-[310px] w-[310px]" source={require('../assets/app/i-go-vote-circle.png')} />
+                        <Image className="h-[200px] w-[200px]" source={require('../assets/app/igv-power.png')} />
                     </View>
                 </View>
-                <View className="my-[30px]">
-                    <Text className="text-[30px] text-[#000] font-extrabold text-center">Welcome to IGOVOTE</Text>
-                    <Text className="text-center">enriching the voting experience !!!</Text>
+                <View className="mb-[30px]">
+                    <Text className="text-[30px] text-[#000] font-extrabold text-center" style={{fontFamily: 'Sora-Bold'}}>Welcome to IGOVOTE</Text>
+                    <Text className="text-center" style={{fontFamily: 'Sora-Light'}}>enriching the voting experience !!!</Text>
                 </View>
-                <View className=" bg-[#eeeeee]">
+                <View className="">
                     <TouchableOpacity className="w-[70%] mx-auto my-[10px]" onPress={() => navigation.push('Login') }>
-                        <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl shadow-black-300">
-                            <Text className="text-white text-center text-[18px] font-bold">Login</Text>
+                        <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl shadow-black-300">
+                            <Text className="text-white text-center text-[18px] font-bold" style={{fontFamily: 'Sora-Light'}}>Login</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity className="w-[70%] mx-auto my-[10px]" onPress={() => navigation.push('Signup') }>
-                        <View className="bg-white border-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
-                            <Text className="text-[#009244] text-center text-[18px] font-bold">Create Account</Text>
+                        <View className="bg-white border-[#008F43] px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl">
+                            <Text className="text-[#008F43] text-center text-[18px] font-bold" style={{fontFamily: 'Sora-Light'}}>Create Account</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -61,10 +66,10 @@ Auth.currentAuthenticatedUser({
 
 
 
-            <View className=" bg-[#eeeeee] flex-end absolute bottom-2 w-[100%] mx-auto items-center">
+            <View className="flex-end absolute bottom-2 w-[100%] mx-auto items-center">
                     <View className="mb-[15px] mx-auto flex flex-row items-center justify-center w-[80%]">
-                        <Text className="text-[#3c3b3b] text-center">By tapping create account and using Igovote you agree to our <Text className="text-[#009244]"><A href='https://igovote.org/terms-of-service/'>Terms of Service</A></Text> and <Text className="text-[#009244]"><A href='https://igovote.org/privacy-policy'>Privacy Policy</A></Text></Text>
-                        {/* <Text className="font-bold text-[#009244] text-center">Sign Up</Text> */}
+                        <Text className="text-[#3c3b3b] text-center" style={{fontFamily: 'Sora-light'}}>By tapping create account and using Igovote you agree to our <Text className="text-[#008F43]"><A href='https://igovote.org/terms-of-service/'>Terms of Service</A></Text> and <Text className="text-[#008F43]"><A href='https://igovote.org/privacy-policy'>Privacy Policy</A></Text></Text>
+                        {/* <Text className="font-bold text-[#008F43] text-center">Sign Up</Text> */}
                     </View>
             </View>
 

@@ -99,7 +99,7 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 0,

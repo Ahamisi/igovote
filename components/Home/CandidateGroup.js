@@ -143,7 +143,7 @@ if(filterBy == 'position'){
     
         {
         filterBy && 
-        <View className="my-[2px] bg-[#ffffff] rounded-lg shadow-2xl shadow-[#0000001a] py-[20px] px-[26px] mb-[20px]">
+        <View className="my-[2px] bg-[#ffffff] rounded-lg  py-[20px] px-[26px] mb-[20px]">
       
         {/* <View style={styles.container}>
             <View>
@@ -152,10 +152,10 @@ if(filterBy == 'position'){
             <View style={{}}>
               {
                 positionSelected == 'presidential' ?
-                // <TouchableOpacity onPress={() => navigation.navigate('PresidentialResults')} className="bg-[#009244] px-[14px] py-[10px] rounded-lg">
+                // <TouchableOpacity onPress={() => navigation.navigate('PresidentialResults')} className="bg-[#008F43] px-[14px] py-[10px] rounded-lg">
                 //     <Text className="font-bold text-white">See Results</Text>
                 // </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('PresidentialResults')} className="bg-[#009244] px-[14px] py-[10px] rounded-lg">
+                <TouchableOpacity onPress={() => navigation.navigate('PresidentialResults')} className="bg-[#008F43] px-[14px] py-[10px] rounded-lg">
                   <Text className="text-white font-bold"><A href="https://igovote.retool.com/embedded/public/3cee2bd8-f901-4c61-a10f-7ad55fad443c">See Results</A></Text>
                 </TouchableOpacity>
                 
@@ -163,7 +163,7 @@ if(filterBy == 'position'){
             
                 :
                 <TouchableOpacity>
-                  <Icon name="angle-right" size={20} color="#009244" />
+                  <Icon name="angle-right" size={20} color="#008F43" />
                 </TouchableOpacity>
               }
               
@@ -178,10 +178,17 @@ if(filterBy == 'position'){
         filterBy == 'position' ?
 
         <View  className="flex flex-wrap flex-col mb-[900px]">
+          
           <ScrollView showsVerticalScrollIndicator={false} style={{ flexDirection: 'column'}} >
+          <View style={styles.container}>
+            <View>
+              <Text style={styles.groupHeading} className="text-[#008F43] capitalize">{positionSelected} Aspirants</Text>
+            </View>
+            
+           </View>
             {
               DataSource ?
-              DataSource.length < 1 ? <Text className="text-blue">No Data Available !!!</Text>
+              DataSource.length < 1 ? <Text className="text-blue">Loading...</Text>
               // sortType == 'name'
               // :   DataSource.sort((a, b) => (b?.candidate_name?.S) < (a?.candidate_name?.S) ).map((candidate, index) => {
 
@@ -196,6 +203,7 @@ if(filterBy == 'position'){
                       }
 
                     }else{
+
                       return (<CandidateByPosition candidate={candidate} key={`${index}`} type="president"  extraData={candidate?.position?.S == 'Presidential' ? d[`${candidate?.id?.S}`] : ''} navigation={navigation} filterBy={filterBy}/>)
 
                     }
@@ -239,7 +247,14 @@ if(filterBy == 'position'){
     
         
         :
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <>
+            <View style={styles.container}>
+            <View>
+              <Text style={styles.groupHeading} className="text-[#008F43]">Presidential Aspirants</Text>
+            </View>
+            
+        </View>
+      <ScrollView vertical showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
         {
           DataSource ?
               DataSource.length < 1 ? <Text className="text-blue">No Data Available !!!</Text>
@@ -254,6 +269,8 @@ if(filterBy == 'position'){
         
         
     </ScrollView>
+        
+        </>
 
       }    
 
@@ -276,7 +293,7 @@ const styles = StyleSheet.create({
     groupHeading: {
         textTransform: 'uppercase',
         fontWeight: '700',
-        color: '#000',
+        color: '#008F43',
     },
     container: {
       justifyContent: 'space-between',

@@ -183,25 +183,11 @@ const flagComment = async (id, alter= false, alter_id='') => {
 
 
   return (
-        <>
         
-        
-        {
-
-            <View className="bg-[#7cf6b6] px-[10px] py-[20px] relative rounded-2xl my-[7px] mx-[15px] shadow-2xl">
-            <View className="absolute top-3 left-3 text-white bg-red-700 p-[3px] mb-[5px] rounded-3xl">
-                <Text className="text-white px-[8px] font-bold">
-                    {
-                        update.type == 'video' ?
-                            <FontAwesome name="video-camera" size={15} color={"white"} className="font-bold"/>
-                        :
-                            <FontAwesome name='volume-up' size={15} color={"white"} className="font-bold"/>
-                    }
-
-                </Text>
-            </View>
-            <View className="py-[25px]">
-                {
+        <View className="flex flex-col m-[20px] rounded-[24px]">
+        <View className="bg-[#F2F4F5] p-[10px] rounded-t-[24px]">
+            <View className="py-[5px]">
+            {
                     update.type == 'video' &&
                         <VideoHolder update={update}/>
 
@@ -215,29 +201,86 @@ const flagComment = async (id, alter= false, alter_id='') => {
                 }
 
             </View>
-            <View className="absolute bottom-3 left-3 flex flex-row gap-1">
-                <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#009244] bg-[#6cdca0] ${updates?.report_type == 'flagged' ? 'border-2' : ''}`}>
-                    <TouchableOpacity onPress={() => {flagComment(update.id, updates?.report_type == 'flagged' ? true : false, updates?.id)}}>
-                        <Text className="text-[#009244] px-[8px] font-bold"> 🚩 {update.flagged}  </Text>
+        </View>
+        <View className="bg-white flex flex-row justify-between px-[20px] py-[15px] rounded-b-[24px] shadow-lg">
+            <View className="flex flex-row gap-[8px]">
+                <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#008F43] bg-[#6cdca0] ${updates?.report_type == 'flagged' ? 'border-2' : ''}`}>
+                <TouchableOpacity onPress={() => {flagComment(update.id, updates?.report_type == 'flagged' ? true : false, updates?.id)}}>
+                        <Text className="text-[#008F43] px-[8px] font-bold"> 🚩 {update.flagged}  </Text>
                     </TouchableOpacity>
                 </View>
-                <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#009244] bg-[#6cdca0] ${updates?.report_type == 'endorsed' ? 'border-2' : ''}`}>
-                    <TouchableOpacity onPress={() => {endorseComment(update.id, updates?.report_type == 'endorsed'? true : false, updates?.id)}}>
-                        <Text className="px-[8px] font-bold text-[#009244]"> 👍 { update.endorsed }</Text>
+                <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#008F43] bg-[#6cdca0] ${updates?.report_type == 'endorsed' ? 'border-2' : ''}`}>
+                <TouchableOpacity onPress={() => {endorseComment(update.id, updates?.report_type == 'endorsed'? true : false, updates?.id)}}>
+                        <Text className="px-[8px] font-bold text-[#008F43]"> 👍 { update.endorsed }</Text>
                     </TouchableOpacity>
                 </View>
+
             </View>
-            <View className="absolute bottom-3 right-3 text-white bg-[#009244] p-[3px] mb-[5px] rounded-3xl">
-                <Text className="text-white px-[8px] font-bold"> {moment(update.createdAt).fromNow()}
-                </Text>
+            <View className="flex flex-row items-center gap-[8px]">
+                <View className="bg-[#D3180C] h-[20px] w-[37px] items-center justify-center rounded-[16px]">
+                    <Text className="text-[8px] text-white">Live</Text>
+                </View>
+                <Text className="text-[8px] ">{moment(update.createdAt).fromNow()}</Text>
             </View>
         </View>
-        }
+    </View>    
+
+
+
+// {
+
+//     <View className="bg-[#7cf6b6] px-[10px] py-[20px] relative rounded-2xl my-[7px] mx-[15px] shadow-2xl">
+//     <View className="absolute top-3 left-3 text-white bg-red-700 p-[3px] mb-[5px] rounded-3xl">
+//         <Text className="text-white px-[8px] font-bold">
+//             {
+//                 update.type == 'video' ?
+//                     <FontAwesome name="video-camera" size={15} color={"white"} className="font-bold"/>
+//                 :
+//                     <FontAwesome name='volume-up' size={15} color={"white"} className="font-bold"/>
+//             }
+
+//         </Text>
+//     </View>
+//     <View className="py-[25px]">
+//         {
+//             update.type == 'video' &&
+//                 <VideoHolder update={update}/>
+
+//         }
+
+//         {
+//             update.type == 'audio' &&
+//                 <View>
+//                     <AudioHolder update={update}/>
+//                 </View>
+//         }
+
+//     </View>
+//     <View className="absolute bottom-3 left-3 flex flex-row gap-1">
+//         <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#008F43] bg-[#6cdca0] ${updates?.report_type == 'flagged' ? 'border-2' : ''}`}>
+//             <TouchableOpacity onPress={() => {flagComment(update.id, updates?.report_type == 'flagged' ? true : false, updates?.id)}}>
+//                 <Text className="text-[#008F43] px-[8px] font-bold"> 🚩 {update.flagged}  </Text>
+//             </TouchableOpacity>
+//         </View>
+//         <View className={`text-white p-[2px] mb-[5px] rounded-3xl border-[#008F43] bg-[#6cdca0] ${updates?.report_type == 'endorsed' ? 'border-2' : ''}`}>
+//             <TouchableOpacity onPress={() => {endorseComment(update.id, updates?.report_type == 'endorsed'? true : false, updates?.id)}}>
+//                 <Text className="px-[8px] font-bold text-[#008F43]"> 👍 { update.endorsed }</Text>
+//             </TouchableOpacity>
+//         </View>
+//     </View>
+//     <View className="absolute bottom-3 right-3 text-white bg-[#008F43] p-[3px] mb-[5px] rounded-3xl">
+//         <Text className="text-white px-[8px] font-bold"> {moment(update.createdAt).fromNow()}
+//         </Text>
+//     </View>
+// </View>
+// }
+
         
         
         
         
-        </>
+        
+        
   )
 }
 

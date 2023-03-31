@@ -333,34 +333,47 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
 
   return (
-        <SafeAreaView classNameclassName="bg-[#009244]">
+        <SafeAreaView classNameclassName="bg-[#008F43]">
 
-            <View className="bg-[#009244] pt-[20%] h-full pb-[100%]">
+            <View className="bg-[#ffffff] pt-[10%] h-full pb-[10%]">
 
-            {canGoBack ?
-                     <GoBack navigation={navigation} goTo="Profile" mt="20px"/> 
-                :
-                <View className="absolute top-5 left-3">
-                    <TouchableOpacity  onPress={Logout}>
-                        <View className={`h-[40px] w-[40px] bg-white  rounded-full flex items-center justify-center mx-[20px] my-[10px`}>
-                            <Image source={require('../../assets/app/arrow-left.png')}/>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+            {/* <View className=""> */}
+              {/* {canGoBack ?
+                      <GoBack navigation={navigation} goTo="Profile"/> 
+                  :
+                  <View className="absolute top-5 bg-[#fff] rounded-full">
+                      <TouchableOpacity  onPress={Logout}>
+                          <View className={`h-[40px] w-[40px] bg-[#008F43]  rounded-full flex items-center justify-center mx-[20px] my-[10px`}>
+                              <Image source={require('../../assets/app/back-icon.png')}/>
+                          </View>
+                      </TouchableOpacity>
+                  </View>
 
-              }
+                } */}
+                  <GoBack navigation={navigation} goTo="MainMenu"/> 
+
                 
+            {/* </View> */}
                 
 
              
                 
-                <View className="mx-auto my-[20px]">
+                <View className=" bg-[#EDF2F8] p-[12px] mt-6">
+                  <View className="mx-auto text-center">
+                    {/* <Text className="text-[18px] text-center font-bold text-white">Hello there 😁, Please {IsEditing ? 'Edit' : 'Complete' } your profile</Text> */}
+                    <Image className="h-[200px] w-[300px]" source={require('../../assets/app/pvc.png')} />
+                    <Text className="text-[12px] text-center text-[#008F43]">1. Check your PVC for polling unit code</Text>
+                    <Text className="text-[12px] text-center text-[#008F43]">2. State, LGA and Ward must be where you registered to vote</Text>
+                  </View>
+                  
 
-                    <Text className="text-[18px] text-center font-bold text-white">Hello there 😁, Please {IsEditing ? 'Edit' : 'Complete' } your profile</Text>
+                    
+
                 </View>
 
 
-                <Formik 
+               <View>
+               <Formik 
                     initialValues={{pu: ''}}
                     onSubmit={(values) => {
                       console.log('sokok')
@@ -374,22 +387,21 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
                     {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
 
 
-                        <View className=" bg-white rounded-[20px] mx-auto my-auto  w-[90%] px-[20px] py-[40px] items-center">
+                        <View className=" bg-white rounded-[20px] mx-auto my-auto  w-[90%] px-[8px] py-[10px] items-center">
                             
-                            <View className="mx-auto mb-[30px]">
-                                    <Image className="h-[200px] w-[300px]" source={require('../../assets/app/pvc.png')} />
+                            {/* <View className="mx-auto mb-[30px]">
                                     <Text className="text-red-800 font-bold pt-[4px]">1. For polling unit Code? see sample above on your pvc</Text>
                                     <Text className="text-red-800 font-bold pt-[4px]">2. STATE, LGA and WARD must be where you registered to vote</Text>
 
 
 
-                            </View>
+                            </View> */}
 
 
 
-                            <View className="w-[100%] mb-[15px]">
+                            <View className="w-[100%] mb-[10px]">
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     iconStyle={styles.iconStyle}
@@ -409,9 +421,9 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
                             </View>
 
 
-                            <View className="w-[100%] mb-[15px]">
+                            <View className="w-[100%] mb-[10px]">
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     inputSearchStyle={styles.inputSearchStyle}
@@ -437,9 +449,9 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
 
 
-                            <View className="w-[100%] mb-[15px]">
+                            <View className="w-[100%] mb-[10px]">
                             <Dropdown
-                                style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                 placeholderStyle={styles.placeholderStyle}
                                 selectedTextStyle={styles.selectedTextStyle}
                                 inputSearchStyle={styles.inputSearchStyle}
@@ -466,9 +478,9 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
 
 
-                            <View className="w-[100%] mb-[15px]">
+                            <View className="w-[100%] mb-[10px]">
                                 <Dropdown
-                                    style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                                    style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                     placeholderStyle={styles.placeholderStyle}
                                     selectedTextStyle={styles.selectedTextStyle}
                                     inputSearchStyle={styles.inputSearchStyle}
@@ -494,9 +506,9 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
 
 
-                            <View className="w-[100%] mb-[15px]">
+                            <View className="w-[100%] mb-[10px]">
                               <TextInput placeholder='Enter Polling Unit Code i.e 04-01-01-010 '
-                               style={[styles.dropdown, isFocus && {borderColor: '#009244'}]}
+                               style={[styles.dropdown, isFocus && {borderColor: '#008F43'}]}
                                  autoCapitalize='none'
                                  keyboardType='text'
                                  textContentType='text'
@@ -507,7 +519,7 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
                                  onChange={() => {
                                   setPuDelimitation(values.pu)
                                  }}
-                                className=" text-[] px-[20px] py-[18px] rounded-[5px]"/>
+                                className=" text-[] px-[20px] py-[18px] rounded-[24px]"/>
                                 <Text className="text-red-800 font-bold pt-[4px] text-[10px]">Polling unit delimeter is not compulsory, but required to get full app experience</Text>
 
                                
@@ -515,13 +527,13 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
 
 
-                            <View className="w-[100%] mb-[15px] flex justify-end">
+                            <View className="w-[100%] mb-[10px] flex justify-end">
                               <TouchableOpacity className="" style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid}>
                                 {/* <TouchableOpacity className="" style={styles.button(true)} onPress={handleSubmit}  > */}
-                                    <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" >
+                                    <View className="px-[32px] py-[15px] rounded-[24px] text-[#fff] shadow-2xl" >
                                         <Text className="text-white text-center text-[18px] font-bold"> 
                                         {
-                                            isSubmitting ? 'E dey rush ....' : (IsEditing ? 'Edit Profile' : 'Create Profile' )
+                                            isSubmitting ? 'E dey rush ....' : (IsEditing ? 'Save Profile' : 'Create Profile' )
                                         }
                                         
                                         </Text>
@@ -540,6 +552,7 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 
                 </Formik>
            
+               </View>
             </View>
 
 
@@ -554,7 +567,7 @@ const Profile = ({navigation, canGoBack = false, type='', editing=false}) => {
 const styles = StyleSheet.create({
     checkboxContainer: {
       flexDirection: 'row',
-      marginBottom: 20,
+      marginBottom: 2,
     },
     checkbox: {
       alignSelf: 'center',
@@ -563,14 +576,14 @@ const styles = StyleSheet.create({
       margin: 8,
     },
     wrapper:{
-        marginTop: 80,
+        marginTop: 40,
     },
     inputField:{
-        backgroundColor: '#fafafa',
         marginBottom: 10,
+        borderRadius: 24
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,
@@ -589,11 +602,13 @@ const styles = StyleSheet.create({
     } ,
     dropdown: {
         height: 50,
-        borderColor: 'gray',
+        borderColor: '#CDCFD0',
         borderWidth: 0.5,
-        borderRadius: 8,
-        paddingHorizontal: 8,
+        borderRadius: 24,
+        paddingHorizontal: 32,
         marginBottom: 10,
+        color: '#6C7072',
+        fontSize: '14px'
       },
       icon: {
         marginRight: 5,
@@ -611,7 +626,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
       },
       selectedTextStyle: {
-        fontSize: 16,
+        fontSize: 14,
       },
       iconStyle: {
         width: 20,

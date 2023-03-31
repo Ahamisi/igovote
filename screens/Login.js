@@ -18,6 +18,8 @@ import DismissKeyboard from '../components/General/DismissKeyboard';
 const Login = ({navigation}) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [hasLoggedIn, setHasLoggedIn] = useState(false)
+    const [passwordType, setPasswordType] = useState(true)
+
 
     
 
@@ -34,7 +36,7 @@ const Login = ({navigation}) => {
             console.log(user,'just to check')
             setHasLoggedIn(true)
             console.log(hasLoggedIn)
-            navigation.push('HomeScreen',{userDetail: user})
+            navigation.push('MainMenu',{userDetail: user})
         }catch(error){
             // console.log(Object.keys(error))
             if(error.name == "UserNotConfirmedException"){
@@ -68,15 +70,15 @@ const Login = ({navigation}) => {
 
 
   return (
-        <SafeAreaView className="bg-[#009244]">
+        <SafeAreaView className="bg-[#008F43] text-white">
             <KeyboardAvoidingView>
 
-            <ScrollView keyboardShouldPersistTaps="handled">
-                <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+            <ScrollView keyboardShouldPersistTaps="handled" className=" ">
+                <View className="bg-[#ffffff] flex flex-1 h-100 pb-[100%]">
                     <GoBack navigation={navigation} goTo="BeforeAuth"/>
                 
-                    <View className="mx-auto">
-                        <Image className="h-auto w-auto" source={require('../assets/app/login.png')} />
+                    <View className="mx-auto pt-[20%]">
+                        <Image className="h-[200px] w-[200px]" source={require('../assets/app/igv-power.png')} />
 
                     </View>
 
@@ -94,11 +96,14 @@ const Login = ({navigation}) => {
 
 
 
-                            <View className=" bg-white rounded-[20px] mx-auto my-[10px]  w-[90%] px-[20px] py-[40px] items-center">
+                            <View className=" bg-white rounded-[20px] mx-auto w-[90%] px-[20px] py-[20px] items-center">
 
                             <View className="w-[100%] mb-[15px]" style={[styles.inputField
                                 ]}
                             >
+                                <View className="py-[8px]">
+                                    <Text style={{fontFamily: 'Sora-Medium', fontWeight: '700', color: '#404446', textAlign: 'center'}}>Email Address</Text>
+                                </View>
                                 <TextInput 
                                     placeholder='Email Address'
                                     autoCapitalize='none'
@@ -107,7 +112,7 @@ const Login = ({navigation}) => {
                                     onChangeText={handleChange('email')}
                                     onBlur={handleBlur('email')}
                                     value={values.email}
-                                    className="bg-[#eeeeee] px-[20px] py-[18px] rounded-[25px]"/>
+                                    className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
                                     {
                                         values.email.length < 1 || Validator.validate(values.email) ? '' : <Text className="text-red-800 font-medium">Enter a valid email address</Text>
                                     }
@@ -119,23 +124,33 @@ const Login = ({navigation}) => {
                                     }
                                 ]}
                             >
-                                <TextInput
-                                    placeholder='Password'
-                                    autoCapitalize='none'
-                                    textContentType='password'
-                                    secureTextEntry={true}
-                                    onChangeText={handleChange('password')}
-                                    onBlur={handleBlur('password')}
-                                    value={values.password}
-                                    
-                                    className="bg-[#eeeeee] px-[20px] py-[18px] rounded-[25px]"
-                                />
+                                 <View className="pb-[8px]">
+                                    <Text style={{fontFamily: 'Sora-Medium', fontWeight: '700', color: '#404446', textAlign: 'center'}}>Password</Text>
+                                </View>
+                                <View className="relative">
+                                    <TextInput
+                                        placeholder='Password'
+                                        autoCapitalize='none'
+                                        textContentType={passwordType ? 'password' : 'text'}
+                                        secureTextEntry={passwordType}
+                                        onChangeText={handleChange('password')}
+                                        onBlur={handleBlur('password')}
+                                        value={values.password}
+                                        
+                                        className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"
+                                    />
+                                    <View className="absolute right-[14px] top-[18px]">
+                                        <TouchableOpacity onPress={() => {  setPasswordType((prevState) => !prevState ) }}>
+                                            <Image className="h-[13px] w-[13px]" source={require('../assets/app/passkeeper.png')} />
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
                             </View>
 
 
                             <View className="w-[100%] mb-[15px] flex justify-end">
                                 <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid || isSubmitting} >
-                                    <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
+                                    <View className="px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl" >
                                         <Text className="text-white text-center text-[18px] font-bold">
                                             {
                                                 isSubmitting ? 'Logging In ....' : 'Login'
@@ -148,7 +163,7 @@ const Login = ({navigation}) => {
 
                                 <TouchableOpacity  onPress={() => navigation.push('ForgotPassword') } >
                                     <View className="w-[100%] my-[15px] flex flex-end">
-                                        <Text className="font-bold text-[#009244] text-right">Forgot Password</Text>
+                                        <Text className="font-bold text-[#008F43] text-right" style={{fontFamily: 'Sora-Medium'}}>Forgot Password</Text>
                                     </View>
                                 </TouchableOpacity>
 
@@ -172,12 +187,12 @@ const Login = ({navigation}) => {
 
 
 
-                    <View className=" bg-[#eeeeee]">
+                    <View className=" bg-[#ffffff]">
 
                         <TouchableOpacity onPress={() => navigation.push('Signup') }>
                             <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
-                                <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
-                                <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
+                                <Text className="text-[#000000] font-bold text-center" style={{fontFamily: 'Sora-Medium'}}>Don't have an account ?&nbsp;</Text>
+                                <Text className="font-bold text-[#008F43] text-center" style={{fontFamily: 'Sora-Medium'}}>Sign Up</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -200,18 +215,18 @@ const styles = StyleSheet.create({
     },
     inputField:{
         marginBottom: 10,
-        boxShadow: '2px 0px 1px #0000008a',
-        shadowColor: '#0000008a',
-        shadowOffset: {width: -1, height: 3},
-        shadowOpacity: 0.2,
+        // boxShadow: '2px 0px 1px #0000008a',
+        // shadowColor: '#0000008a',
+        // shadowOffset: {width: -1, height: 3},
+        // shadowOpacity: 0.2,
         shadowRadius: 3,
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,
-        borderRadius: 4
+        borderRadius: 30
     }),
     buttonText:{
         fontWeight: '600',

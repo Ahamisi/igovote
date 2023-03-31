@@ -91,18 +91,18 @@ const VideoHolder = ({update}) => {
       {isPreloading &&
             <ActivityIndicator
                 animating
-                color={"#009244"}
+                color={"#008F43"}
                 size="large"
                 style={{ flex: 1, position:"absolute", top:"50%", left:"45%" }}
             />
         }
-        <View className="text-right flex flex-row justify-end mb-[3px]">
+        {/* <View className="text-right flex flex-row justify-end mb-[3px]">
             <TouchableOpacity onPress={() => openShareDialogAsync(videoURL)}>
-            <View className="h-[40px] w-[40px] bg-[#009244] rounded-full justify-center flex items-center">
+            <View className="h-[40px] w-[40px] bg-[#008F43] rounded-full justify-center flex items-center">
                 <FontAwesome name='share' size={15} color={"white"} className="font-bold"/>
             </View>
             </TouchableOpacity>
-        </View>
+        </View> */}
         <Video
             ref={video}
             style={styles.video}
@@ -114,6 +114,7 @@ const VideoHolder = ({update}) => {
             // }}
             posterStyle={{
                 resizeMode: 'cover',
+                backgroundColor: '#F2F4F5'
             }}
             usePoster={false}
             useNativeControls

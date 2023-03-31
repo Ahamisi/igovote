@@ -90,18 +90,18 @@ const OTPVerification = ({route,navigation}) => {
 
 
   return (
-        <SafeAreaView className="bg-[#009244]">
+        <SafeAreaView className="bg-[#008F43]">
 
                 <KeyboardAvoidingView>
 
 
 
                 <ScrollView keyboardShouldPersistTaps="handled">
-                    <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+                <View className="bg-[#ffffff] flex flex-1 h-100 pb-[100%]">
                     <GoBack navigation={navigation}/>
                 
-                    <View className="mx-auto">
-                        <Image className="h-auto w-auto" source={require('../assets/app/login.png')} />
+                    <View className="mx-auto pt-[20%]">
+                        <Image className="h-[200px] w-[200px]" source={require('../assets/app/igv-power.png')} />
 
                     </View>
 
@@ -119,7 +119,8 @@ const OTPVerification = ({route,navigation}) => {
 
                     {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
 
-                        <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-center">
+                            <View className=" bg-white rounded-[20px] mx-auto w-[90%] px-[20px] py-[20px] items-center">
+                                
 
                             <View className="w-[100%] mb-[15px]" >
                                 <TextInput 
@@ -131,14 +132,14 @@ const OTPVerification = ({route,navigation}) => {
                                     onChangeText={handleChange('code')}
                                     onBlur={handleBlur('code')}
                                     value={values.code}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
+                                    className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
                             </View>
                             
                             <View className="text-center mb-[15px] shadow-[#ff0000] shadow-2xl">
 
                                 <TouchableOpacity onPress={() => resendConfirmationCode() } className="flex flex-row gap-[3px]">
                                     <Text className="font-bold">I didn't receive code. </Text>
-                                    <Text className="font-bold text-[#009244]">Resend Code</Text>
+                                    <Text className="font-bold text-[#008F43]">Resend Code</Text>
 
                                 </TouchableOpacity>
                                 
@@ -175,12 +176,12 @@ const OTPVerification = ({route,navigation}) => {
 
 
 
-                    <View className=" bg-[#eeeeee]">
+                    <View className=" bg-[#ffffff]">
 
                         <TouchableOpacity onPress={() => navigation.push('Signup') }>
                             <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
                                 <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
-                                <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
+                                <Text className="font-bold text-[#008F43] text-center">Sign Up</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,

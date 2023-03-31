@@ -79,15 +79,15 @@ const ForgotPasswordScreen = ({navigation}) => {
 
 
   return (
-        <SafeAreaView className="bg-[#009244]">
+        <SafeAreaView className="bg-[#008F43]">
 
             <KeyboardAvoidingView>
                 <ScrollView keyboardShouldPersistTaps="handled">
-                <View className="bg-[#eeeeee] pt-[20%] h-full relative">
+                <View className="bg-[#ffffff] flex flex-1 h-100 pb-[100%]">
                 <GoBack navigation={navigation}/>
                
-                <View className="mx-auto">
-                    <Image className="h-auto w-auto" source={require('../assets/app/signup.png')} />
+                <View className="mx-auto pt-[20%]">
+                <Image className="h-[200px] w-[200px]" source={require('../assets/app/igv-power.png')} />
 
                 </View>
 
@@ -106,7 +106,7 @@ const ForgotPasswordScreen = ({navigation}) => {
 
                 {({handleChange, handleBlur, handleSubmit, values, isValid}) =>(
 
-                    <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[40px] items-center">
+                    <View className=" bg-white rounded-[20px] mx-auto  my-auto  w-[90%] px-[20px] py-[10px] items-center">
 
                         <View className="w-[100%] mb-[15px]" style={[styles.inputField, 
                                 {
@@ -122,8 +122,8 @@ const ForgotPasswordScreen = ({navigation}) => {
                                 onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
                                 value={values.email}
-                                className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
-                        </View>
+                                className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
+                                </View>
 
 
                        { codeSent && <>
@@ -148,8 +148,8 @@ const ForgotPasswordScreen = ({navigation}) => {
                                     onChangeText={handleChange('code')}
                                     onBlur={handleBlur('code')}
                                     value={values.code}
-                                    className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
-                            </View>
+                                    className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
+                                    </View>
 
 
                                 <View className="w-[100%] mb-[15px]"  style={[styles.inputField, 
@@ -166,14 +166,14 @@ const ForgotPasswordScreen = ({navigation}) => {
                                         onChangeText={handleChange('password')}
                                         onBlur={handleBlur('password')}
                                         value={values.password}
-                                        className="bg-[#eeeeee] text-[] px-[20px] py-[18px] rounded-[25px] shadow-[0px_4px_4px_4px_#00000057]"/>
-                                </View>
+                                        className="bg-[#F2F4F5] px-[20px] py-[18px] rounded-[25px] text-[#404446]"/>
+                                        </View>
 
 
                                 
 
 
-
+                                       
 
 
 
@@ -186,7 +186,7 @@ const ForgotPasswordScreen = ({navigation}) => {
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
                             <Pressable style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid} >
-                                <View className="px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
+                                <View className="px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl" style={styles.button(isValid)} >
                                     <Text className="text-white text-center text-[18px] font-bold">
                                     {
                                             isSubmitting ? 'Sending ...' : 'Send'
@@ -213,12 +213,12 @@ const ForgotPasswordScreen = ({navigation}) => {
 
 
 
-                <View className=" bg-[#eeeeee] mt-[10px]">
+                <View className=" bg-[#ffffff] mt-[10px]">
 
                     <TouchableOpacity onPress={() => navigation.push('Signup') }>
                         <View className="w-[100%] mb-[15px] flex flex-row items-center justify-center">
-                            <Text className="text-[#000000] font-bold text-center">Don't have an account ?&nbsp;</Text>
-                            <Text className="font-bold text-[#009244] text-center">Sign Up</Text>
+                            <Text className="text-[#000000] font-bold text-center" style={{fontFamily: 'Sora-Medium'}}>Don't have an account ?&nbsp;</Text>
+                            <Text className="font-bold text-[#008F43] text-center" style={{fontFamily: 'Sora-Medium'}}>Sign Up</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -246,11 +246,11 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
     },
     button: isValid =>({
-        backgroundColor: isValid ? '#009244' : '#b5e2cd',
+        backgroundColor: isValid ? '#008F43' : '#b5e2cd',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 42,
-        borderRadius: 4
+        borderRadius: 30
     }),
     buttonText:{
         fontWeight: '600',

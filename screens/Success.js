@@ -37,17 +37,17 @@ const Success = ({navigation,route}) => {
                         <>
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
-                        <TouchableOpacity  onPress={() => navigation.push('HomeScreen',{userDetail: 'user'}) } >
-                                <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
-                                    <Text className="text-white text-center text-[18px] font-bold">Go back home</Text>
+                        <TouchableOpacity  onPress={() => navigation.push('MainMenu',{userDetail: 'user'}) } >
+                                <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl">
+                                    <Text className="text-white text-center text-[14px] font-bold" style={{fontFamily: 'Sora-Medium'}}>Go back home</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
                             <TouchableOpacity  onPress={() => navigation.push('ElectionMonitor') } >
-                                <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
-                                    <Text className="text-white text-center text-[18px] font-bold">Add Another 😉</Text>
+                                <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl">
+                                    <Text className="text-white text-center text-[14px] font-bold" style={{fontFamily: 'Sora-Medium'}}>Add Another 😉</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -60,16 +60,16 @@ const Success = ({navigation,route}) => {
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
                         <TouchableOpacity  onPress={() => navigation.push('HomeScreen',{userDetail: 'user'}) } >
-                                <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
-                                    <Text className="text-white text-center text-[18px] font-bold">Go back home</Text>
+                                <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl">
+                                    <Text className="text-white text-center text-[14px] font-bold" style={{fontFamily: 'Sora-Medium'}}>Go back home</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
 
                         <View className="w-[100%] mb-[15px] flex justify-end">
                             <TouchableOpacity  onPress={() => navigation.push('LiveUpdates') } >
-                                <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
-                                    <Text className="text-white text-center text-[18px] font-bold">Check Updates</Text>
+                                <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl">
+                                    <Text className="text-white text-center text-[14px] font-bold" style={{fontFamily: 'Sora-Medium'}}>Check Updates</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -89,9 +89,9 @@ const Success = ({navigation,route}) => {
                 {       
                     Source == '' &&
                     <View className="w-[100%] mb-[15px] flex justify-end">
-                        <TouchableOpacity  onPress={() => navigation.push('HomeScreen',{userDetail: 'user'}) } >
-                            <View className="bg-[#009244] px-[32px] py-[15px] rounded-[25px] text-[#fff] shadow-2xl">
-                                <Text className="text-white text-center text-[18px] font-bold">Start using Igovote</Text>
+                        <TouchableOpacity  onPress={() => navigation.push('MainMenu',{userDetail: 'user'}) } >
+                            <View className="bg-[#008F43] px-[32px] py-[15px] rounded-[30px] text-[#fff] shadow-2xl">
+                                <Text className="text-white text-center text-[14px] font-bold" style={{fontFamily: 'Sora-Medium'}}>Start using Igovote</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

@@ -54,6 +54,10 @@ const HomeScreen = ({navigation,route}) => {
   const [sorting, setSorting] = useState(false)
   const [sortType, setSortType] = useState('age')
   const [searchKey, setSearchKey] = useState('')
+  const [activeTab, setactiveTab] = useState('governorship')
+
+
+  
 
 
 
@@ -334,14 +338,14 @@ const [current, setCurrent] = useState("position");
 
   return (
 
-    <SafeAreaView style={styles.container} className="bg-[#009244] text-white">
+    <SafeAreaView style={styles.container} className="bg-[#008F43] text-white">
      {
       !newUser &&
           <>
           
           <View style={{flexDirection: 'column',backgroundColor: '#ffffff'}}>
-              <View className=" pb-[40px]">
-                <Header selected={partySelected} selectedPos={positionSelected}  navigation={navigation} filterType={filterType}/>
+              <View className=" pb-[12px]">
+                <Header selected={partySelected} selectedPos={positionSelected} forItem="home"  navigation={navigation} filterType={filterType}/>
                 <View className="flex flex-row items-center justify-between ml-[20px]">
                   <View className="w-[75%]">
                     <TextInput
@@ -352,10 +356,9 @@ const [current, setCurrent] = useState("position");
                       
                     />
                   </View>
-                  {/* <i class="fa-light fa-arrow-up-wide-short"></i> */}
                   <View className="w-[25%] flex flex-row justify-end gap-[5px] mr-[28px]">
                    
-                    <View className="items-center">
+                    {/* <View className="items-center">
                        <TouchableOpacity onPress={() => setSorting(previousValue => !previousValue) } className="items-center">
                         {
                           sorting  ? <Image source={require('../assets/app/sort-active.png')} className={`w-[20px] h-[20px] rounded-[9999px]`}/> : <Image source={require('../assets/app/sort-inactive.png')} className={` w-[20px] h-[20px] rounded-[9999px] `}/>
@@ -365,7 +368,7 @@ const [current, setCurrent] = useState("position");
                           <Text className="text-[#008F43] text-[8px]" style={{fontFamily: 'Sora-Medium'}}>{sortType}</Text>
                         </View>
                        </TouchableOpacity>
-                    </View>
+                    </View> */}
 
 
                     <View className="items-center pr-[18px]">
@@ -383,37 +386,13 @@ const [current, setCurrent] = useState("position");
                 </View>
                 
 
-              {/* filter options */}
-              <View className={`${ filtering ? 'flex' : 'hidden'} flex-row items-center justify-between ml-[20px] mt-[23px]`}>
-
-                    <View className="flex flex-row border-[#008F43] border-2 rounded-[16px] p-[12px] pt-[10px] gap-[8px] items-center">
-                      <View className="flex flex-row">
-                        <TouchableOpacity className="flex flex-row items-center gap-[10px]" onPress={() => doCurrentChange('position')}>
-                          {
-                            filterType == 'position' ? <Image source={require('../assets/app/checked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/> : <Image source={require('../assets/app/unchecked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
-                          }
-                          <Text className="text-[12px] text-[#008F43] leading-[15px]">Position</Text>
-                          </TouchableOpacity>
-                      </View>
-
-                      <View className="flex flex-row">
-                        <TouchableOpacity className="flex flex-row items-center gap-[10px]" onPress={() => doCurrentChange('party')}>
-                          {
-                            filterType == 'party' ? <Image source={require('../assets/app/checked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/> : <Image source={require('../assets/app/unchecked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
-                          }
-                          <Text className="text-[12px] text-[#008F43] leading-[15px]">Party</Text>
-                        </TouchableOpacity>
-                      </View>
-                    </View>
-                 
-              </View>
+             
 
 
-
-               {/* filter options */}
+               {/* sort options */}
                <View className={`${ sorting ? 'flex' : 'hidden'} flex-row items-center justify-between ml-[20px] mt-[23px]`}>
 
-                <View className="flex flex-row border-[#008F43] border-2 rounded-[16px] p-[12px] pt-[10px] gap-[8px] items-center">
+                <View className="flex flex-row border-[#008F43] border-[1px] rounded-[16px] p-[12px] pt-[10px] gap-[8px] items-center">
                   <View className="flex flex-row">
                     <TouchableOpacity className="flex flex-row items-center gap-[10px]" onPress={() => doSortChange('age')}>
                       {
@@ -483,30 +462,59 @@ const [current, setCurrent] = useState("position");
 
               </View>
               {/* <Achievements/> */}
-                <View className="rounded-t-[200px]">
-                  {
-                    console.log(filterType)
-                  }
+            <View className="flex flex-row items-center">
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <View className={`${filterType == 'party' ? 'mt-[8px]' : 'mt-[30px]'} flex flex-row items-center justify-center}`}>
+                        {/* filter options */}
+                  <View className={`${ filtering ? 'flex' : 'hidden'} flex-row items-center justify-between ml-[20px] mt-[-20px]`}>
 
-                  {
-                    ((filterType  == 'party' ) && (partySelected)) && <Parties selected={partySelected} partySelected={partySelected} navigation={navigation}/>
-                  }
-                  {
-                    console.log(positionSelected,'akpabio')
-                  }
+                  <View className="flex flex-row border-[#008F43] border-[1px] rounded-[24px] pb-[6px] pr-[8px] gap-[8px] items-center">
+                    <View className="flex flex-row">
+                      <TouchableOpacity className="flex flex-row items-center gap-[10px]" onPress={() => doCurrentChange('position')}>
+                        {
+                          filterType == 'position' ? <Image source={require('../assets/app/checked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/> : <Image source={require('../assets/app/unchecked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
+                        }
+                        <Text className="text-[12px] text-[#008F43] leading-[15px]">Position</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View className="flex flex-row">
+                      <TouchableOpacity className="flex flex-row items-center gap-[10px]" onPress={() => doCurrentChange('party')}>
+                        {
+                          filterType == 'party' ? <Image source={require('../assets/app/checked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/> : <Image source={require('../assets/app/unchecked.png')} className={`p-[5px] w-[20px] h-[20px] rounded-[9999px] ml-[6px] shadow-2xl`}/>
+                        }
+                        <Text className="text-[12px] text-[#008F43] leading-[15px]">Party</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  </View>
+
+                    {
+                      console.log(filterType)
+                    }
+
+                    {
+                      ((filterType  == 'party' ) && (partySelected)) && <Parties selected={partySelected} partySelected={partySelected} navigation={navigation}/>
+                    }
+                    {
+                      console.log(positionSelected,'akpabio')
+                    }
 
 
 
-                  {
-                    ((filterType  == 'position') && (positionSelected))  && <Positions selected={positionSelected} partySelected={positionSelected} navigation={navigation}/>
-                  }
+                    {
+                      ((filterType  == 'position') && (positionSelected))  && <Positions selected={positionSelected} partySelected={positionSelected} navigation={navigation}/>
+                    }
+
+                    </View>
+
+              </ScrollView>
+            </View>
 
 
-                  
 
-
-
-                    <View style={{ marginVertical: 8}} className="flex mb-[20px]">
+                <View style={{ marginVertical: 8}} className="flex mb-[20px]">
                       {savedUserProfile && (partySelected || positionSelected) &&
                           <>
                           {
@@ -519,12 +527,52 @@ const [current, setCurrent] = useState("position");
                                    <CandidateGroup groupHeading={`${positionSelected.toUpperCase()}`} groupKey={`${positionSelected.toUpperCase()}`}  userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={filterType} positionSelected={positionSelected} sortType={sortType} searchKey={searchKey} />
                                   : 
                                   <>
+
+                                          <View className="px-[20px]">
+                                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                           
+                                               <TouchableOpacity onPress={() => setactiveTab('presidential')}>
+                                                <View className={`rounded-[16px] ${activeTab == 'presidential' ? 'bg-[#008F43] border-[#008F43]' : 'bg-[#F2F4F5] border-[#F2F4F5]'} py-[8px] px-[16px]  border-[1px] mr-[8px]`}>
+                                                        <Text className={`text-xs ${activeTab == 'presidential' ? 'text-[#ffffff]' : 'text-[#303437]'} text-[12px] leading-[15px] font-bold`} style={{fontFamily: 'Sora-Bold'}}>Presidential</Text>
+                                                    </View>
+                                               </TouchableOpacity>
+
+                                                <TouchableOpacity onPress={() => setactiveTab('governorship')}>
+                                                    <View className={`rounded-[16px] ${activeTab == 'governorship' ? 'bg-[#008F43] border-[#008F43]' : 'bg-[#F2F4F5] border-[#F2F4F5]'} py-[8px] px-[16px]  border-[1px] mr-[8px]`}>
+                                                        <Text className={`text-xs ${activeTab == 'governorship' ? 'text-[#ffffff]' : 'text-[#303437]'} text-[12px] leading-[15px] font-bold`} style={{fontFamily: 'Sora-Bold'}}>Governorship</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+
+                                                <TouchableOpacity onPress={() => setactiveTab('senatorial')}>
+                                                    <View className={`rounded-[16px] ${activeTab == 'senatorial' ? 'bg-[#008F43] border-[#008F43]' : 'bg-[#F2F4F5] border-[#F2F4F5]'} py-[8px] px-[16px]  border-[1px] mr-[8px]`}>
+                                                        <Text className={`text-xs ${activeTab == 'senatorial' ? 'text-[#ffffff]' : 'text-[#303437]'} text-[12px] leading-[15px] font-bold`} style={{fontFamily: 'Sora-Bold'}}>Senatorial</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+
+                                                <TouchableOpacity onPress={() => setactiveTab('hor')}>
+                                                    <View className={`rounded-[16px] ${activeTab == 'hor' ? 'bg-[#008F43] border-[#008F43]' : 'bg-[#F2F4F5] border-[#F2F4F5]'} py-[8px] px-[16px]  border-[1px] mr-[8px]`}>
+                                                        <Text className={`text-xs ${activeTab == 'hor' ? 'text-[#ffffff]' : 'text-[#303437]'} text-[12px] leading-[15px] font-bold`} style={{fontFamily: 'Sora-Bold'}}>HOR</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+
+
+                                                <TouchableOpacity onPress={() => setactiveTab('hoa')}>
+                                                    <View className={`rounded-[16px] ${activeTab == 'hoa' ? 'bg-[#008F43] border-[#008F43]' : 'bg-[#F2F4F5] border-[#F2F4F5]'} py-[8px] px-[16px]  border-[1px] mr-[8px]`}>
+                                                        <Text className={`text-xs ${activeTab == 'hoa' ? 'text-[#ffffff]' : 'text-[#303437]'} text-[12px] leading-[15px] font-bold`} style={{fontFamily: 'Sora-Bold'}}>HOA</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+
+                                            </ScrollView>
+                                        </View>
+
+
                                        <ScrollView className="mb-[100px]"  showsVerticalScrollIndicator={true}>
-                                          <CandidateGroup groupHeading='Presidential' groupKey='presidential' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current} positionSelected={positionSelected} />
-                                          <CandidateGroupGovernorship groupHeading='Governorship' groupKey='governorship' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/>
-                                          <CandidateGroupSenatorial groupHeading='Senatorial' groupKey='senatorial' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/>
-                                          <CandidateGroupHOR groupHeading='House of Representatives' groupKey='hor' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/>
-                                          <CandidateGroupHOA groupHeading='House of Assembly' groupKey='hoa' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/>
+                                        {activeTab == 'presidential' &&  <CandidateGroup groupHeading='Presidential' groupKey='presidential' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current} positionSelected={positionSelected} />}
+                                        {activeTab == 'governorship' &&  <CandidateGroupGovernorship groupHeading='Governorship' groupKey='governorship' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/> }
+                                        {activeTab == 'senatorial' && <CandidateGroupSenatorial groupHeading='Senatorial' groupKey='senatorial' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/> }
+                                        {activeTab == 'hor' && <CandidateGroupHOR groupHeading='House of Representatives' groupKey='hor' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/>  }
+                                        {activeTab == 'hoa' && <CandidateGroupHOA groupHeading='House of Assembly' groupKey='hoa' userState={newUser} userProfile={savedUserProfile} partySelected={partySelected} navigation={navigation} filterBy={current}/> }
+                                               
                                       </ScrollView>
 
                                   </>
@@ -546,11 +594,10 @@ const [current, setCurrent] = useState("position");
                           </>
                       }
                       
-                    </View>
-
                 </View>
+
           </View>
-            <BottomTab icons={bottomTabIcons} navigation={navigation} tabName='Home'/>
+            <BottomTab icons={bottomTabIcons} navigation={navigation} tabName='HomeScreen'/>
           
           
           </>
@@ -577,7 +624,7 @@ const [current, setCurrent] = useState("position");
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#009244',
+      backgroundColor: '#008F43',
       flex: 1,
     },
     // input:{
@@ -595,19 +642,21 @@ const styles = StyleSheet.create({
     // },
 
     input:{
-      shadowColor: "#00000033",
+      shadowColor: "#E3E5E5",
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 0,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.00,
+    shadowOpacity: 1,
+    shadowRadius: 3,
 
-    elevation: 24,
+    elevation: 5,
     backgroundColor: '#fff',
-    borderRadius: 30,
-    padding: 15,
+    borderRadius: 25,
+    padding: 10,
     fontFamily: 'Sora-Light',
+    borderColor: '#E3E5E5',
+    borderWidth: 1,
       
 
     },

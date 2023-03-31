@@ -198,6 +198,7 @@ const spinListener = async(remSecs) => {
 
   let saveRecording = (url) => {
     setSavedFile(true);
+    console.log('hit me')
     navigation.navigate('CreateRecording', {videoUri: recordings[0].file});
 
   };
@@ -218,7 +219,7 @@ const spinListener = async(remSecs) => {
         <View key={index} style={styles.row}>
             {
                 savedFile ? <View className="flex flex-column">
-                                    <Text className="font-bold text-[24px] text-[#009244] text-center">Successfully uploaded</Text>
+                                    <Text className="font-bold text-[24px] text-[#008F43] text-center">Successfully uploaded</Text>
                     <Text className="font-bold text-[14px] text-red-900 text-center"> You can close this dialogue now</Text>
                 </View>
                 : <>
@@ -226,13 +227,13 @@ const spinListener = async(remSecs) => {
                     {console.log(startAfresh,'minor')}
 
                     <TouchableOpacity onPress={() => playing ? pauseAudio() : onStartPlay(startAfresh)} className="mr-[5px]">
-                      <View className="h-[40px] w-[40px] bg-[#009244] rounded-full justify-center flex items-center">
+                      <View className="h-[40px] w-[40px] bg-[#008F43] rounded-full justify-center flex items-center">
                         <FontAwesome name={`${playing ? 'pause' : 'play'}`} size={15} color={"white"} className="font-bold"/>
                       </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity oonPress={saveRecording}>
-                      <View className="h-[40px] w-[40px] bg-[#009244] rounded-full justify-center flex items-center">
+                      <View className="h-[40px] w-[40px] bg-[#008F43] rounded-full justify-center flex items-center">
                         <FontAwesome name='upload' size={15} color={"white"} className="font-bold"/>
                       </View>
                     </TouchableOpacity>
@@ -261,7 +262,7 @@ const spinListener = async(remSecs) => {
                 {
                   recordings.length !== 1 &&
                     <TouchableOpacity onPress={recording ? stopRecording : (recordings.length > 0 ? goBackToOrigin : startRecording) }>
-                      <View className="h-[40px] w-[40px] bg-[#009244] rounded-full justify-center flex items-center">
+                      <View className="h-[40px] w-[40px] bg-[#008F43] rounded-full justify-center flex items-center">
                         {
                           recording ? <FontAwesome name='stop' size={15} color={"white"} className="font-bold"/> : (
                             recordings.length > 0 ? <FontAwesome name='play' size={15} color={"white"} className="font-bold"/> :<FontAwesome name='microphone' size={15} color={"white"} className="font-bold"/>

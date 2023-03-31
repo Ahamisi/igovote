@@ -24,108 +24,201 @@ const CandidatePresident = ({candidate,navigation,type, extraData, filterBy = 'p
 
 
 
-<View style={{marginBottom:5}} >
-        <View className={`max-w-full ${filterBy === 'position' ? 'w-[50%] h-auto' : 'w-auto'} mr-4`}>
-                <View className="relative flex flex-col min-w-0 break-words border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                    <View className="relative">
-                        <View className="block shadow-xl rounded-2xl w-[100%]">
-                            
-                            {
-                                type == 'president' &&  candidate?.image?.S  ?
-                                <ImagePlaceholder 
-                                                style={{ flex: 1, height: 200, borderRadius: 40}}
-                                                duration={1000}
-                                                activityIndicatorProps={{
-                                                    size: 'large',
-                                                    color: 'green',
-                                                }}
-                                                useNativeDriver={true}
-                                                src={candidate?.image?.S}
-                                                placeholder={candidate?.image?.S}
-                                />
-
-                                // if(!candidate)
-                                
-                                // <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={{uri: extraData?.image }} />
-                                 : <Image className="h-[200px] shadow-soft-2xl rounded-2xl  w-[100%]" source={{uri: extraData?.image }} />
-
-                            }                            
-                        </View>
-                    </View>
-                    <View className="flex-auto mt-[0px] bg-slate py-[10px]">
-                        <View className="flex mb-[0px]">
-                            {/* gender */}
-                            <View className="flex flex-row justify-between items-center gap-4">
-                                {
-                                    candidate && candidate?.candidate_name && candidate?.candidate_name?.S &&
-                                        <Text className="font-bold text-slate-800 text-[16px]" style={{fontFamily: 'Sora-Bold'}}>{candidate.candidate_name.S.substring(0,20)} {candidate.candidate_name.S > 20 ? '...' : ''}</Text>
-
-                                }
-                                {
-                                        candidate && candidate?.cadidate_name  && candidate?.cadidate_name?.S &&
-                                             <Text className="font-bold text-slate-800 text-[16px]" style={{fontFamily: 'Sora-Bold'}}>{candidate.cadidate_name.S.substring(0,20)} {candidate.cadidate_name.S > 20 ? '...' : ''}</Text>
-
-                                }
-                                    <View className=" flex flex-row items-center justify-center gap-[3px] ">
-                                        <View className="bg-[#d1fae5] shadow-2xl rounded-md flex items-center justify-center">
-                                            <Text className="text-xs text-[#009244] font-normal text-[12px] px-[10px] py-[5px]" style={{fontFamily: 'Sora-Bold'}} >{candidate?.gender?.S}</Text>
-                                        </View>
-                                        {
-                                            filterBy == 'position' && 
-                                            <View className="bg-[#009244] rounded-lg p-[4px]">
-                                                <Text className="text-white font-bold" style={{fontFamily: 'Sora-Light'}}>{candidate?.party?.S}</Text>
-                                            </View>
-                                        }
-                                        
-                                        {/* <Image className="ml-[5px] h-[30px] w-[30px]" source={require('../../assets/party/pdp.png')}/> */}
-
-                                    </View>
-                            </View>
-                            {/* qualifications                             */}
-                           <View className="flex flex-row">
-                                {/* <View className=" flex flex-row items-center justify-center gap-[3px]">
-                                    <Image className="h-[30px] w-[30px]" source={require('../../../assets/icons/knowledge.png')}/>
-                                    <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center">
-                                        {
-                                            candidate && candidate?.qualifications ? 
-                                                <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">{candidate.qualifications.S.substring(0,20)} {candidate.qualifications.S > 20 ? '...' : ''}</Text>
-                                            :
-                                            <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">None</Text>
-
-                                        }
-                                        
-                                    </View>
-                                </View> */}
-
-
-                    
-                                    <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center">
-
-                                        {candidate && candidate?.position ?
-                                                    <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]" style={{fontFamily: 'Sora-Bold'}}>{candidate?.position?.S }&nbsp;</Text>  
-                                        : '' } 
-                                        </View>
-
-                                        
-
-                                
-
-
-                                
-                                            <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center ml-[5px]">
-                                                {candidate && candidate?.constituency ?
-
-                                                    <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]" style={{fontFamily: 'Sora-Bold'}}>{candidate?.constituency?.S }</Text>  
-                                                    : '' } 
-                                           
-                                            </View>
+    <View style={{marginBottom:10}} >
+            <View className={`max-w-full ${filterBy === 'position' ? 'w-[100%] h-auto' : 'w-auto'}`}>
+                    <View className="flex flex-row gap-[18px]">
+                        {/* image */}
+                        <View className="h-[100px]">
+                        {
+                                    type == 'president' &&  candidate?.image?.S  ?
+                                    <ImagePlaceholder 
+                                                    style={{ flex: 1, height: 100, width: 100}}
+                                                    duration={1000}
+                                                    className="rounded-full"
+                                                    activityIndicatorProps={{
+                                                        size: 'large',
+                                                        color: 'green',
+                                                    }}
+                                                    imageStyle={{borderRadius: 1000}}
+                                                    useNativeDriver={true}
+                                                    src={candidate?.image?.S}
+                                                    placeholder={candidate?.image?.S}
+                                    />
+                                    : <>
                                     
-                           </View>
+                                    {
 
+                                        candidate?.image?.S &&
+                                        <ImagePlaceholder 
+                                            style={{ flex: 1, height: 100, width: 100}}
+                                            duration={1000}
+                                            activityIndicatorProps={{
+                                                size: 'large',
+                                                color: 'green',
+                                            }}
+                                            imageStyle={{borderRadius: 1000}}
+                                            useNativeDriver={true}
+                                            src={candidate?.image?.S}
+                                            placeholder={candidate?.image?.S}
+                                            />
+                                        }
+                                        {
+                                        type == 'president' && !candidate?.image?.S  ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl " source={require('../../../assets/candidates/president-m.png')} /> : <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl  " source={require('../../../assets/candidates/president-f.png')} />  ): ''
+                                        }
+                                        {
+                                        type == 'governor' && !candidate?.image?.S  ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl  " source={require('../../../assets/candidates/governor-m.png')} /> : <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl  " source={require('../../../assets/candidates/governor-f.png')} />  ): ''
+                                        }
+                                        {
+                                        type == 'senator' && !candidate?.image?.S ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl " source={require('../../../assets/candidates/senator-m.png')} /> : <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl  " source={require('../../../assets/candidates/senator-f.png')} />  ): ''
+                                        }
+                                        {
+                                        type == 'hor' && !candidate?.image?.S ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl   " source={require('../../../assets/candidates/hor-m.png')} /> : <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl  " source={require('../../../assets/candidates/hor-f.png')} />  ): ''
+                                        }
+                                        {
+                                        type == 'hoa' && !candidate?.image?.S ? (candidate?.gender?.S.toLowerCase() == 'm' ? <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl  " source={require('../../../assets/candidates/hoa-m.png')} /> : <Image className="h-[100px] w-[100px] rounded-full  shadow-soft-2xl " source={require('../../../assets/candidates/hoa-f.png')} />  ): ''
+                                        }
+                                    </>
+
+                                }            
+                        </View>
+
+                        {/* text */}
+
+                        <View className=" mt-[0px] bg-slate pt-[3px] pb-[-2px]">
+                            <View className="flex mb-[0px]">
+                                {/* nae */}
+                                <View className="flex flex-row justify-between items-center gap-4">
+                                    {
+                                        candidate && candidate?.candidate_name && candidate?.candidate_name?.S &&
+                                            <Text style={{fontFamily: 'Sora-Bold'}} className="font-bold text-[#303437] text-[13px] capitalize">{candidate.candidate_name.S.substring(0,30)} {candidate.candidate_name.S > 30 ? '...' : ''}</Text>
+
+                                    }
+                                    {
+                                            candidate && candidate?.cadidate_name  && candidate?.cadidate_name?.S &&
+                                                <Text style={{fontFamily: 'Sora-Bold'}} className="font-bold text-[#303437] text-[13px] pb-[2px] capitalize">{candidate.cadidate_name.S.substring(0,30)} {candidate.cadidate_name.S > 30 ? '...' : ''}</Text>
+
+                                    }
+                                        
+                                </View>
+
+                                {
+                                    candidate && candidate?.position && candidate?.position?.S &&
+                                    <View className="flex flex-row justify-between items-center gap-4 mb-[2px]">
+                                        <Text style={{fontFamily: 'Sora-Light'}} className="font-normal leading-[20px] text-[12px] text-[#008F43]">{candidate.position.S.substring(0,30)} {candidate.position.S > 30 ? '...' : ''}Candidate</Text>
+
+                                    </View>
+
+
+                                }
+
+                                
+                                
+                            
+
+                                <View className=" flex flex-row items-center">
+                                        
+                                    
+                                    
+                                        <View className="flex flex-row mb-[2px]">
+                                            { candidate.party.S == 'A' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/a.png')}/> :'' } 
+                                            { candidate.party.S == 'AA' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/aa.png')}/> :'' }
+                                            { candidate.party.S == 'AAC' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/aac.png')}/> :'' }
+                                            { candidate.party.S == 'ADC' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/adc.png')}/> :'' }
+                                            { candidate.party.S == 'ADP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/adp.png')}/> :'' }
+                                            { candidate.party.S == 'APC' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/apc.png')}/> :'' }
+                                            { candidate.party.S == 'APGA' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/apga.png')}/> :'' }
+                                            { candidate.party.S == 'APM' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/apm.png')}/> :'' }
+                                            { candidate.party.S == 'APP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/app.png')}/> :'' }
+                                            { candidate.party.S == 'BP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/bp.png')}/> :'' }
+                                            { candidate.party.S == 'LP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/lp.png')}/> :'' }
+                                            { candidate.party.S == 'NNPP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/nnpp.png')}/> :'' }
+                                            { candidate.party.S == 'NRM' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/nrm.png')}/> :'' }
+                                            { candidate.party.S == 'PDP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/pdp.png')}/> :'' }
+                                            { candidate.party.S == 'PRP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/prp.png')}/> :'' }
+                                            { candidate.party.S == 'SDP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/sdp.png')}/> :'' }
+                                            { candidate.party.S == 'YPP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/ypp.png')}/> :'' }
+                                            { candidate.party.S == 'ZLP' ? <Image className="h-[20px] w-[20px]" source={require('../../../assets/party/zlp.png')}/> :'' }
+                                            <View className="p-[4px] mt-[-2px]">
+                                                <Text className="text-[#404446] text-[12px] font-normal" style={{fontFamily: 'Sora-Light'}}>{candidate?.party?.S}
+                                                { candidate.party.S == 'A' ? ' - Accord Party' :'' } 
+                                                { candidate.party.S == 'AA' ? ' - Action Alliance' :'' }
+                                                { candidate.party.S == 'AAC' ? ' - African Action Congress' :'' }
+                                                { candidate.party.S == 'ADC' ? ' - African Democratic Congress' :'' }
+                                                { candidate.party.S == 'ADP' ? ' - Action Democratic Party' :'' }
+                                                { candidate.party.S == 'APC' ? ' - All Progressives Congress' :'' }
+                                                { candidate.party.S == 'APGA' ? ' - All Progressives Grand Alliance' :'' }
+                                                { candidate.party.S == 'APM' ? ' - Allied Peoples Movement' :'' }
+                                                { candidate.party.S == 'APP' ? ' - All Peoples Party' :'' }
+                                                { candidate.party.S == 'BP' ? ' - Boot Party' :'' }
+                                                { candidate.party.S == 'LP' ? ' - Labour Party' :'' }
+                                                { candidate.party.S == 'NNPP' ? ' - New Nigerias People Party' :'' }
+                                                { candidate.party.S == 'NRM' ? ' - National Rescue Movement' :'' }
+                                                { candidate.party.S == 'PDP' ? ' - Peoples Democratic Party' :'' }
+                                                { candidate.party.S == 'PRP' ? ' - Peoples Redemption Party' :'' }
+                                                { candidate.party.S == 'SDP' ? ' - Social Democratic Party' :'' }
+                                                { candidate.party.S == 'YPP' ? ' - Young Progressives Party' :'' }
+                                                { candidate.party.S == 'ZLP' ? ' - Zenith Labour Party' :'' }
+
+                                                </Text>
+                                            </View>
+                                        </View>
+
+
+                                        
+                                    
+                                    
+                                    
+
+                                </View>
+
+
+
+                                <View className=" flex flex-row items-center gap-[10px] mb-[2px]">
+
+                                    {
+                                        candidate && candidate?.constituency &&
+
+                                        <View className="rounded-[16px] py-[4px] px-[8px] border-[#008F43] border-[1px] shadow-2xl ">
+                                            <Text className="text-xs text-[#008F43] text-[10px] leading-[15px] font-bold" style={{fontFamily: 'Sora-Medium'}}>{candidate?.constituency?.S }</Text>
+                                        </View>
+                                        }
+                                        
+                                    <View className="rounded-[16px] py-[4px] px-[8px] border-[#008F43] border-[1px] shadow-2xl ">
+                                        <Text className="text-xs text-[#008F43] text-[10px] leading-[15px] font-bold" style={{fontFamily: 'Sora-Medium'}}>{candidate?.gender?.S == 'M' ? 'Male' : 'Female'}</Text>
+                                    </View>
+
+                                    <View className="rounded-[16px] py-[4px] px-[8px] border-[#008F43] border-[1px] shadow-2xl">
+                                        <Text className="text-xs text-[#008F43] text-[10px] leading-[15px] font-bold" style={{fontFamily: 'Sora-Medium'}}>{candidate?.age?.S } Years</Text>
+                                    </View>
+
+
+
+                                </View>
+
+                                {/* {
+                                    candidate && candidate?.constituency ?
+                                    <View className=" flex flex-row items-center gap-[10px] mb-[2px]">
+                                        
+                                            <View className="rounded-[16px] py-[5px] px-[10px] border-[#008F43] border-[1px] shadow-2xl ">
+                                                <Text className="text-xs text-[#404446] text-[12px] leading-[15px] font-bold">{candidate?.constituency?.S }</Text>
+                                            </View>
+
+                                        
+
+
+                            
+
+                                    </View>
+
+                                        : ''
+                                }                       */}
+
+                                        
+
+                            </View>
                         </View>
                     </View>
-                </View>
-        </View>
+            </View>
     </View>
 
 
@@ -133,7 +226,8 @@ const CandidatePresident = ({candidate,navigation,type, extraData, filterBy = 'p
 
 
 
-    </TouchableOpacity>
+</TouchableOpacity>
+
     
   )
 }

@@ -53,22 +53,19 @@ useEffect(() => {
   },[userProfile,partySelected])
   
 
+
   return (
-    <View className="my-[2px] bg-white rounded-lg shadow-2xl shadow-[#0000001a] py-[20px] px-[26px] mb-[20px]">
+    <View className="my-[2px] bg-white rounded-lg  py-[20px] px-[26px] mb-[20px]">
       
         <View style={styles.container}>
             <View>
-              <Text style={styles.groupHeading}  className="font-[700]">{groupHeading}</Text>
+              <Text style={styles.groupHeading} className="text-[#008F43]">{groupHeading} Aspirants in your State</Text>
             </View>
-            <View>
-              <TouchableOpacity>
-                <Icon name="angle-right" size={20} color="#009244" />
-              </TouchableOpacity>
-            </View>
+            
         </View>
         <View>
 
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <ScrollView vertical showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
                 {
                   DataSource ?
                       DataSource.length < 1 ? <Text className="text-blue">No Data Available !!!</Text>
@@ -89,7 +86,7 @@ export default CandidateGroupGovernorship
 const styles = StyleSheet.create({
     groupHeading: {
         textTransform: 'uppercase',
-        color: '#000',
+        color: '#008F43',
         fontFamily: 'Sora-Bold',
     },
     container: {

@@ -50,9 +50,9 @@ const CandidateGov = ({candidate}) => {
 
                                             <View className=" flex flex-row items-center justify-center gap-[3px] ">
                                                 <View className="bg-[#d1fae5] shadow-2xl rounded-md flex items-center justify-center">
-                                                    <Text className="text-xs text-[#009244] font-normal text-[12px] px-[10px] py-[5px]">Male</Text>
+                                                    <Text className="text-xs text-[#008F43] font-normal text-[12px] px-[10px] py-[5px]">Male</Text>
 
-                                                    {/* <Text className="text-xs text-[#009244] font-normal text-[12px] px-[10px] py-[5px]">{candidate?.gender?.S}</Text> */}
+                                                    {/* <Text className="text-xs text-[#008F43] font-normal text-[12px] px-[10px] py-[5px]">{candidate?.gender?.S}</Text> */}
                                                 </View>
                                                 {/* <Image className="ml-[5px] h-[30px] w-[30px]" source={require('../../assets/party/pdp.png')}/> */}
 
@@ -62,7 +62,7 @@ const CandidateGov = ({candidate}) => {
                                 <View className="flex flex-row">
                                         <View className=" flex flex-row items-center justify-center gap-[3px]">
                                             <Image className="h-[30px] w-[30px]" source={require('../../../assets/icons/knowledge.png')}/>
-                                            <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center">
+                                            <View className="bg-[#008F43] shadow-2xl rounded-md flex items-center justify-center">
                                                 {/* {
                                                     candidate && candidate?.qualifications ? 
                                                         <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">{candidate.qualifications.S.substring(0,20)} {candidate.qualifications.S > 20 ? '...' : ''}</Text>
@@ -78,7 +78,7 @@ const CandidateGov = ({candidate}) => {
 
                                             {
                                                 candidate && candidate?.position ?
-                                                    <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center">
+                                                    <View className="bg-[#008F43] shadow-2xl rounded-md flex items-center justify-center">
                                                             <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">{candidate?.position }</Text>  
                                                     </View>
                                                 : ''  
@@ -87,7 +87,7 @@ const CandidateGov = ({candidate}) => {
 
                                         {
                                             candidate && candidate?.constituency ?
-                                                    <View className="bg-[#009244] shadow-2xl rounded-md flex items-center justify-center">
+                                                    <View className="bg-[#008F43] shadow-2xl rounded-md flex items-center justify-center">
                                                             <Text className="text-xs text-[#fff] font-bold text-[12px] px-[10px] py-[5px]">{candidate?.constituency }</Text>  
                                                     </View>
                                                 : ''  
